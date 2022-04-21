@@ -156,3 +156,5 @@ $('document').ready(function()
 	$('tr').has('div[id=dxUpdate]').find('input').change(checkDxUpdate);
 	$('tr').has('div[id=txPlanUpdate]').find('input').change(checkTxUpdate);
 });
+
+//Test
