@@ -1,3 +1,4 @@
+var age;
 var cid;
 var programID;
 var program;
@@ -13,6 +14,25 @@ $('document').ready(function(){
 	{
 		cid = '200079';
 	}
+
+	try{ 
+		programID = window.parent[0].$('input[id=programId]').val(); 
+	}
+	catch{ 
+		if(programID == undefined){ 
+			programID = 130; 
+		} 
+	}  
+	
+	if($('tr').has('div[id=clientAge]').find('input')?.val() != ''){
+		age = $('tr').has('div[id=clientAge]').find('font').text();
+		console.log(age);
+	}
+	if(!$.isNumeric(age)){
+		age = 18;
+	}
+	
+	$('input[name=Complete]').prop('disabled', false);
 });
 
 function requireHidden (condition, target) { 
@@ -156,7 +176,3 @@ $('document').ready(function()
 	$('tr').has('div[id=dxUpdate]').find('input').change(checkDxUpdate);
 	$('tr').has('div[id=txPlanUpdate]').find('input').change(checkTxUpdate);
 });
-
-//Test
-//Nonono
-//Final test for today
