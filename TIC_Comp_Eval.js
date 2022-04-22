@@ -184,6 +184,7 @@ $('document').ready(function()
 
 //Tobacco questions
 $('document').ready(function(){
+	populateOptionText('tobaccoUse');
 	populateOptionText('tobaccoCessation');
 }
 });
