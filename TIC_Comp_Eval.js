@@ -3,6 +3,11 @@ var cid;
 var programID;
 var program;
 
+//Set text property of dropdown options to be available to search for
+function populateOptionText (target){
+	$('tr').has('div[id=' + target + ']').find('option').each(function(){this.setAttribute('text', this.outerText);});
+}
+
 //Get client ID>
 $('document').ready(function(){
 	if(window.parent[0].$){
@@ -175,4 +180,10 @@ $('document').ready(function()
 	
 	$('tr').has('div[id=dxUpdate]').find('input').change(checkDxUpdate);
 	$('tr').has('div[id=txPlanUpdate]').find('input').change(checkTxUpdate);
+});
+
+//Tobacco questions
+$('document').ready(function(){
+	populateOptionText('tobaccoCessation');
+}
 });
