@@ -251,7 +251,7 @@ function checkSchoolAge(){
 			$('tr').has('div[id=schoolBehaviorImprovement]').find('select').val($('tr').has('div[id=schoolBehaviorImprovement]').find('option[text=\'Not Applicable\']').val());
 		}
 	}
-	else(){
+	else{
 		hideShow('show', 'schoolQuestions', true);
 	}
 }
