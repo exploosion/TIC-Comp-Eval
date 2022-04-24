@@ -236,3 +236,30 @@ $('document').ready(function(){
 
 	$('tr').has('div[id=substanceUse]').find('select').change(checkSUD);
 });
+
+//School Questions
+function checkSchoolAge(){
+	if(age >= 25){
+		hideShow('hide', 'schoolQuestions', false);
+		if($('tr').has('div[id=schoolAttendanceImprovement]').find('select').val() == ''){
+			$('tr').has('div[id=schoolAttendanceImprovement]').find('select').val($('tr').has('div[id=schoolAttendanceImprovement]').find('option[text=\'Not Applicable\']').val());
+		}
+		if($('tr').has('div[id=academicImprovement]').find('select').val() == ''){
+			$('tr').has('div[id=academicImprovement]').find('select').val($('tr').has('div[id=academicImprovement]').find('option[text=\'Not Applicable\']').val());
+		}
+		if($('tr').has('div[id=schoolBehaviorImprovement]').find('select').val() == ''){
+			$('tr').has('div[id=schoolBehaviorImprovement]').find('select').val($('tr').has('div[id=schoolBehaviorImprovement]').find('option[text=\'Not Applicable\']').val());
+		}
+	}
+	else(){
+		hideShow('show', 'schoolQuestions', true);
+	}
+}
+
+$('document').ready(function(){
+	populateOptionText('schoolAttendanceImprovement');
+	populateOptionText('academicImprovement');
+	populateOptionText('schoolBehaviorImprovement');
+
+	checkSchoolAge();
+});
