@@ -218,10 +218,10 @@ $('document').ready(function(){
 //SUD questions
 function checkSUD(){
 	hideShow('hide', 'substanceResourcesOffered', false);
-	if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'1-YES\']').val()){
+	if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'YES\']').val()){
 		hideShow('show', 'substanceResourcesOffered', true);
 	}
-	else if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'2-NO\']').val()){
+	else if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'NO\']').val()){
 		if($('tr').has('div[id=substanceResourcesOffered]').find('select').val() == ''){
 			$('tr').has('div[id=substanceResourcesOffered]').find('select').val($('tr').has('div[id=substanceResourcesOffered]').find('option[text=\'2-NO\']').val());
 		}
