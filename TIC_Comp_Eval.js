@@ -189,7 +189,7 @@ function checkTobacco(){
 		hideShow('show', 'tobaccoCessation', true);
 	}
 	else if($('tr').has('div[id=tobaccoUse]').find('select').val() == $('tr').has('div[id=tobaccoUse]').find('option[text=\'2-NO\']').val()){
-		if($('tr').has('div[id=tobaccoCessation]').find('select').val() = ''){
+		if($('tr').has('div[id=tobaccoCessation]').find('select').val() == ''){
 			$('tr').has('div[id=tobaccoCessation]').find('select').val($('tr').has('div[id=tobaccoCessation]').find('option[text=\'2-NO\']').val());
 		}
 	}
@@ -222,7 +222,7 @@ function checkSUD(){
 		hideShow('show', 'substanceResourcesOffered', true);
 	}
 	else if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'2-NO\']').val()){
-		if($('tr').has('div[id=substanceResourcesOffered]').find('select').val() = ''){
+		if($('tr').has('div[id=substanceResourcesOffered]').find('select').val() == ''){
 			$('tr').has('div[id=substanceResourcesOffered]').find('select').val($('tr').has('div[id=substanceResourcesOffered]').find('option[text=\'2-NO\']').val());
 		}
 	}
