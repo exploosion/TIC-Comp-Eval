@@ -183,6 +183,13 @@ $('document').ready(function()
 });
 
 //Tobacco questions
+function checkTobacco(){
+	hideShow('hide', 'tobaccoCessation', false);
+	if($('tr').has('div[id=tobaccoUse]').find('select').val() == $('tr').has('div[id=tobaccoUse]').find('option[text=\'1-YES\']').val()){
+		hideShow('show', 'tobaccoCessation', true);
+	}
+}
+
 $('document').ready(function(){
 	populateOptionText('tobaccoUse');
 	populateOptionText('tobaccoCessation');
