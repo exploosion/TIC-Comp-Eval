@@ -186,5 +186,4 @@ $('document').ready(function()
 $('document').ready(function(){
 	populateOptionText('tobaccoUse');
 	populateOptionText('tobaccoCessation');
-}
 });
