@@ -188,6 +188,11 @@ function checkTobacco(){
 	if($('tr').has('div[id=tobaccoUse]').find('select').val() == $('tr').has('div[id=tobaccoUse]').find('option[text=\'1-YES\']').val()){
 		hideShow('show', 'tobaccoCessation', true);
 	}
+	else if($('tr').has('div[id=tobaccoUse]').find('select').val() == $('tr').has('div[id=tobaccoUse]').find('option[text=\'2-NO\']').val()){
+		if($('tr').has('div[id=tobaccoCessation]').find('select').val() = ''){
+			$('tr').has('div[id=tobaccoCessation]').find('select').val($('tr').has('div[id=tobaccoCessation]').find('option[text=\'2-NO\']').val());
+		}
+	}
 }
 
 $('document').ready(function(){
@@ -197,4 +202,37 @@ $('document').ready(function(){
 	checkTobacco();
 
 	$('tr').has('div[id=tobaccoUse]').find('select').change(checkTobacco);
+});
+
+//SUD referral based on drinks
+function checkDrinks(){
+	if(parseInt($('tr').has('div[id=drinksPastYear]').find('input').val()) > 2){
+		alert('Consider a SUD Referral.');
+	}
+}
+
+$('document').ready(function(){
+	$('tr').has('div[id=drinksPastYear]').find('input').change(checkDrinks);
+});
+
+//SUD questions
+function checkSUD(){
+	hideShow('hide', 'substanceResourcesOffered', false);
+	if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'1-YES\']').val()){
+		hideShow('show', 'substanceResourcesOffered', true);
+	}
+	else if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'2-NO\']').val()){
+		if($('tr').has('div[id=substanceResourcesOffered]').find('select').val() = ''){
+			$('tr').has('div[id=substanceResourcesOffered]').find('select').val($('tr').has('div[id=substanceResourcesOffered]').find('option[text=\'2-NO\']').val());
+		}
+	}
+}
+
+$('document').ready(function(){
+	populateOptionText('substanceUse');
+	populateOptionText('substanceResourcesOffered');
+
+	checkSUD();
+
+	$('tr').has('div[id=substanceUse]').find('select').change(checkSUD);
 });
