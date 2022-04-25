@@ -263,3 +263,46 @@ $('document').ready(function(){
 
 	checkSchoolAge();
 });
+
+//Supported Intersts
+function checkSupported(){
+	hideShow('hide', 'supportedEducation', false);
+	hideShow('hide', 'supportedEmployment', false);
+	if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'Education\')').eq(1).find('input').prop('checked') || $('tr').has('div[id=supportedInterests]').find('tr:contains(\'Employment\')').eq(1).find('input').prop('checked')){
+		if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked')){
+			$('tr').has('div[id=supportedInterests]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked', true);
+			$('tr').has('div[id=supportedInterests]').find('tr:contains(\'None\')').eq(1).find('input').trigger('click');
+		}
+
+		if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'Education\')').eq(1).find('input').prop('checked')){
+			hideShow('show', 'supportedEducation', true);
+		}
+
+		if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'Employment\')').eq(1).find('input').prop('checked')){
+			hideShow('show', 'supportedEmployment', true);
+		}
+	}
+	else if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked')){
+		$('tr').has('div[id=supportedInterests]').find('tr:contains(\'Education\')').eq(1).find('input').prop('checked', true);
+		$('tr').has('div[id=supportedInterests]').find('tr:contains(\'Education\')').eq(1).find('input').trigger('click');
+		$('tr').has('div[id=supportedInterests]').find('tr:contains(\'Employment\')').eq(1).find('input').prop('checked', true);
+		$('tr').has('div[id=supportedInterests]').find('tr:contains(\'Employment\')').eq(1).find('input').trigger('click');
+
+		if($('tr').has('div[id=supportedEducation]').find('select').val() != ''){
+			$('tr').has('div[id=supportedEducation]').find('select').val($('tr').has('div[id=supportedEducation]').find('option[text=\'2=NO\']').val());
+		}
+
+		if($('tr').has('div[id=supportedEmployment]').find('select').val() != ''){
+			$('tr').has('div[id=supportedEmployment]').find('select').val($('tr').has('div[id=supportedEmployment]').find('option[text=\'2=NO\']').val());
+		}
+	}
+
+}
+
+$('document').ready(function(){
+	populateOptionText('supportedEducation');
+	populateOptionText('supportedEmployment');
+	checkSupported();
+
+	$('tr').has('div[id=supportedInterests]').find('input').chnage(checkSupported);
+});
