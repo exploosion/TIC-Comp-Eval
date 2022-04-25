@@ -391,6 +391,7 @@ function checkPathwaySelected(){
 			else{
 				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayOneAdult));
 			}
+			$('tr').has('div[id=pathwayEnds]').find('input').val((currentDate.getMonth() + 1) + '/' + currentDate.getDate() + '/' + currentDate.getFullYear());
 			break;
 		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 2\']').val():
 			console.log('Pathway 2');
@@ -400,6 +401,7 @@ function checkPathwaySelected(){
 			else{
 				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayTwoAdult));
 			}
+			$('tr').has('div[id=pathwayEnds]').find('input').val((currentDate.getMonth() + 1) + '/' + currentDate.getDate() + '/' + currentDate.getFullYear());
 			break;
 		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 3\']').val():
 			console.log('Pathway 3');
@@ -409,6 +411,7 @@ function checkPathwaySelected(){
 			else{
 				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayThreeAdult));
 			}
+			$('tr').has('div[id=pathwayEnds]').find('input').val((currentDate.getMonth() + 1) + '/' + currentDate.getDate() + '/' + currentDate.getFullYear());
 			break;
 		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 4\']').val():
 			console.log('Pathway 4');
@@ -418,11 +421,11 @@ function checkPathwaySelected(){
 			else{
 				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayFourAdult));
 			}
+			$('tr').has('div[id=pathwayEnds]').find('input').val((currentDate.getMonth() + 1) + '/' + currentDate.getDate() + '/' + currentDate.getFullYear());
 			break;
 		default:
+			$('tr').has('div[id=pathwayEnds]').find('input').val('');
 	}
-
-	$('tr').has('div[id=pathwayEnds]').find('input').val((currentDate.getMonth() + 1) + '/' + currentDate.getDate() + '/' + currentDate.getFullYear());
 }
 
 $('document').ready(function(){
