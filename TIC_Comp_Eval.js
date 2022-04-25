@@ -304,5 +304,5 @@ $('document').ready(function(){
 	populateOptionText('supportedEmployment');
 	checkSupported();
 
-	$('tr').has('div[id=supportedInterests]').find('input').chnage(checkSupported);
+	$('tr').has('div[id=supportedInterests]').find('input').change(checkSupported);
 });
