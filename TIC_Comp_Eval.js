@@ -319,3 +319,24 @@ $('document').ready(function(){
 	$('tr').has('div[id=supportedInterests]').find('tr:contains(\'Employment\')').eq(1).find('input').change(checkSupportedEmployment);
 	$('tr').has('div[id=supportedInterests]').find('tr:contains(\'None\')').eq(1).find('input').change(checkSupportedInterestsNone);
 });
+
+//Arrests
+function checkArrests(){
+	hideShow('hide', 'arrests', false);
+
+	if(parseInt($('tr').has('div[id=arrestsTotal]').find('input').val()) > 0){
+		hideShow('show', 'arrestsLast30', true);
+		hideShow('show', 'arrestsDUITotal', true);
+
+		if(parseInt($('tr').has('div[id=arrestsDUITotal]').find('input').val()) > 0){
+			hideShow('show', 'arrestsDUILast30', true);
+		}
+	}
+}
+
+$('document').ready(function(){
+	checkArrests();
+
+	$('tr').has('div[id=arrestsTotal]').find('input').change(checkArrests);
+	$('tr').has('div[class=arrests]').find('input').change(checkArrests);
+});
