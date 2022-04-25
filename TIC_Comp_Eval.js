@@ -239,7 +239,7 @@ $('document').ready(function(){
 
 //School Questions
 function checkSchoolAge(){
-	if(age >= 25){
+	if(age >= 25 || $('tr').has('div[id=evalType]').find('tr:contains(\'Initial\')').eq(1).find('input').prop('checked')){
 		hideShow('hide', 'schoolQuestions', false);
 		if($('tr').has('div[id=schoolAttendanceImprovement]').find('select').val() == ''){
 			$('tr').has('div[id=schoolAttendanceImprovement]').find('select').val($('tr').has('div[id=schoolAttendanceImprovement]').find('option[text=\'Not Applicable\']').val());
@@ -262,6 +262,8 @@ $('document').ready(function(){
 	populateOptionText('schoolBehaviorImprovement');
 
 	checkSchoolAge();
+
+	$('tr').has('div[id=evalType]').find('input').change(checkSchoolAge);
 });
 
 //Supported Intersts
