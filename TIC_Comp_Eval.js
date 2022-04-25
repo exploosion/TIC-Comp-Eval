@@ -367,3 +367,29 @@ $('document').ready(function(){
 		}
 	});
 });
+
+//Pathways
+function checkPathwaySelected(){
+	switch($('tr').has('div[id=pathwaySelected]').find('select').val()){
+		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 1\']').val():
+			console.log('Pathway 1');
+			break;
+		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 2\']').val():
+			console.log('Pathway 2');
+			break;
+		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 3\']').val():
+			console.log('Pathway 3');
+			break;
+		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 4\']').val():
+			console.log('Pathway 4');
+			break;
+		default:
+	}
+}
+
+$('document').ready(function(){
+	populateOptionText('pathwaySelected');
+	checkPathwaySelected();
+
+	$('tr').has('div[id=pathwaySelected]').find('select').change(checkPathwaySelected);
+});
