@@ -253,6 +253,15 @@ function checkSchoolAge(){
 	}
 	else{
 		hideShow('show', 'schoolQuestions', true);
+		if($('tr').has('div[id=schoolAttendanceImprovement]').find('select').val() == $('tr').has('div[id=schoolAttendanceImprovement]').find('option[text=\'Not Applicable\']').val()){
+			$('tr').has('div[id=schoolAttendanceImprovement]').find('select').val('');
+		}
+		if($('tr').has('div[id=academicImprovement]').find('select').val() == $('tr').has('div[id=academicImprovement]').find('option[text=\'Not Applicable\']').val()){
+			$('tr').has('div[id=academicImprovement]').find('select').val('');
+		}
+		if($('tr').has('div[id=schoolBehaviorImprovement]').find('select').val() == $('tr').has('div[id=schoolBehaviorImprovement]').find('option[text=\'Not Applicable\']').val()){
+			$('tr').has('div[id=schoolBehaviorImprovement]').find('select').val('');
+		}
 	}
 }
 
