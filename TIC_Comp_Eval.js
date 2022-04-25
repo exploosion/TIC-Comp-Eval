@@ -381,6 +381,7 @@ const pathwayFourAdult = 30 * 6;
 
 
 function checkPathwaySelected(){
+	currentDate = new Date();
 	switch($('tr').has('div[id=pathwaySelected]').find('select').val()){
 		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 1\']').val():
 			console.log('Pathway 1');
