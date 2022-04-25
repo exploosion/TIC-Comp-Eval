@@ -218,12 +218,12 @@ $('document').ready(function(){
 //SUD questions
 function checkSUD(){
 	hideShow('hide', 'substanceResourcesOffered', false);
-	if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'YES\']').val()){
+	if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'1-YES\']').val()){
 		hideShow('show', 'substanceResourcesOffered', true);
 	}
-	else if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'NO\']').val()){
+	else if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'2-NO\']').val()){
 		if($('tr').has('div[id=substanceResourcesOffered]').find('select').val() == ''){
-			$('tr').has('div[id=substanceResourcesOffered]').find('select').val($('tr').has('div[id=substanceResourcesOffered]').find('option[text=\'2-NO\']').val());
+			$('tr').has('div[id=substanceResourcesOffered]').find('select').val($('tr').has('div[id=substanceResourcesOffered]').find('option[text=\'NO\']').val());
 		}
 	}
 }
@@ -369,22 +369,59 @@ $('document').ready(function(){
 });
 
 //Pathways
+var currentDate;
+const pathwayOneChild = 30 * 6;
+const pathwayOneAdult = 30 * 9;
+const pathwayTwoChild = 30 * 12;
+const pathwayTwoAdult = 30 * 12;
+const pathwayThreeChild = 30 * 12;
+const pathwayThreeAdult = 30 * 3;
+const pathwayFourChild = 30 * 9;
+const pathwayFourAdult = 30 * 6;
+
+
 function checkPathwaySelected(){
 	switch($('tr').has('div[id=pathwaySelected]').find('select').val()){
 		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 1\']').val():
 			console.log('Pathway 1');
+			if (age < 18){
+				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayOneChild));
+			}
+			else{
+				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayOneAdult));
+			}
 			break;
 		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 2\']').val():
 			console.log('Pathway 2');
+			if (age < 18){
+				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayTwoChild));
+			}
+			else{
+				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayTwoAdult));
+			}
 			break;
 		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 3\']').val():
 			console.log('Pathway 3');
+			if (age < 18){
+				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayThreeChild));
+			}
+			else{
+				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayThreeAdult));
+			}
 			break;
 		case $('tr').has('div[id=pathwaySelected]').find('option[text=\'Pathway 4\']').val():
 			console.log('Pathway 4');
+			if (age < 18){
+				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayFourChild));
+			}
+			else{
+				currentDate = new Date(currentDate.setDate(currentDate.getDate() + pathwayFourAdult));
+			}
 			break;
 		default:
 	}
+
+	$('tr').has('div[id=pathwayEnds]').find('input').val((currentDate.getMonth() + 1) + '/' + currentDate.getDate() + '/' + currentDate.getFullYear());
 }
 
 $('document').ready(function(){
