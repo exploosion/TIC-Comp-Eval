@@ -322,9 +322,9 @@ function checkSupportedInterestsNone(){
 $('document').ready(function(){
 	populateOptionText('supportedEducation');
 	populateOptionText('supportedEmployment');
-	checkSupportedEducation();
-	checkSupportedEmployment();
-	checkSupportedInterestsNone();
+	// checkSupportedEducation();
+	// checkSupportedEmployment();
+	// checkSupportedInterestsNone();
 
 	$('tr').has('div[id=supportedInterests]').find('tr:contains(\'Education\')').eq(1).find('input').change(checkSupportedEducation);
 	$('tr').has('div[id=supportedInterests]').find('tr:contains(\'Employment\')').eq(1).find('input').change(checkSupportedEmployment);
