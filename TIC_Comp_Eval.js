@@ -443,7 +443,7 @@ function checkDLA20PreviousScore(){
 		dla20PreviousScore = $('tr').has('div[id=dla20Previous]').find('b')[0]?.innerHTML;
 	}
 	else{
-		$('tr').has('div[id=dla20Previous]').find('b')[0]?.innerHTML = 9001;
+		$('tr').has('div[id=dla20Previous]').find('div').eq(1).text('9001');
 		dla20PreviousScore = 9001;
 	}
 }
