@@ -440,7 +440,7 @@ function createDLA20(){
 	$('tr').has('div[id=dla20]').eq(0).next().after('<div id=\'dla20Test\'><div id=\'dla20Container\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
 
 	$('div[id=dla20Container]').html('<b>DLA 20</b></td></tr>' + '<table border=\'0\' cellspacing=\'10px\'>' +
-		'<tr><td><label for=dla20Q1 class=\'dla20Labels\'><b>1. Health Practices:</b></label></td><td><select id=\'dla20Q1\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option><option value=\'4\'>4</option><option value=\'5\'>5</option><option value=\'6\'>6</option><option value=\'7\'>7</option><option value=\'Did Not Answer\'>Did Not Answer</option></select></td></tr>' +
+		'<tr><td><label for=dla20Q1 class=\'dla20Labels\'><b>1. Health Practices:</b></label></td><td><select id=\'dla20Q1\' class=\'dla20Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option><option value=\'4\'>4</option><option value=\'5\'>5</option><option value=\'6\'>6</option><option value=\'7\'>7</option><option value=\'Did Not Answer\'>Did Not Answer</option></select></td></tr>' +
 		'<tr><td><label for=dla20Q2 class=\'dla20Labels\'><b>2. Housing Stability, Maintenance:</b></label></td><td><select id=\'dla20Q2\' class=\'dla20Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option><option value=\'4\'>4</option><option value=\'5\'>5</option><option value=\'6\'>6</option><option value=\'7\'>7</option><option value=\'Did Not Answer\'>Did Not Answer</option></select></td></tr>' +
 		'<tr><td><label for=dla20Q3 class=\'dla20Labels\'><b>3. Communication:</b></label></td><td><select id=\'dla20Q3\' class=\'dla20Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option><option value=\'4\'>4</option><option value=\'5\'>5</option><option value=\'6\'>6</option><option value=\'7\'>7</option><option value=\'Did Not Answer\'>Did Not Answer</option></select></td></tr>' +
 		'<tr><td><label for=dla20Q4 class=\'dla20Labels\'><b>4. Safety:</b></label></td><td><select id=\'dla20Q4\' class=\'dla20Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option><option value=\'4\'>4</option><option value=\'5\'>5</option><option value=\'6\'>6</option><option value=\'7\'>7</option><option value=\'Did Not Answer\'>Did Not Answer</option></select></td></tr>' +
@@ -467,7 +467,7 @@ function checkDLA20Perform(){
 		$('div[id=dla20Test]').show();
 		$('.dla20Questions').attr('required', true);
 		if(!$('div[id=dla20Test]').find('div[class=requiredAsterisk]').length){
-			$('div[id=dla20Test]').find('label[class=dla20Labels]').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+			$('div[id=dla20Test]').find('label[class=dla20Labels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
 		}
 		
 	}
