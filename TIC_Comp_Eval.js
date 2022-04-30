@@ -489,7 +489,7 @@ function calculateDLA20(){
 			scoreTotal = scoreTotal + parseInt($(this).val());
 			questionsAnswered++;
 		}
-		else if$(this).val() == 'Did Not Answer'){
+		else if($(this).val() == 'Did Not Answer'){
 			questionsAnswered++;
 		}
 	})
