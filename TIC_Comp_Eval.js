@@ -497,9 +497,7 @@ function checkDLA20Perform(){
 		$('div[id=dla20Test]').find('div[class=requiredAsterisk]').remove();
 		$('.dla20Questions').val('');
 		$('tr').has('div[id=dla20Score]').find('input').prop('readonly', false);
-		if($('tr').has('div[id=dla20Score]').find('input').val() != ''){
 			$('tr').has('div[id=dla20Score]').find('input').val('');
-		}
 	}
 	else{
 		$('div[id=dla20Test]').hide();
