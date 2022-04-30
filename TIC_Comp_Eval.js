@@ -485,7 +485,15 @@ function calculateDLA20(){
 
 	$('.dla20Questions').each(function(){
 		console.log($(this).val());
+		if($(this).val() != '' && $(this).val() != 'Did Not Answer'){
+			scoreTotal = scoreTotal + parseInt($(this).val());
+			questionsAnswered++;
+		}
 	})
+
+	scoreAverage = scoreTotal / questionsAnswered;
+
+	$('tr').has('div[id=dla20Score]').find('input').val(scoreAverage);
 }
 
 $('document').ready(function(){
