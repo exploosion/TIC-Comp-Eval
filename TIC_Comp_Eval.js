@@ -521,6 +521,7 @@ function calculateDLA20(){
 }
 
 $('document').ready(function(){
+	checkDLA20PreviousScore();
 	createDLA20();
 	checkDLA20Perform();
 
