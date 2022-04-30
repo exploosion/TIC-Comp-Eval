@@ -436,6 +436,18 @@ $('document').ready(function(){
 });
 
 //DLA-20
+var dla20PreviousScore;
+
+function checkDLA20PreviousScore(){
+	if($('tr').has('div[id=dla20Previous]').find('input')?.val() != ''){
+		dla20PreviousScore = $('tr').has('div[id=dla20Previous]').find('b')[0]?.innerHTML;
+	}
+	else{
+		$('tr').has('div[id=dla20Previous]').find('b')[0]?.innerHTML = 9001;
+		dla20PreviousScore = 9001;
+	}
+}
+
 function createDLA20(){
 	$('tr').has('div[id=dla20]').eq(0).next().after('<div id=\'dla20Test\'><div id=\'dla20Container\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
 
@@ -469,13 +481,21 @@ function checkDLA20Perform(){
 		if(!$('div[id=dla20Test]').find('div[class=requiredAsterisk]').length){
 			$('div[id=dla20Test]').find('label[class=dla20Labels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
 		}
-		
+		$('tr').has('div[id=dla20Score]').find('input').prop('readonly', true);
 	}
-	else{
+	else if($('answer[id=dla20PreviousScore]').parent().prev().find('input').prop('checked')){
 		$('div[id=dla20Test]').hide();
 		$('.dla20Questions').attr('required', false);
 		$('div[id=dla20Test]').find('div[class=requiredAsterisk]').remove();
 		$('.dla20Questions').val('');
+		$('tr').has('div[id=dla20Score]').find('input').prop('readonly', true);
+	}
+	else if($('answer[id=dla20Manual]').parent().prev().find('input').prop('checked')){
+		$('div[id=dla20Test]').hide();
+		$('.dla20Questions').attr('required', false);
+		$('div[id=dla20Test]').find('div[class=requiredAsterisk]').remove();
+		$('.dla20Questions').val('');
+		$('tr').has('div[id=dla20Score]').find('input').prop('readonly', false);
 	}
 }
 
