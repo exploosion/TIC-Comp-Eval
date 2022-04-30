@@ -478,9 +478,20 @@ function checkDLA20Perform(){
 	}
 }
 
+function calculateDLA20(){
+	var scoreTotal = 0;
+	var questionsAnswered = 0;
+	var scoreAverage = 0;
+
+	$('.dla20Questions').each(function(){
+		console.log($(this).val());
+	})
+}
+
 $('document').ready(function(){
 	createDLA20();
 	checkDLA20Perform();
 
 	$('tr').has('div[id=dla20]').find('input').change(checkDLA20Perform);
+	$('.dla20Questions').change(calculateDLA20);
 });
