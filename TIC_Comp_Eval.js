@@ -466,15 +466,16 @@ function checkDLA20Perform(){
 	if($('answer[id=dla20Perform]').parent().prev().find('input').prop('checked')){
 		$('div[id=dla20Test]').show();
 		$('.dla20Questions').attr('required', true);
-		$('div[id=dla20Test]').find('label[class=dla20Labels]').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+		if(!$('div[id=dla20Test]').find('div[class=requiredAsterisk]').length){
+			$('div[id=dla20Test]').find('label[class=dla20Labels]').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+		}
+		
 	}
 	else{
 		$('div[id=dla20Test]').hide();
 		$('.dla20Questions').attr('required', false);
 		$('div[id=dla20Test]').find('div[class=requiredAsterisk]').remove();
 	}
-
-
 }
 
 $('document').ready(function(){
