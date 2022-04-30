@@ -489,8 +489,19 @@ function checkDLA20Perform(){
 		$('div[id=dla20Test]').find('div[class=requiredAsterisk]').remove();
 		$('.dla20Questions').val('');
 		$('tr').has('div[id=dla20Score]').find('input').prop('readonly', true);
+		$('tr').has('div[id=dla20Score]').find('input').val(dla20PreviousScore);
 	}
 	else if($('answer[id=dla20Manual]').parent().prev().find('input').prop('checked')){
+		$('div[id=dla20Test]').hide();
+		$('.dla20Questions').attr('required', false);
+		$('div[id=dla20Test]').find('div[class=requiredAsterisk]').remove();
+		$('.dla20Questions').val('');
+		$('tr').has('div[id=dla20Score]').find('input').prop('readonly', false);
+		if($('tr').has('div[id=dla20Score]').find('input').val() != ''){
+			$('tr').has('div[id=dla20Score]').find('input').val('');
+		}
+	}
+	else{
 		$('div[id=dla20Test]').hide();
 		$('.dla20Questions').attr('required', false);
 		$('div[id=dla20Test]').find('div[class=requiredAsterisk]').remove();
