@@ -442,7 +442,7 @@ function checkDLA20PreviousScore(){
 	if($('tr').has('div[id=dla20Previous]').find('input')?.val() != ''){
 		dla20PreviousScore = $('tr').has('div[id=dla20Previous]').find('b')[0]?.innerHTML;
 	}
-	else{
+	if(!$.isNumeric(dla20PreviousScore)){
 		$('tr').has('div[id=dla20Previous]').find('div').eq(1).text('9001');
 		dla20PreviousScore = 9001;
 	}
