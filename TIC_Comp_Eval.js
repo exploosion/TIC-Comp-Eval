@@ -539,3 +539,37 @@ $('document').ready(function(){
 	$('tr').has('div[id=dla20]').find('input').change(checkDLA20Perform);
 	$('.dla20Questions').change(calculateDLA20);
 });
+
+//Living Arrangement
+var livingArrangement;
+function checkLivingArragement(){
+	let date = new Date();
+	
+	if($('tr').has('div[id=livingArrangement]').find('select').val() == ''){
+		if(livingArrangement != ' '){
+			$('tr').has('div[id=livingArrangement]').find('select').val($('tr').has('div[id=livingArrangement]').find('option[text=\'' + livingArrangement + '\']').val());
+		}
+		else{
+			console.log('No previous living arrangement.');
+		}
+	}
+	
+	if($('tr').has('div[id=livingArrangement]').find('select').val() != $('tr').has('div[id=livingArrangement]').find('option[text=\'' + livingArrangement + '\']').val()){
+		$('tr').has('div[id=dateLivingArrangementChanged]').find('input').val(
+			((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1) + '/' + (date.getDate() < 10 ? '0' : '') + date.getDate() + '/' + date.getFullYear()
+		);
+	}
+	else if($('tr').has('div[id=livingArrangement]').find('select').val() == $('tr').has('div[id=livingArrangement]').find('option[text=\'' + livingArrangement + '\']').val()){
+		$('tr').has('div[id=dateLivingArrangementChanged]').find('input').val('');
+	}
+}
+
+$('document').ready(function(){
+	$('tr').has('div[id=livingArrangement]').find('option').each(function(){this.setAttribute('text', this.outerText);});
+	livingArrangement = $('tr').has('div[id=previousLivingArrangement]').find('font').text();
+	$('tr').has('div[id=previousLivingArrangement]').find('input').val('');
+	
+	checkLivingArragement();
+	
+	$('tr').has('div[id=livingArrangement]').find('select').change(checkLivingArragement);
+});
