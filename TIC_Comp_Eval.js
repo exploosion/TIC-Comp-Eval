@@ -573,3 +573,209 @@ $('document').ready(function(){
 	
 	$('tr').has('div[id=livingArrangement]').find('select').change(checkLivingArragement);
 });
+
+//Legal status
+var legalStatusCounter;
+
+function legalStatusNone(){
+	if($('tr').has('div[id=legalStatus]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked')){
+		$('tr').has('div[id=legalStatus]').find('input').each(function(){
+			$(this).prop('checked', false);
+		});
+		$('tr').has('div[id=legalStatus]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked', true);
+		checkLegalStatus();
+	}
+}
+
+function legalStatusUnknown(){
+	if($('tr').has('div[id=legalStatus]').find('tr:contains(\'Unknown\')').eq(1).find('input').prop('checked')){
+		$('tr').has('div[id=legalStatus]').find('input').each(function(){
+			$(this).prop('checked', false);
+		});
+		$('tr').has('div[id=legalStatus]').find('tr:contains(\'Unknown\')').eq(1).find('input').prop('checked', true);
+		checkLegalStatus();
+	}
+}
+
+$('document').ready(function(){
+	$('tr').has('div[id=legalStatus]').find('tr:contains(\'None\')').eq(1).find('input').change(legalStatusNone);
+	$('tr').has('div[id=legalStatus]').find('tr:contains(\'Unknown\')').eq(1).find('input').change(legalStatusUnknown);
+	for(legalStatusCounter = 0; legalStatusCounter < $('tr').has('div[id=legalStatus]').find('input').length; legalStatusCounter++){
+		if($('tr').has('div[id=legalStatus]').find('input').eq(legalStatusCounter).parents().eq(0).next(':contains(\'None\')').text() || $('tr').has('div[id=legalStatus]').find('input').eq(legalStatusCounter).parents().eq(0).next(':contains(\'Unknown\')').text()){
+				
+		}
+		else{
+			$('tr').has('div[id=legalStatus]').find('input').eq(legalStatusCounter).change(function(e){
+				if (e.currentTarget.checked){
+					$('tr').has('div[id=legalStatus]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked', true);
+					$('tr').has('div[id=legalStatus]').find('tr:contains(\'None\')').eq(1).find('input').trigger('click');
+					$('tr').has('div[id=legalStatus]').find('tr:contains(\'Unknown\')').eq(1).find('input').prop('checked', true);
+					$('tr').has('div[id=legalStatus]').find('tr:contains(\'Unknown\')').eq(1).find('input').trigger('click');
+				}
+			});
+		}
+	}
+});
+
+function checkLegalStatus (){
+	if ($('tr').has('div[id=legalStatus]').find('input').eq(0).prop('checked') || $('tr').has('div[id=legalStatus]').find('input').eq(1).prop('checked')){
+		$('td').has('div[id=sidNumberAvailable]').show();
+		$('tr').has('div[id=sidNumberAvailable]').next().find('div').show();
+		requireHidden (true, 'sidNumberAvailable');
+		if(age >= 15){
+			$('td').has('div[id=driversLicenseAvailable]').show();
+			$('tr').has('div[id=driversLicenseAvailable]').next().find('div').show();
+			requireHidden (true, 'driversLicenseAvailable');
+		}
+		else{
+			$('td').has('div[id=driversLicenseAvailable]').hide();
+			$('tr').has('div[id=driversLicenseAvailable]').next().find('div').hide();
+			requireHidden (false, 'driversLicenseAvailable');
+		}
+	}
+	else{
+		$('td').has('div[id=sidNumberAvailable]').hide();
+		$('tr').has('div[id=sidNumberAvailable]').next().find('div').hide();
+		requireHidden (false, 'sidNumberAvailable');
+		$('td').has('div[id=driversLicenseAvailable]').hide();
+		$('tr').has('div[id=driversLicenseAvailable]').next().find('div').hide();
+		requireHidden (false, 'driversLicenseAvailable');
+	}
+}
+
+function checkDriversLicense (){
+	if ($('tr').has('div[id=driversLicenseAvailable]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+		$('td').has('div[id=driversLicense]').show();
+		$('tr').has('div[id=driversLicense]').next().find('div').show();
+		requireHidden (true, 'driversLicense');
+		if($('tr').has('div[id=driversLicense]').find('input').val() == '9999999'){
+			$('tr').has('div[id=driversLicense]').find('input').val('');
+		}
+	}
+	else{
+		$('td').has('div[id=driversLicense]').hide();
+		$('tr').has('div[id=driversLicense]').next().find('div').hide();
+		requireHidden (false, 'driversLicense');
+		$('tr').has('div[id=driversLicense]').find('input').val('9999999');
+	}
+}
+
+function checkSidNumber (){
+	if ($('tr').has('div[id=sidNumberAvailable]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+		$('td').has('div[id=sidNumber]').show();
+		$('tr').has('div[id=sidNumber]').next().find('div').show();
+		requireHidden (true, 'sidNumber');
+		if($('tr').has('div[id=sidNumber]').find('input').val() == '9999999'){
+			$('tr').has('div[id=sidNumber]').find('input').val('');
+		}
+	}
+	else{
+		$('td').has('div[id=sidNumber]').hide();
+		$('tr').has('div[id=sidNumber]').next().find('div').hide();
+		requireHidden (false, 'sidNumber');
+		$('tr').has('div[id=sidNumber]').find('input').val('9999999');
+	}
+}
+
+$('document').ready(function (){
+	checkLegalStatus();
+	checkDriversLicense();
+	checkSidNumber();
+	$('tr').has('div[id=legalStatus]').find('input').change(checkLegalStatus);
+	$('tr').has('div[id=driversLicenseAvailable]').find('input').change(checkDriversLicense);
+	$('tr').has('div[id=sidNumberAvailable]').find('input').change(checkSidNumber);
+});
+
+//Signatures
+var initialized = false;  
+
+function signatureDisclaimers(){ 
+	if (initialized == false){ 
+		$('img[id=add_signature_1_img]').click(function(){ 
+			alert('Make sure to enter the client\'s full name in the text box. If capturing verbal consent, also include verbal consent in the text box.'); 
+		});  
+		$('img[id=add_signature_2_img]').click(function(){ 
+			alert('Make sure to enter the legal guardian\'s full name in the text box. If capturing verbal consent, also include verbal consent in the text box.'); 
+		});  
+		initialized = true;  
+		console.log('Added signature disclaimers.'); 
+	} 
+}  
+
+function waitForElement (selector, callback, maxTimes = false){ 
+	if (maxTimes != false){ 
+		maxTimes--; 
+	} 
+	console.log('Attempt'); 
+	if($(selector).length){ 
+		callback(); 
+		console.log('Finished'); 
+	} 
+	else{ 
+		if (maxTimes === false || maxTimes > 0){ 
+			setTimeout(function(){ 
+				console.log('Waiting'); 
+				waitForElement(selector, callback, maxTimes); 
+			}, 100); 
+		} 
+		else{ 
+			console.log('Max attempts reached, giving up.'); 
+		} 
+	} 
+}  
+
+function customCallBack (){ 
+	console.log('It\'s here!'); 
+	signatureDisclaimers(); 
+}  
+
+$(document).ready(function(){ 
+	$('input[type=submit]').click(function(e){ 
+		if(( $('#add_signature_1_img').attr('title') == undefined || $('#add_signature_1_img').attr('title') == 'signature placeholder' ) && ( $('#add_signature_2_img').attr('title') == undefined || $('#add_signature_2_img').attr('title') == 'signature placeholder' ) ) {  
+			if($('tr').has('div[id=guardianRequiredDriver]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked') == true){
+
+			}  
+			else {  
+				e.preventDefault();  alert('Please capture client signature.');  
+			}  
+		}    
+		if($('tr').has('div[id=guardianRequiredDriver]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked') == true) {  
+			if($('#add_signature_2_img').attr('title') == undefined || $('#add_signature_2_img').attr('title') == 'signature placeholder') {  
+				e.preventDefault();  
+				alert('Please capture legal guardian signature.');  
+			}  
+		} 
+	});   
+	
+	waitForElement('img[id=add_signature_1_img]', customCallBack, 10); 
+});
+
+//Set dates
+function setFields () {
+	var today = new Date();     
+	var dateString = (today.getMonth()+1) + '/' + today.getDate() + '/' + today.getFullYear();                   
+	if($('tr').has('div[id=treatmentStatus]').find('b').text() != 'Active'){
+		if ($('tr').has('div[id=episodeCurrent]').find('b').text() == 'False'){
+			if ($('tr').has('div[id=date]').find('input').attr('value') == ''){
+				$('tr').has('div[id=date]').find('input').attr('data-value', dateString);             
+				$('tr').has('div[id=date]').find('input').attr('value', dateString);
+			}         
+		}     
+	}
+	if($('tr').has('div[id=episodeCurrent]').find('b').text() == 'False'){
+		$('tr').has('div[id=setEpisodeCurrent]').find('input').attr('value', '1');          
+	}  
+}    
+
+$(document).ready(function(){
+	$('input[type=submit]').click(setFields);  
+});
+
+//Allow tooltips to display html
+$('document').ready(function(){ 
+	$('div, input, select, tr').tooltip({ 
+		content: function(){ 
+			return this.getAttribute('title'); 
+		}, 
+	});
+ });
