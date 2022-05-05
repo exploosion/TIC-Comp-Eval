@@ -750,6 +750,12 @@ $(document).ready(function(){
 	waitForElement('img[id=add_signature_1_img]', customCallBack, 10); 
 });
 
+//Edit embedded signature titles
+$(window).bind('load', function (){ 
+	$('#add_signature_1').find('h3').text('Client Signature'); 
+	$('#add_signature_2').find('h3').text('Legal Guardian Signature'); 
+});
+
 //Set dates
 function setFields () {
 	var today = new Date();     
