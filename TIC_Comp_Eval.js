@@ -785,3 +785,16 @@ $('document').ready(function(){
 		}, 
 	});
  });
+
+ //Informed Consent
+ function checkConsent(e){
+	if(!$('tr').has('div[id=consentClientYes]').find('input').prop('checked') && !$('tr').has('div[id=consentClientNo]').find('input').prop('checked')){
+		e.preventDefault();
+		$([document.documentElement, document.body]).animate({scrollTop: $('#informedConsentLabel').offset().top},);
+		alert('Please complete Informed Consent section.');
+	}
+ }
+
+ $('document').ready(function(){ 
+	$('input[name=Complete]').click(checkConsent);
+ });
