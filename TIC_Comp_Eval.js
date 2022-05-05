@@ -787,6 +787,20 @@ $('document').ready(function(){
  });
 
  //Informed Consent
+function toggleConsentYes(){
+	if($('tr').has('div[id=consentClientNo]').find('input').prop('checked')){
+		$('tr').has('div[id=consentClientNo]').find('input').prop('checked', true);
+		$('tr').has('div[id=consentClientNo]').find('input').trigger('click');
+	}
+}
+
+function toggleConsentNo(){
+	if($('tr').has('div[id=consentClientYes]').find('input').prop('checked')){
+		$('tr').has('div[id=consentClientYes]').find('input').prop('checked', true);
+		$('tr').has('div[id=consentClientYes]').find('input').trigger('click');
+	}
+}
+
  function checkConsent(e){
 	if(!$('tr').has('div[id=consentClientYes]').find('input').prop('checked') && !$('tr').has('div[id=consentClientNo]').find('input').prop('checked')){
 		e.preventDefault();
@@ -796,5 +810,11 @@ $('document').ready(function(){
  }
 
  $('document').ready(function(){ 
+	toggleConsentYes();
+	toggleConsentNo();
+
+	$('tr').has('div[id=consentClientYes]').find('input').change(toggleConsentYes);
+	$('tr').has('div[id=consentClientNo]').find('input').change(toggleConsentNo);
+
 	$('input[name=Complete]').click(checkConsent);
  });
