@@ -490,7 +490,7 @@ $('document').ready(function(){
 
 //DLA-20
 var dla20PreviousScore;
-var dla20QuestionCount;
+var dla20QuestionCount = 0;
 
 function checkDLA20PreviousScore(){
 	if($('tr').has('div[id=dla20Previous]').find('input')?.val() != ''){
