@@ -788,16 +788,20 @@ $('document').ready(function(){
 
  //Informed Consent
 function toggleConsentYes(){
-	if($('tr').has('div[id=consentClientNo]').find('input').prop('checked')){
-		$('tr').has('div[id=consentClientNo]').find('input').prop('checked', true);
-		$('tr').has('div[id=consentClientNo]').find('input').trigger('click');
-	}
+	if($('tr').has('div[id=consentClientYes]').find('input').prop('checked')){
+		if($('tr').has('div[id=consentClientNo]').find('input').prop('checked')){
+			$('tr').has('div[id=consentClientNo]').find('input').prop('checked', true);
+			$('tr').has('div[id=consentClientNo]').find('input').trigger('click');
+		}
+	}	
 }
 
 function toggleConsentNo(){
-	if($('tr').has('div[id=consentClientYes]').find('input').prop('checked')){
-		$('tr').has('div[id=consentClientYes]').find('input').prop('checked', true);
-		$('tr').has('div[id=consentClientYes]').find('input').trigger('click');
+	if($('tr').has('div[id=consentClientNo]').find('input').prop('checked')){
+		if($('tr').has('div[id=consentClientYes]').find('input').prop('checked')){
+			$('tr').has('div[id=consentClientYes]').find('input').prop('checked', true);
+			$('tr').has('div[id=consentClientYes]').find('input').trigger('click');
+		}
 	}
 }
 
