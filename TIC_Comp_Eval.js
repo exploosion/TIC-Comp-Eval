@@ -237,6 +237,25 @@ $('document').ready(function(){
 	$('tr').has('div[id=substanceUse]').find('select').change(checkSUD);
 });
 
+//Referrals
+function checkReferrals(){
+	hideShow('hide', 'referralsInternal', false);
+	hideShow('hide', 'referralsExternal', false);
+	if($('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
+		hideShow('show', 'referralsInternal', false);
+	}
+
+	if($('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').prop('checked')){
+		hideShow('show', 'referralsExternal', false);
+	}
+}
+
+$('document').ready(function(){
+	checkReferrals();
+
+	$('tr').has('div[id=referrals]').find('input').change(checkReferrals);
+});
+
 //School Questions
 function checkSchoolAge(){
 	if(age >= 25 || $('tr').has('div[id=evalType]').find('tr:contains(\'Initial\')').eq(1).find('input').prop('checked')){
