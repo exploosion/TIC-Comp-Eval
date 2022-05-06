@@ -206,12 +206,13 @@ $('document').ready(function(){
 
 //SUD referral based on drinks
 function checkDrinks(){
+	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'clear');
 	if(parseInt($('tr').has('div[id=drinksPastYear]').find('input').val()) > 2){
 		alert('Consider a SUD Referral.');
 		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
 			if(!$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).find('input').prop('checked')){
-				$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).find('input').trigger('click');
+				$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'yellow');
 			}
 		}
 	}
