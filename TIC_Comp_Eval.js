@@ -875,3 +875,8 @@ function toggleConsentNo(){
 
 	$('input[name=Complete]').click(checkConsent);
  });
+
+// Level of Care Description auto width
+$('document').ready(function(){
+   $("#locDesc").parents("table:first").width((window.outerWidth * .8) + "px");
+});
