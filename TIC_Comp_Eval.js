@@ -590,7 +590,7 @@ $('document').ready(function(){
 	$('tr').has('div[id=dla20]').find('input').change(checkDLA20Perform);
 	$('.dla20Questions').change(calculateDLA20);
 	$('input[name=Complete]').click(function(e){
-		if(dla20QuestionCount < 13 && $('answer[id=dla20Manual]').parent().prev().find('input').prop('checked')){
+		if(dla20QuestionCount < 13 && $('answer[id=dla20Perform]').parent().prev().find('input').prop('checked')){
 			e.preventDefault();
 			alert('Please answer at least 13 questions on the DLA 20.');
 		}
