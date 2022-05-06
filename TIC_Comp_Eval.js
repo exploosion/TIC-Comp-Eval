@@ -791,7 +791,6 @@ function toggleConsentYes(){
 	if($('tr').has('div[id=consentClientNo]').find('input').prop('checked')){
 		$('tr').has('div[id=consentClientNo]').find('input').prop('checked', true);
 		$('tr').has('div[id=consentClientNo]').find('input').trigger('click');
-		console.log(this);
 	}
 }
 
@@ -799,7 +798,6 @@ function toggleConsentNo(){
 	if($('tr').has('div[id=consentClientYes]').find('input').prop('checked')){
 		$('tr').has('div[id=consentClientYes]').find('input').prop('checked', true);
 		$('tr').has('div[id=consentClientYes]').find('input').trigger('click');
-		console.log(this);
 	}
 }
 
@@ -815,8 +813,8 @@ function toggleConsentNo(){
 	toggleConsentYes();
 	toggleConsentNo();
 
-	$('tr').has('div[id=consentClientYes]').find('input').change(toggleConsentYes);
-	$('tr').has('div[id=consentClientNo]').find('input').change(toggleConsentNo);
+	$('tr').has('div[id=consentClientYes]').find('input').click(toggleConsentYes);
+	$('tr').has('div[id=consentClientNo]').find('input').click(toggleConsentNo);
 
 	$('input[name=Complete]').click(checkConsent);
  });
