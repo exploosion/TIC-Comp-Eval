@@ -490,6 +490,7 @@ $('document').ready(function(){
 
 //DLA-20
 var dla20PreviousScore;
+var dla20QuestionCount;
 
 function checkDLA20PreviousScore(){
 	if($('tr').has('div[id=dla20Previous]').find('input')?.val() != ''){
@@ -565,21 +566,18 @@ function checkDLA20Perform(){
 
 function calculateDLA20(){
 	var scoreTotal = 0;
-	var questionsAnswered = 0;
 	var scoreAverage = 0;
+	dla20QuestionCount = 0;
 
 	$('.dla20Questions').each(function(){
 		console.log($(this).val());
 		if($(this).val() != '' && $(this).val() != 'Did Not Answer'){
 			scoreTotal = scoreTotal + parseInt($(this).val());
-			questionsAnswered++;
-		}
-		else if($(this).val() == 'Did Not Answer'){
-			questionsAnswered++;
+			dla20QuestionCount++;
 		}
 	})
 
-	scoreAverage = scoreTotal / questionsAnswered;
+	scoreAverage = scoreTotal / dla20QuestionCount;
 
 	$('tr').has('div[id=dla20Score]').find('input').val(scoreAverage);
 }
@@ -591,6 +589,12 @@ $('document').ready(function(){
 
 	$('tr').has('div[id=dla20]').find('input').change(checkDLA20Perform);
 	$('.dla20Questions').change(calculateDLA20);
+	$('input[name=Complete]').click(function(e){
+		if(dla20QuestionCount < 13 && $('answer[id=dla20Manual]').parent().prev().find('input').prop('checked')){
+			e.preventDefault();
+			alert('Please answer at least 13 questions on the DLA 20.');
+		}
+	});
 });
 
 //Living Arrangement
