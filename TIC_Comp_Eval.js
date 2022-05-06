@@ -250,10 +250,30 @@ function checkReferrals(){
 	}
 }
 
+function referralsNotNone(){
+	if($('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked') || $('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').prop('checked')){
+		$('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked', true);
+		$('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').trigger('click');
+	}
+}
+
+function referralsNone(){
+	if($('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked')){
+		$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked', true);
+		$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
+		$('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').prop('checked', true);
+		$('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').trigger('click');
+	}
+}
+
 $('document').ready(function(){
 	checkReferrals();
 
 	$('tr').has('div[id=referrals]').find('input').change(checkReferrals);
+
+	$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').change(referralsNotNone);
+	$('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').change(referralsNotNone);
+	$('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').change(referralsNone);
 });
 
 //School Questions
