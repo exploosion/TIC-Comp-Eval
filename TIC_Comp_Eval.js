@@ -208,6 +208,12 @@ $('document').ready(function(){
 function checkDrinks(){
 	if(parseInt($('tr').has('div[id=drinksPastYear]').find('input').val()) > 2){
 		alert('Consider a SUD Referral.');
+		if(!$('tr').has('referrals').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
+			$('tr').has('referrals').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
+			if(!$('tr').has('referralsInternal').find('tr:contains(\'SUDS\')').eq(1).find('input').prop('checked')){
+				$('tr').has('referralsInternal').find('tr:contains(\'SUDS\')').eq(1).find('input').trigger('click');
+			}
+		}
 	}
 }
 
@@ -321,7 +327,7 @@ $('document').ready(function(){
 	$('tr').has('div[id=evalType]').find('input').change(checkSchoolAge);
 });
 
-//Supported Intersts
+//Supported Interests
 function checkSupportedEducation(){
 	hideShow('hide', 'supportedEducation', false);
 	if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'Education\')').eq(1).find('input').prop('checked')){
