@@ -1285,3 +1285,7 @@ function checkEmptyReferrals(){
 		}
 	}
 }
+
+$('document').ready(function(){
+	$('input[name=Complete]').click(checkEmptyReferrals);
+});
