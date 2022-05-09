@@ -207,7 +207,7 @@ $('document').ready(function(){
 });
 
 //SUD referral based on drinks
-var = referralSUDHighlighted;
+var referralSUDHighlighted;
 function checkDrinks(){
 	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'clear');
 	referralSUDHighlighted = false;
