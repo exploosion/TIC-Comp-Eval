@@ -1256,10 +1256,11 @@ $('document').ready(function(){
 
 //Referral empty check
 function checkEmptyReferrals(){
-	var internalReferralsChecked = false;
-	var externalReferralsChecked = false;
+	var internalReferralsChecked;
+	var externalReferralsChecked;
 
 	if(!$('tr').has('div[id=referralsInternal]').find('input').is(':checked')){
+		internalReferralsChecked = false;
 		if($('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
 		}
@@ -1269,6 +1270,7 @@ function checkEmptyReferrals(){
 	}
 
 	if(!$('tr').has('div[id=referralsExternal]').find('input').is(':checked')){
+		var externalReferralsChecked = false;
 		if($('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
 		}
