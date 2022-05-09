@@ -488,6 +488,95 @@ $('document').ready(function(){
 	$('tr').has('div[id=pathwaySelected]').find('select').change(checkPathwaySelected);
 });
 
+//ACE
+var acePreviousScore;
+
+function checkACEPreviousScore(){
+	if($('tr').has('div[id=acePrevious]').find('input')?.val() != ''){
+		acePreviousScore = $('tr').has('div[id=acePrevious]').find('b')[0]?.innerHTML;
+	}
+	if(!$.isNumeric(acePreviousScore)){
+		$('tr').has('div[id=acePrevious]').find('div').eq(1).text('9001');
+		acePreviousScore = 9001;
+	}
+}
+
+function createACE(){
+	$('tr').has('div[id=ace]').eq(0).next().after('<div id=\'aceTest\'><div id=\'aceContainer\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
+
+	$('div[id=aceContainer]').html('<b>ACE</b><br><br><i>While the client was groing up, during their first 18 years of life:</i></td></tr>' + '<table border=\'0\' cellspacing=\'10px\'>' +
+		'<tr><td><label for=aceQ1 class=\'aceLabels\'><b>Did a parent or other adult in the household often: swear at, insult, put down, or humiliate them; or act in a way that made them afraid that they might be physically hurt?</b></label></td><td><select id=\'aceQ1\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=aceQ2 class=\'aceLabels\'><b>Did a parent or other adult in the household often: push, grab, slap, throw something at them; or ever hit them so hard that they had marks or were injured?</b></label></td><td><select id=\'aceQ2\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=aceQ3 class=\'aceLabels\'><b>Did an adult or person at least 5 years older than them ever: touch or fondle them or had them touch their body in a sexual way; or try to or actually had oral, anal, or vaginal sex with them?</b></label></td><td><select id=\'aceQ3\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=aceQ4 class=\'aceLabels\'><b>Did they often feel that: no one in their family loved them or thought they were important or special; or their family didn\'t look out for each other, feel close to each other, or support each other?</b></label></td><td><select id=\'aceQ4\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=aceQ5 class=\'aceLabels\'><b>Did they often feel that: they didn\'t have enough to eat, had to wear dirty clothes, and had no one to protect them; or their parents were too drunk or high to take care of them or take them to the doctor if they needed it?</b></label></td><td><select id=\'aceQ5\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=aceQ6 class=\'aceLabels\'><b>Were their parents ever separated or divorced?</b></label></td><td><select id=\'aceQ6\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=aceQ7 class=\'aceLabels\'><b>Was their mother or stepmother: often pushed, grabbed, slapped, or had something thrown at her; or sometimes, often, or very often kicked, bitten, hit with a fist, or hit with something hard; or ever repeatedly hit over at least a few minutes; or threatened with a gun or knife?</b></label></td><td><select id=\'aceQ7\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=aceQ8 class=\'aceLabels\'><b>Did they live with anyone who was a problem drinker or alcoholic of who used street drugs?</b></label></td><td><select id=\'aceQ8\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=aceQ9 class=\'aceLabels\'><b>Was a household member depressed or mentally ill or did a household member attempt suicide?</b></label></td><td><select id=\'aceQ9\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=aceQ10 class=\'aceLabels\'><b>Did a household member go to prison?</b></label></td><td><select id=\'aceQ10\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +		
+		'</table>');
+}
+
+function checkACEPerform(){
+	if($('answer[id=acePerform]').parent().prev().find('input').prop('checked')){
+		$('div[id=aceTest]').show();
+		$('.aceQuestions').attr('required', true);
+		if(!$('div[id=aceTest]').find('div[class=requiredAsterisk]').length){
+			$('div[id=aceTest]').find('label[class=aceLabels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+		}
+		$('tr').has('div[id=aceScore]').find('input').prop('readonly', true);
+	}
+	else if($('answer[id=acePreviousScore]').parent().prev().find('input').prop('checked')){
+		$('div[id=aceTest]').hide();
+		$('.aceQuestions').attr('required', false);
+		$('div[id=aceTest]').find('div[class=requiredAsterisk]').remove();
+		$('.aceQuestions').val('');
+		$('tr').has('div[id=aceScore]').find('input').prop('readonly', true);
+		$('tr').has('div[id=aceScore]').find('input').val(acePreviousScore);
+	}
+	else if($('answer[id=aceManual]').parent().prev().find('input').prop('checked')){
+		$('div[id=aceTest]').hide();
+		$('.aceQuestions').attr('required', false);
+		$('div[id=aceTest]').find('div[class=requiredAsterisk]').remove();
+		$('.aceQuestions').val('');
+		$('tr').has('div[id=aceScore]').find('input').prop('readonly', false);
+		if($('tr').has('div[id=aceScore]').find('input').val() != ''){
+			$('tr').has('div[id=aceScore]').find('input').val('');
+		}
+	}
+	else{
+		$('div[id=aceTest]').hide();
+		$('.aceQuestions').attr('required', false);
+		$('div[id=aceTest]').find('div[class=requiredAsterisk]').remove();
+		$('.aceQuestions').val('');
+		$('tr').has('div[id=aceScore]').find('input').prop('readonly', false);
+	}
+}
+
+function calculateACE(){
+	var scoreTotal = 0;
+	var scoreAverage = 0;
+
+	$('.aceQuestions').each(function(){
+		console.log($(this).val());
+		if($(this).val() != '' && $(this).val() != 'Did Not Answer'){
+			scoreTotal = scoreTotal + parseInt($(this).val());
+		}
+	})
+
+	$('tr').has('div[id=aceScore]').find('input').val(scoreAverage);
+}
+
+$('document').ready(function(){
+	checkACEPreviousScore();
+	createACE();
+	checkACEPerform();
+
+	$('tr').has('div[id=ace]').find('input').change(checkACEPerform);
+	$('.aceQuestions').change(calculateACE);
+});
+
 //DLA-20
 var dla20PreviousScore;
 var dla20QuestionCount = 0;
@@ -597,93 +686,96 @@ $('document').ready(function(){
 	});
 });
 
-//ACE
-var acePreviousScore;
+//PHQ9
+var pha9PreviousScore;
 
-function checkACEPreviousScore(){
-	if($('tr').has('div[id=acePrevious]').find('input')?.val() != ''){
-		acePreviousScore = $('tr').has('div[id=acePrevious]').find('b')[0]?.innerHTML;
+function checkPHQ9PreviousScore(){
+	if($('tr').has('div[id=pha9Previous]').find('input')?.val() != ''){
+		pha9PreviousScore = $('tr').has('div[id=pha9Previous]').find('b')[0]?.innerHTML;
 	}
-	if(!$.isNumeric(acePreviousScore)){
-		$('tr').has('div[id=acePrevious]').find('div').eq(1).text('9001');
-		acePreviousScore = 9001;
+	if(!$.isNumeric(pha9PreviousScore)){
+		$('tr').has('div[id=pha9Previous]').find('div').eq(1).text('9001');
+		pha9PreviousScore = 9001;
 	}
 }
 
-function createACE(){
-	$('tr').has('div[id=ace]').eq(0).next().after('<div id=\'aceTest\'><div id=\'aceContainer\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
+function createPHQ9(){
+	$('tr').has('div[id=pha9]').eq(0).next().after('<div id=\'pha9Test\'><div id=\'pha9Container\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
 
-	$('div[id=aceContainer]').html('<b>ACE</b><br><br><i>While the client was groing up, during their first 18 years of life:</i></td></tr>' + '<table border=\'0\' cellspacing=\'10px\'>' +
-		'<tr><td><label for=aceQ1 class=\'aceLabels\'><b>Did a parent or other adult in the household often: swear at, insult, put down, or humiliate them; or act in a way that made them afraid that they might be physically hurt?</b></label></td><td><select id=\'aceQ1\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
-		'<tr><td><label for=aceQ2 class=\'aceLabels\'><b>Did a parent or other adult in the household often: push, grab, slap, throw something at them; or ever hit them so hard that they had marks or were injured?</b></label></td><td><select id=\'aceQ2\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
-		'<tr><td><label for=aceQ3 class=\'aceLabels\'><b>Did an adult or person at least 5 years older than them ever: touch or fondle them or had them touch their body in a sexual way; or try to or actually had oral, anal, or vaginal sex with them?</b></label></td><td><select id=\'aceQ3\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
-		'<tr><td><label for=aceQ4 class=\'aceLabels\'><b>Did they often feel that: no one in their family loved them or thought they were important or special; or their family didn\'t look out for each other, feel close to each other, or support each other?</b></label></td><td><select id=\'aceQ4\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
-		'<tr><td><label for=aceQ5 class=\'aceLabels\'><b>Did they often feel that: they didn\'t have enough to eat, had to wear dirty clothes, and had no one to protect them; or their parents were too drunk or high to take care of them or take them to the doctor if they needed it?</b></label></td><td><select id=\'aceQ5\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
-		'<tr><td><label for=aceQ6 class=\'aceLabels\'><b>Were their parents ever separated or divorced?</b></label></td><td><select id=\'aceQ6\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
-		'<tr><td><label for=aceQ7 class=\'aceLabels\'><b>Was their mother or stepmother: often pushed, grabbed, slapped, or had something thrown at her; or sometimes, often, or very often kicked, bitten, hit with a fist, or hit with something hard; or ever repeatedly hit over at least a few minutes; or threatened with a gun or knife?</b></label></td><td><select id=\'aceQ7\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
-		'<tr><td><label for=aceQ8 class=\'aceLabels\'><b>Did they live with anyone who was a problem drinker or alcoholic of who used street drugs?</b></label></td><td><select id=\'aceQ8\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
-		'<tr><td><label for=aceQ9 class=\'aceLabels\'><b>Was a household member depressed or mentally ill or did a household member attempt suicide?</b></label></td><td><select id=\'aceQ9\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
-		'<tr><td><label for=aceQ10 class=\'aceLabels\'><b>Did a household member go to prison?</b></label></td><td><select id=\'aceQ10\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +		
+	$('div[id=pha9Container]').html('<b>PHQ9</b><br><br><i>Instructions: How often has client been bothered by each of the following symptoms during the past two weeks? For each symptom click the numeric push button the best describes how the client has been feeling.</i><br><br><i>0: Not At All</i><br><i>1: Several Days</i><br><i>2: More Than Half the Days</i><br><i>3: Nearly Every Day</i><br><br></td></tr>' + '<table border=\'0\' cellspacing=\'10px\'>' +
+		'<tr><td><label for=pha9Q1 class=\'pha9Labels\'><b>Feeling down, depressed, irritable, or hopeless?</b></label></td><td><select id=\'pha9Q1\' class=\'pha9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
+		'<tr><td><label for=pha9Q2 class=\'pha9Labels\'><b>Little interest or pleasure in doing things?</b></label></td><td><select id=\'pha9Q2\' class=\'pha9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
+		'<tr><td><label for=pha9Q3 class=\'pha9Labels\'><b>Trouble falling asleep, staying asleep, or sleeping too much?</b></label></td><td><select id=\'pha9Q3\' class=\'pha9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
+		'<tr><td><label for=pha9Q4 class=\'pha9Labels\'><b>Poor appetite, weight loss, or overeating?</b></label></td><td><select id=\'pha9Q4\' class=\'pha9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
+		'<tr><td><label for=pha9Q5 class=\'pha9Labels\'><b>Feeling tired, or having little energy?</b></label></td><td><select id=\'pha9Q5\' class=\'pha9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
+		'<tr><td><label for=pha9Q6 class=\'pha9Labels\'><b>Feeling bad about themself - or feeling that they are a failure, or that they have let themself or their family down?</b></label></td><td><select id=\'pha9Q6\' class=\'pha9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
+		'<tr><td><label for=pha9Q7 class=\'pha9Labels\'><b>Trouble concentrating on things like school work, reading, or watching TV?</b></label></td><td><select id=\'pha9Q7\' class=\'pha9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
+		'<tr><td><label for=pha9Q8 class=\'pha9Labels\'><b>Moving or speaking so slowly that other people could have noticed? Or the opposite - being so fidgety or restless that they were moving around a lot more than usual?</b></label></td><td><select id=\'pha9Q8\' class=\'pha9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
+		'<tr><td><label for=pha9Q9 class=\'pha9Labels\'><b>Thoughts that they would be better off dead, or of hurting themself in some way?</b></label></td><td><select id=\'pha9Q9\' class=\'pha9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
+		'<tr><td><label for=pha9Q10 class=\'pha9Labels\'><b>In the past year have they felt depressed or sad most days, even if they felt okay sometimes?</b></label></td><td><select id=\'pha9Q10\' class=\'pha9BonusQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option><option value=\'Client refused to answer\'>Client refused to answer</option></select></td></tr>' +	
+		'<tr><td><label for=pha9Q11 class=\'pha9Labels\'><b>If they are experiencing any of the problems on this form, how difficult have these problems made it for them to do their work, taking care of things at home, or get along with other people?</b></label></td><td><select id=\'pha9Q11\' class=\'pha9BonusQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Not difficult at all\'>Not difficult at all</option><option value=\'Somewhat difficult\'>Somewhat difficult</option><option value=\'Very difficult\'>Very difficult</option><option value=\'Extremely difficult\'>Extremely difficult</option><option value=\'Client refused to answer\'>Client refused to answer</option></select></td></tr>' +	
+		'<tr><td><label for=pha9Q12 class=\'pha9Labels\'><b>Has there been a time in the past month when they have had serious thoughts about ending their life?</b></label></td><td><select id=\'pha9Q12\' class=\'pha9BonusQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option><option value=\'Client refused to answer\'>Client refused to answer</option></select></td></tr>' +	
+		'<tr><td><label for=pha9Q13 class=\'pha9Labels\'><b>Have they ever, in their whole life, tried to kill themself or made a suicide attempt?</b></label></td><td><select id=\'pha9Q13\' class=\'pha9BonusQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option><option value=\'Client refused to answer\'>Client refused to answer</option></select></td></tr>' +		
 		'</table>');
 }
 
-function checkACEPerform(){
-	if($('answer[id=acePerform]').parent().prev().find('input').prop('checked')){
-		$('div[id=aceTest]').show();
-		$('.aceQuestions').attr('required', true);
-		if(!$('div[id=aceTest]').find('div[class=requiredAsterisk]').length){
-			$('div[id=aceTest]').find('label[class=aceLabels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+function checkPHQ9Perform(){
+	if($('answer[id=pha9Perform]').parent().prev().find('input').prop('checked')){
+		$('div[id=pha9Test]').show();
+		$('.pha9Questions').attr('required', true);
+		if(!$('div[id=pha9Test]').find('div[class=requiredAsterisk]').length){
+			$('div[id=pha9Test]').find('label[class=pha9Labels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
 		}
-		$('tr').has('div[id=aceScore]').find('input').prop('readonly', true);
+		$('tr').has('div[id=pha9Score]').find('input').prop('readonly', true);
 	}
-	else if($('answer[id=acePreviousScore]').parent().prev().find('input').prop('checked')){
-		$('div[id=aceTest]').hide();
-		$('.aceQuestions').attr('required', false);
-		$('div[id=aceTest]').find('div[class=requiredAsterisk]').remove();
-		$('.aceQuestions').val('');
-		$('tr').has('div[id=aceScore]').find('input').prop('readonly', true);
-		$('tr').has('div[id=aceScore]').find('input').val(acePreviousScore);
+	else if($('answer[id=pha9PreviousScore]').parent().prev().find('input').prop('checked')){
+		$('div[id=pha9Test]').hide();
+		$('.pha9Questions').attr('required', false);
+		$('div[id=pha9Test]').find('div[class=requiredAsterisk]').remove();
+		$('.pha9Questions').val('');
+		$('tr').has('div[id=pha9Score]').find('input').prop('readonly', true);
+		$('tr').has('div[id=pha9Score]').find('input').val(pha9PreviousScore);
 	}
-	else if($('answer[id=aceManual]').parent().prev().find('input').prop('checked')){
-		$('div[id=aceTest]').hide();
-		$('.aceQuestions').attr('required', false);
-		$('div[id=aceTest]').find('div[class=requiredAsterisk]').remove();
-		$('.aceQuestions').val('');
-		$('tr').has('div[id=aceScore]').find('input').prop('readonly', false);
-		if($('tr').has('div[id=aceScore]').find('input').val() != ''){
-			$('tr').has('div[id=aceScore]').find('input').val('');
+	else if($('answer[id=pha9Manual]').parent().prev().find('input').prop('checked')){
+		$('div[id=pha9Test]').hide();
+		$('.pha9Questions').attr('required', false);
+		$('div[id=pha9Test]').find('div[class=requiredAsterisk]').remove();
+		$('.pha9Questions').val('');
+		$('tr').has('div[id=pha9Score]').find('input').prop('readonly', false);
+		if($('tr').has('div[id=pha9Score]').find('input').val() != ''){
+			$('tr').has('div[id=pha9Score]').find('input').val('');
 		}
 	}
 	else{
-		$('div[id=aceTest]').hide();
-		$('.aceQuestions').attr('required', false);
-		$('div[id=aceTest]').find('div[class=requiredAsterisk]').remove();
-		$('.aceQuestions').val('');
-		$('tr').has('div[id=aceScore]').find('input').prop('readonly', false);
+		$('div[id=pha9Test]').hide();
+		$('.pha9Questions').attr('required', false);
+		$('div[id=pha9Test]').find('div[class=requiredAsterisk]').remove();
+		$('.pha9Questions').val('');
+		$('tr').has('div[id=pha9Score]').find('input').prop('readonly', false);
 	}
 }
 
-function calculateACE(){
+function calculatePHQ9(){
 	var scoreTotal = 0;
 	var scoreAverage = 0;
 
-	$('.aceQuestions').each(function(){
+	$('.pha9Questions').each(function(){
 		console.log($(this).val());
 		if($(this).val() != '' && $(this).val() != 'Did Not Answer'){
 			scoreTotal = scoreTotal + parseInt($(this).val());
 		}
 	})
 
-	$('tr').has('div[id=aceScore]').find('input').val(scoreAverage);
+	$('tr').has('div[id=pha9Score]').find('input').val(scoreAverage);
 }
 
 $('document').ready(function(){
-	checkACEPreviousScore();
-	createACE();
-	checkACEPerform();
+	checkPHQ9PreviousScore();
+	createPHQ9();
+	checkPHQ9Perform();
 
-	$('tr').has('div[id=ace]').find('input').change(checkACEPerform);
-	$('.ACEQuestions').change(calculateACE);
+	$('tr').has('div[id=pha9]').find('input').change(checkPHQ9Perform);
+	$('.phq9Questions').change(calculatePHQ9);
 });
 
 //Living Arrangement
