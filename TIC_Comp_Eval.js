@@ -3,7 +3,6 @@ var cid;
 var programID;
 var program;
 const tableWidths = '50%';
-var referralsHighlighed = false;
 
 //Set text property of dropdown options to be available to search for
 function populateOptionText (target){
@@ -207,17 +206,17 @@ $('document').ready(function(){
 });
 
 //SUD referral based on drinks
-var referralSUDHighlighted;
+var referralSUD;
 function checkDrinks(){
 	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'clear');
-	referralSUDHighlighted = false;
+	referralSUD = false;
 	if(parseInt($('tr').has('div[id=drinksPastYear]').find('input').val()) > 2){
 		alert('Consider a SUD Referral.');
 		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
 			if(!$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).find('input').prop('checked')){
 				$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'yellow');
-				referralSUDHighlighted = true;
+				referralSUD = true;
 			}
 		}
 	}
@@ -225,7 +224,11 @@ function checkDrinks(){
 
 function checkReferralAlert(){
 	hideShow('hide', 'referralsAlert', false);
-	if(referralSUDHighlighted){
+	if(referralSUD){
+		hideShow('show', 'referralsAlert', false);
+	}
+
+	if(referralSupported){
 		hideShow('show', 'referralsAlert', false);
 	}
 }
@@ -1159,4 +1162,24 @@ $('document').ready(function()
 	$('#allergyModule').load(function(){
 		$('#allergyModule').contents().find('#navigationPanel').hide();
 	});
+});
+
+//Supported Stuff
+var referralSupported;
+
+function checkSupported(){
+	referralSupported = false;
+
+	if($('tr').has('div[id=supportedEducation]').find('select').val() == $('tr').has('div[id=supportedEducation]').find('option[text*=YES]').val() || $('tr').has('div[id=supportedEmployment]').find('select').val() == $('tr').has('div[id=supportedEmployment]').find('option[text*=YES]').val()){
+		referralSupported = true;
+	}
+}
+
+$('document').ready(function(){
+	$('tr').has('div[id=supportedEducation]').find('option').each(function(){this.setAttribute('text', this.outerText);});
+	$('tr').has('div[id=supportedEmployment]').find('option').each(function(){this.setAttribute('text', this.outerText);});
+	checkSupported();
+
+	$('tr').has('div[id=supportedEducation]').find('select').change(checkSupported);
+	$('tr').has('div[id=supportedEmployment]').find('select').change(checkSupported);
 });
