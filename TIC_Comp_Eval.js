@@ -807,7 +807,7 @@ function checkPositivePHQ9(){
 	hideShow('hide', 'positiveScreening', false);
 	hideShow('hide', 'depressionScreeningAdolescent', false);
 	hideShow('hide', 'depressionScreeningAdult', false);
-	hideShow('show', 'sra', false);
+	hideShow('hide', 'sra', false);
 	if(phq9Score < 9 && phq9Score != undefined){
 		hideShow('show', 'positiveScreening', true);
 		hideShow('show', 'sra', true);
