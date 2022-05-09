@@ -2,7 +2,7 @@ var age;
 var cid;
 var programID;
 var program;
-const tableWidths = '50%';
+const tableWidths = '55%';
 
 //Set text property of dropdown options to be available to search for
 function populateOptionText (target){
