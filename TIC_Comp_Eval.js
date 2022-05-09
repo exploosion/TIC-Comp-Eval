@@ -214,10 +214,10 @@ function checkDrinks(){
 		alert('Consider a SUD Referral.');
 		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
-			if(!$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).find('input').prop('checked')){
-				$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'yellow');
-				referralSUD = true;
-			}
+		}
+		if(!$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).find('input').prop('checked')){
+			$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'yellow');
+			referralSUD = true;
 		}
 	}
 }
@@ -1174,12 +1174,13 @@ function checkSupported(){
 	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).css('background-color', 'white');
 
 	if($('tr').has('div[id=supportedEducation]').find('select').val() == $('tr').has('div[id=supportedEducation]').find('option[text*=YES]').val() || $('tr').has('div[id=supportedEmployment]').find('select').val() == $('tr').has('div[id=supportedEmployment]').find('option[text*=YES]').val()){
+		alert('Consider a Supported Employment/Education referral');
 		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
-			if(!$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).find('input').prop('checked')){
-				$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).css('background-color', 'yellow');
-				referralSupported = true;
-			}
+		}
+		if(!$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).find('input').prop('checked')){
+			$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).css('background-color', 'yellow');
+			referralSupported = true;
 		}
 	}
 }
