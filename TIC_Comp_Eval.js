@@ -693,6 +693,15 @@ function cssrsHideShows(){
 		$('tr').has('label[for=cssrsQ5]').hide();
 		$('#cssrsQ5').attr('required', false);
 		$('tr').has('label[for=cssrsQ5]').find('div[class=requiredAsterisk]').remove();
+		if($('#cssrsQ3').val() != ''){
+			$('#cssrsQ3').val('');
+		}
+		if($('#cssrsQ4').val() != ''){
+			$('#cssrsQ4').val('');
+		}
+		if($('#cssrsQ5').val() != ''){
+			$('#cssrsQ5').val('');
+		}
 	}
 	else{
 		$('tr').has('label[for=cssrsQ3]').show();
@@ -715,6 +724,9 @@ function cssrsHideShows(){
 		$('tr').has('label[for=cssrsQ5A]').hide();
 		$('#cssrsQ5A').attr('required', false);
 		$('tr').has('label[for=cssrsQ5A]').find('div[class=requiredAsterisk]').remove();
+		if($('#cssrsQ5A').val() != ''){
+			$('#cssrsQ5A').val('');
+		}
 	}
 	
 	if($('#cssrsQ6').val() == 'Yes'){
@@ -726,6 +738,9 @@ function cssrsHideShows(){
 		$('tr').has('label[for=cssrsQ6A]').hide();
 		$('#cssrsQ6A').attr('required', false);
 		$('tr').has('label[for=cssrsQ6A]').find('div[class=requiredAsterisk]').remove();
+		if($('#cssrsQ6A').val() != ''){
+			$('#cssrsQ6A').val('');
+		}
 	}
 }
 
