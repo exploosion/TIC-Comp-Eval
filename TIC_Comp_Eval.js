@@ -678,10 +678,10 @@ function calculateCSSRS(){
 			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Emergency]').val());
 		}
 		else{
-			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Urgent]').val());
+			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=\'Urgent (within\']').val());
 		}
 	}
-	
+
 	if($('#cssrsQ6A').val() == 'Within the last week'){
 		$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Emergency]').val());
 	}
