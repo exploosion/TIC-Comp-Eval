@@ -1138,18 +1138,22 @@ function toggleConsentNo(){
  });
 
 // Level of Care Description auto width
+
+function responsiveTable(selector, parentSelector){
+	if (window.innerWidth > 810){ 
+		$(selector).parents(parentSelector).width("40vw");
+	}
+	else if (window.innerWidth > 645){
+		$(selector).parents(parentSelector).width("65vw");
+	}
+	else{
+		$(selector).parents(parentSelector).width("80vw");
+	}
+}
+
 $('document').ready(function(){
-	$(window).resize(function(){
-		if (window.innerWidth > 810){ 
-		$("#locDesc").parents("table:first").width("40vw");
-		}
-		else if (window.innerWidth > 645){
-		$("#locDesc").parents("table:first").width("65vw");
-		}
-		else{
-		$("#locDesc").parents("table:first").width("80vw");
-		}
-	});
+	responsiveTable();
+	$(window).resize(responsiveTable("#locDesc", "table:first"));
 });
 
 $('document').ready(function(){
