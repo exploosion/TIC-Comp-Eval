@@ -3,6 +3,7 @@ var cid;
 var programID;
 var program;
 const tableWidths = '50%';
+var referralsHighlighed = false;
 
 //Set text property of dropdown options to be available to search for
 function populateOptionText (target){
@@ -206,21 +207,34 @@ $('document').ready(function(){
 });
 
 //SUD referral based on drinks
+var = referralSUDHighlighted;
 function checkDrinks(){
 	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'clear');
+	referralSUDHighlighted = false;
 	if(parseInt($('tr').has('div[id=drinksPastYear]').find('input').val()) > 2){
 		alert('Consider a SUD Referral.');
 		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
 			if(!$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).find('input').prop('checked')){
 				$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'yellow');
+				referralSUDHighlighted = true;
 			}
 		}
 	}
 }
 
+function checkReferralAlert(){
+	hideShow('hide', 'referralsAlert', false);
+	if(referralSUDHighlighted){
+		hideShow('show', 'referralsAlert', false);
+	}
+}
+
 $('document').ready(function(){
+	checkDrinks();
+	checkReferralAlert();
 	$('tr').has('div[id=drinksPastYear]').find('input').change(checkDrinks);
+	$('input').change(checkReferralAlert);
 });
 
 //SUD questions
@@ -1065,4 +1079,27 @@ function toggleConsentNo(){
 // Level of Care Description auto width
 $('document').ready(function(){
    $("#locDesc").parents("table:first").width((window.outerWidth * .8) + "px");
+});
+
+//Allergy
+const allergyURL = 'https://www.cbh3.crediblebh.com/client/client_allergy.aspx?client_id=';
+
+function setAllergyFrame(frame)
+{
+	$('#' + frame).attr('src', allergyURL + cid);
+	
+	setTimeout(function()
+	{
+		$('#' + frame).prop('scrolling', 'yes');
+		$('#' + frame).css('overflow', 'scroll');
+	}, 100);
+}
+
+$('document').ready(function()
+{
+	setAllergyFrame('allergyModule');
+	
+	$('#allergyModule').load(function(){
+		$('#allergyModule').contents().find('#navigationPanel').hide();
+	});
 });
