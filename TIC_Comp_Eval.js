@@ -547,6 +547,7 @@ function checkACEPerform(){
 			$('div[id=aceTest]').find('label[class=aceLabels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
 		}
 		$('tr').has('div[id=aceScore]').find('input').prop('readonly', true);
+		hideShow('show', 'aceScore', true);
 	}
 	else if($('answer[id=acePreviousScore]').parent().prev().find('input').prop('checked')){
 		$('div[id=aceTest]').hide();
@@ -555,6 +556,7 @@ function checkACEPerform(){
 		$('.aceQuestions').val('');
 		$('tr').has('div[id=aceScore]').find('input').prop('readonly', true);
 		$('tr').has('div[id=aceScore]').find('input').val(acePreviousScore);
+		hideShow('hide', 'aceScore', false);
 	}
 	else if($('answer[id=aceManual]').parent().prev().find('input').prop('checked')){
 		$('div[id=aceTest]').hide();
@@ -565,6 +567,7 @@ function checkACEPerform(){
 		if($('tr').has('div[id=aceScore]').find('input').val() != ''){
 			$('tr').has('div[id=aceScore]').find('input').val('');
 		}
+		hideShow('show', 'aceScore', true);
 	}
 	else{
 		$('div[id=aceTest]').hide();
@@ -572,6 +575,7 @@ function checkACEPerform(){
 		$('div[id=aceTest]').find('div[class=requiredAsterisk]').remove();
 		$('.aceQuestions').val('');
 		$('tr').has('div[id=aceScore]').find('input').prop('readonly', false);
+		hideShow('hide', 'aceScore', false);
 	}
 }
 
@@ -647,6 +651,7 @@ function checkDLA20Perform(){
 			$('div[id=dla20Test]').find('label[class=dla20Labels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
 		}
 		$('tr').has('div[id=dla20Score]').find('input').prop('readonly', true);
+		hideShow('show', 'dla20Score', true);
 	}
 	else if($('answer[id=dla20PreviousScore]').parent().prev().find('input').prop('checked')){
 		$('div[id=dla20Test]').hide();
@@ -655,6 +660,7 @@ function checkDLA20Perform(){
 		$('.dla20Questions').val('');
 		$('tr').has('div[id=dla20Score]').find('input').prop('readonly', true);
 		$('tr').has('div[id=dla20Score]').find('input').val(dla20PreviousScore);
+		hideShow('hide', 'dla20Score', false);
 	}
 	else if($('answer[id=dla20Manual]').parent().prev().find('input').prop('checked')){
 		$('div[id=dla20Test]').hide();
@@ -665,6 +671,7 @@ function checkDLA20Perform(){
 		if($('tr').has('div[id=dla20Score]').find('input').val() != ''){
 			$('tr').has('div[id=dla20Score]').find('input').val('');
 		}
+		hideShow('show', 'dla20Score', true);
 	}
 	else{
 		$('div[id=dla20Test]').hide();
@@ -672,6 +679,7 @@ function checkDLA20Perform(){
 		$('div[id=dla20Test]').find('div[class=requiredAsterisk]').remove();
 		$('.dla20Questions').val('');
 		$('tr').has('div[id=dla20Score]').find('input').prop('readonly', false);
+		hideShow('hide', 'dla20Score', false);
 	}
 }
 
@@ -767,6 +775,8 @@ function checkPHQ9Perform(){
 		}
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', true);
 		$('tr').has('div[id=phq9Score]').find('select').val('');
+		hideShow('show', 'phq9Score', true);
+		
 	}
 	else if($('answer[id=phq9PreviousScore]').parent().prev().find('input').prop('checked')){
 		$('div[id=phq9Test]').hide();
@@ -777,6 +787,7 @@ function checkPHQ9Perform(){
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', true);
 		$('tr').has('div[id=phq9Score]').find('select').val($('tr').has('div[id=phq9Score]').find('option[text=' + phq9PreviousScore + ']').val());
 		phq9Score = phq9PreviousScore; 
+		hideShow('hide', 'phq9Score', false);
 	}
 	else if($('answer[id=phq9Manual]').parent().prev().find('input').prop('checked')){
 		$('div[id=phq9Test]').hide();
@@ -787,6 +798,7 @@ function checkPHQ9Perform(){
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
 		if($('tr').has('div[id=phq9Score]').find('select').val() != ''){
 			$('tr').has('div[id=phq9Score]').find('select').val('');
+			hideShow('show', 'phq9Score', true);
 		}
 	}
 	else{
@@ -796,6 +808,7 @@ function checkPHQ9Perform(){
 		$('.phq9Questions').val('');
 		$('.phq9BonusQuestions').val('');
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
+		hideShow('hide', 'phq9Score', false);
 	}
 }
 
