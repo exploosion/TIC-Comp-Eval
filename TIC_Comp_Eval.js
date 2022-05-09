@@ -1152,7 +1152,7 @@ function responsiveTable(selector, parentSelector){
 }
 
 $('document').ready(function(){
-	responsiveTable();
+	responsiveTable("#locDesc", "table:first");
 	$(window).resize(responsiveTable("#locDesc", "table:first"));
 });
 
