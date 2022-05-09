@@ -1254,4 +1254,32 @@ $('document').ready(function(){
 	$('tr').has('div[id=supportedEmployment]').find('select').change(checkReferralAlert);
 });
 
-//
+//Referral empty check
+function checkEmptyReferrals(){
+	var internalReferralsChecked = false;
+	var externalReferralsChecked = false;
+
+	if(!$('tr').has('div[id=referralsInternal]').find('input').is(':checked')){
+		if($('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
+			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
+		}
+	}
+	else{
+		internalReferralsChecked = true;
+	}
+
+	if(!$('tr').has('div[id=referralsExternal]').find('input').is(':checked')){
+		if($('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
+			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
+		}
+	}
+	else{
+		externalReferralsChecked = true;
+	}
+
+	if(!internalReferralsChecked && !externalReferralsChecked){
+		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked')){
+			$('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').trigger('click');
+		}
+	}
+}
