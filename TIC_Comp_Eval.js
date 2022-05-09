@@ -671,8 +671,13 @@ function checkCSSRSPerform(){
 }
 
 function calculateCSSRS(){
-	if($('#cssrsQ6A').val() == 'Within the last week'){
-		$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Emergency]').val());
+	if($('#cssrsQ6').val() == 'Yes'){
+		if($('#cssrsQ6A').val() == 'Within the last week'){
+			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Emergency]').val());
+		}
+		else if($('#cssrsQ6A').val() == 'Between 1 week and 1 year ago'){
+			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=\'Urgent (within\']').val());
+		}
 	}
 	else if($('#cssrsQ3').val() == 'Yes' || $('#cssrsQ4').val() == 'Yes' || $('#cssrsQ5').val() == 'Yes'){
 		if($('#cssrsQ5A').val() == 'Yes'){
