@@ -618,7 +618,7 @@ function checkCSSRSPreviousScore(){
 function createCSSRS(){
 	$('tr').has('div[id=cssrs]').eq(0).next().after('<div id=\'cssrsTest\'><div id=\'cssrsContainer\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
 
-	$('div[id=cssrsContainer]').html('<b>CSSRS</b><br><br><i>While the client was growing up, during their first 18 years of life:</i></td></tr>' + '<table border=\'0\' cellspacing=\'10px\' table-layout=\'fixed\' width=\'' + tableWidths + '\'>' +
+	$('div[id=cssrsContainer]').html('<b>CSSRS</b></td></tr>' + '<table border=\'0\' cellspacing=\'10px\' table-layout=\'fixed\' width=\'' + tableWidths + '\'>' +
 		'<tr><td><label for=cssrsQ1 class=\'cssrsLabels\'><b>1. In the past month, have you wished you were dead or wished you could go to sleep and not wake up?</b></label></td><td><select id=\'cssrsQ1\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
 		'<tr><td><label for=cssrsQ2 class=\'cssrsLabels\'><b>2. In the past month, have you actually had any thoughts about killing yourself?</b></label></td><td><select id=\'cssrsQ2\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
 		'<tr><td><label for=cssrsQ3 class=\'cssrsLabels\'><b>3. In the past month, have you thought about how you might do this?</b></label></td><td><select id=\'cssrsQ3\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
