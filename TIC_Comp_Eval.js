@@ -1171,7 +1171,13 @@ function checkSupported(){
 	referralSupported = false;
 
 	if($('tr').has('div[id=supportedEducation]').find('select').val() == $('tr').has('div[id=supportedEducation]').find('option[text*=YES]').val() || $('tr').has('div[id=supportedEmployment]').find('select').val() == $('tr').has('div[id=supportedEmployment]').find('option[text*=YES]').val()){
-		referralSupported = true;
+		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
+			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
+			if(!$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).find('input').prop('checked')){
+				$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).css('background-color', 'yellow');
+				referralSupported = true;
+			}
+		}
 	}
 }
 
