@@ -705,6 +705,19 @@ $('document').ready(function(){
 //PHQ9
 var phq9PreviousScore;
 
+function checkPHQ9Age(){
+	if(age > 11){
+		hideShow('show', 'phq9PreviousScore', false);
+		hideShow('show', 'phq9', true);
+		hideShow('show', 'phq9Score', true);
+	}
+	else{
+		hideShow('hide', 'phq9PreviousScore', false);
+		hideShow('hide', 'phq9', false);
+		hideShow('shhideow', 'phq9Score', false);
+	}
+}
+
 function checkPHQ9PreviousScore(){
 	if($('tr').has('div[id=phq9Previous]').find('input')?.val() != ''){
 		phq9PreviousScore = $('tr').has('div[id=phq9Previous]').find('b')[0]?.innerHTML;
@@ -781,10 +794,16 @@ function calculatePHQ9(){
 		}
 	})
 
-	$('tr').has('div[id=phq9Score]').find('input').val(scoreTotal);
+	if(scoreTotal < 10){
+		scoreTotal = '0' + scoreTotal;
+	}
+
+	$('tr').has('div[id=phq9Score]').find('select').val($('tr').has('div[id=phq9Score]').find('option[text=' + scoreTotal + ']').val());
 }
 
 $('document').ready(function(){
+	$('tr').has('div[id=phq9Score]').find('option').each(function(){this.setAttribute('text', this.outerText);});
+	checkPHQ9Age();
 	checkPHQ9PreviousScore();
 	createPHQ9();
 	checkPHQ9Perform();
