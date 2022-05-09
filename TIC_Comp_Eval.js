@@ -2,6 +2,7 @@ var age;
 var cid;
 var programID;
 var program;
+const tableWidths = '50%';
 
 //Set text property of dropdown options to be available to search for
 function populateOptionText (target){
@@ -504,7 +505,7 @@ function checkACEPreviousScore(){
 function createACE(){
 	$('tr').has('div[id=ace]').eq(0).next().after('<div id=\'aceTest\'><div id=\'aceContainer\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
 
-	$('div[id=aceContainer]').html('<b>ACE</b><br><br><i>While the client was groing up, during their first 18 years of life:</i></td></tr>' + '<table border=\'0\' cellspacing=\'10px\'>' +
+	$('div[id=aceContainer]').html('<b>ACE</b><br><br><i>While the client was groing up, during their first 18 years of life:</i></td></tr>' + '<table border=\'0\' cellspacing=\'10px\'> table-layout=\'fixed\' width=\'' + tableWidths + '\'' +
 		'<tr><td><label for=aceQ1 class=\'aceLabels\'><b>Did a parent or other adult in the household often: swear at, insult, put down, or humiliate them; or act in a way that made them afraid that they might be physically hurt?</b></label></td><td><select id=\'aceQ1\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
 		'<tr><td><label for=aceQ2 class=\'aceLabels\'><b>Did a parent or other adult in the household often: push, grab, slap, throw something at them; or ever hit them so hard that they had marks or were injured?</b></label></td><td><select id=\'aceQ2\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
 		'<tr><td><label for=aceQ3 class=\'aceLabels\'><b>Did an adult or person at least 5 years older than them ever: touch or fondle them or had them touch their body in a sexual way; or try to or actually had oral, anal, or vaginal sex with them?</b></label></td><td><select id=\'aceQ3\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
@@ -594,7 +595,7 @@ function checkDLA20PreviousScore(){
 function createDLA20(){
 	$('tr').has('div[id=dla20]').eq(0).next().after('<div id=\'dla20Test\'><div id=\'dla20Container\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
 
-	$('div[id=dla20Container]').html('<b>DLA 20</b></td></tr>' + '<table border=\'0\' cellspacing=\'10px\'>' +
+	$('div[id=dla20Container]').html('<b>DLA 20</b></td></tr>' + '<table border=\'0\' cellspacing=\'10px\'> table-layout=\'fixed\' width=\'' + tableWidths + '\'' +
 		'<tr><td><label for=dla20Q1 class=\'dla20Labels\'><b>1. Health Practices:</b></label></td><td><select id=\'dla20Q1\' class=\'dla20Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option><option value=\'4\'>4</option><option value=\'5\'>5</option><option value=\'6\'>6</option><option value=\'7\'>7</option><option value=\'Did Not Answer\'>Did Not Answer</option></select></td></tr>' +
 		'<tr><td><label for=dla20Q2 class=\'dla20Labels\'><b>2. Housing Stability, Maintenance:</b></label></td><td><select id=\'dla20Q2\' class=\'dla20Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option><option value=\'4\'>4</option><option value=\'5\'>5</option><option value=\'6\'>6</option><option value=\'7\'>7</option><option value=\'Did Not Answer\'>Did Not Answer</option></select></td></tr>' +
 		'<tr><td><label for=dla20Q3 class=\'dla20Labels\'><b>3. Communication:</b></label></td><td><select id=\'dla20Q3\' class=\'dla20Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option><option value=\'4\'>4</option><option value=\'5\'>5</option><option value=\'6\'>6</option><option value=\'7\'>7</option><option value=\'Did Not Answer\'>Did Not Answer</option></select></td></tr>' +
@@ -702,7 +703,7 @@ function checkPHQ9PreviousScore(){
 function createPHQ9(){
 	$('tr').has('div[id=phq9]').eq(0).next().after('<div id=\'phq9Test\'><div id=\'phq9Container\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
 
-	$('div[id=phq9Container]').html('<b>PHQ9</b><br><br><i>Instructions: How often has client been bothered by each of the following symptoms during the past two weeks? For each symptom click the numeric push button the best describes how the client has been feeling.</i><br><br><i>0: Not At All</i><br><i>1: Several Days</i><br><i>2: More Than Half the Days</i><br><i>3: Nearly Every Day</i><br><br></td></tr>' + '<table border=\'0\' cellspacing=\'10px\'>' +
+	$('div[id=phq9Container]').html('<b>PHQ9</b><br><br><i>Instructions: How often has client been bothered by each of the following symptoms during the past two weeks? For each symptom click the numeric push button the best describes how the client has been feeling.</i><br><br><i>0: Not At All</i><br><i>1: Several Days</i><br><i>2: More Than Half the Days</i><br><i>3: Nearly Every Day</i><br><br></td></tr>' + '<table border=\'0\' cellspacing=\'10px\'> table-layout=\'fixed\' width=\'' + tableWidths + '\'' +
 		'<tr><td><label for=phq9Q1 class=\'phq9Labels\'><b>Feeling down, depressed, irritable, or hopeless?</b></label></td><td><select id=\'phq9Q1\' class=\'phq9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
 		'<tr><td><label for=phq9Q2 class=\'phq9Labels\'><b>Little interest or pleasure in doing things?</b></label></td><td><select id=\'phq9Q2\' class=\'phq9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
 		'<tr><td><label for=phq9Q3 class=\'phq9Labels\'><b>Trouble falling asleep, staying asleep, or sleeping too much?</b></label></td><td><select id=\'phq9Q3\' class=\'phq9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
