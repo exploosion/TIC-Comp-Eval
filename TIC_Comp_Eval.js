@@ -238,6 +238,7 @@ $('document').ready(function(){
 	checkReferralAlert();
 	$('tr').has('div[id=drinksPastYear]').find('input').change(checkDrinks);
 	$('input').change(checkReferralAlert);
+	$('select').change(checkReferralAlert);
 });
 
 //SUD questions
