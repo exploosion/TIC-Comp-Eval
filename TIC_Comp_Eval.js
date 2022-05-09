@@ -852,6 +852,7 @@ $('document').ready(function(){
 	$('.phq9Questions').change(calculatePHQ9);
 	$('tr').has('div[id=phq9Score]').find('select').change(checkManualPHQ9);
 	$('tr').has('div[id=phq9Score]').find('select').change(checkPositivePHQ9);
+	$('tr').has('div[id=phq9]').find('input').change(checkPositivePHQ9);
 });
 
 //Living Arrangement
