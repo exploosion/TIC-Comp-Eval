@@ -769,7 +769,8 @@ function checkPHQ9Perform(){
 		$('.phq9Questions').val('');
 		$('.phq9BonusQuestions').val('');
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', true);
-		$('tr').has('div[id=phq9Score]').find('select').val($('tr').has('div[id=phq9Score]').find('option[text=' + phq9PreviousScore + ']').val()); 
+		$('tr').has('div[id=phq9Score]').find('select').val($('tr').has('div[id=phq9Score]').find('option[text=' + phq9PreviousScore + ']').val());
+		phq9Score = phq9PreviousScore; 
 	}
 	else if($('answer[id=phq9Manual]').parent().prev().find('input').prop('checked')){
 		$('div[id=phq9Test]').hide();
@@ -812,6 +813,12 @@ function calculatePHQ9(){
 	$('tr').has('div[id=phq9Score]').find('select').trigger('change');
 }
 
+function checkManualPHQ9(){
+	if($('answer[id=phq9Manual]').parent().prev().find('input').prop('checked')){
+		phq9Score = parseInt($('tr').has('div[id=phq9Score]').find('option[value=' + $('tr').has('div[id=phq9Score]').find('select').val() + ']').attr('text'));
+	}
+}
+
 function checkPositivePHQ9(){
 	hideShow('hide', 'positiveScreening', false);
 	hideShow('hide', 'depressionScreeningAdolescent', false);
@@ -839,6 +846,7 @@ $('document').ready(function(){
 
 	$('tr').has('div[id=phq9]').find('input').change(checkPHQ9Perform);
 	$('.phq9Questions').change(calculatePHQ9);
+	$('tr').has('div[id=phq9Score]').find('select').change(checkManualPHQ9);
 	$('tr').has('div[id=phq9Score]').find('select').change(checkPositivePHQ9);
 });
 
