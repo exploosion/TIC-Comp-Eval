@@ -759,14 +759,16 @@ function checkPHQ9Perform(){
 		if(!$('div[id=phq9Test]').find('div[class=requiredAsterisk]').length){
 			$('div[id=phq9Test]').find('label[class=phq9Labels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
 		}
-		$('tr').has('div[id=phq9Score]').find('select').prop('readonly', true);
+		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', true);
+		$('tr').has('div[id=phq9Score]').find('select').val('');
 	}
 	else if($('answer[id=phq9PreviousScore]').parent().prev().find('input').prop('checked')){
 		$('div[id=phq9Test]').hide();
 		$('.phq9Questions').attr('required', false);
 		$('div[id=phq9Test]').find('div[class=requiredAsterisk]').remove();
 		$('.phq9Questions').val('');
-		$('tr').has('div[id=phq9Score]').find('select').prop('readonly', true);
+		$('.phq9BonusQuestions').val('');
+		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', true);
 		$('tr').has('div[id=phq9Score]').find('select').val($('tr').has('div[id=phq9Score]').find('option[text=' + phq9PreviousScore + ']').val()); 
 	}
 	else if($('answer[id=phq9Manual]').parent().prev().find('input').prop('checked')){
@@ -774,9 +776,10 @@ function checkPHQ9Perform(){
 		$('.phq9Questions').attr('required', false);
 		$('div[id=phq9Test]').find('div[class=requiredAsterisk]').remove();
 		$('.phq9Questions').val('');
-		$('tr').has('div[id=phq9Score]').find('select').prop('readonly', false);
-		if($('tr').has('div[id=phq9Score]').find('input').val() != ''){
-			$('tr').has('div[id=phq9Score]').find('input').val('');
+		$('.phq9BonusQuestions').val('');
+		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
+		if($('tr').has('div[id=phq9Score]').find('select').val(); != ''){
+			$('tr').has('div[id=phq9Score]').find('select').val('');
 		}
 	}
 	else{
@@ -784,7 +787,8 @@ function checkPHQ9Perform(){
 		$('.phq9Questions').attr('required', false);
 		$('div[id=phq9Test]').find('div[class=requiredAsterisk]').remove();
 		$('.phq9Questions').val('');
-		$('tr').has('div[id=phq9Score]').find('input').prop('readonly', false);
+		$('.phq9BonusQuestions').val('');
+		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
 	}
 }
 
