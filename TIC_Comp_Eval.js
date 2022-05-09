@@ -1152,6 +1152,14 @@ $('document').ready(function(){
 	});
 });
 
+$('document').ready(function(){
+// Check Clinical Formulation by default
+	$('tr').has('div[id="clinicalFormulation"]').find('input').attr('checked', 'checked');
+
+	// Check Consent Staff by default
+	$('tr').has('div[id="consentStaff"]').find('input').attr('checked', 'checked');
+});
+
 //Allergy
 const allergyURL = 'https://www.cbh3.crediblebh.com/client/client_allergy.aspx?client_id=';
 
