@@ -568,7 +568,7 @@ function calculateACE(){
 		}
 	})
 
-	$('tr').has('div[id=aceScore]').find('input').val(scoreAverage);
+	$('tr').has('div[id=aceScore]').find('input').val(scoreTotal);
 }
 
 $('document').ready(function(){
