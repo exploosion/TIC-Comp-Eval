@@ -1164,6 +1164,7 @@ $('document').ready(function()
 	});
 });
 
+<<<<<<< HEAD
 //Supported Stuff
 var referralSupported;
 
@@ -1189,3 +1190,14 @@ $('document').ready(function(){
 	$('tr').has('div[id=supportedEducation]').find('select').change(checkSupported);
 	$('tr').has('div[id=supportedEmployment]').find('select').change(checkSupported);
 });
+=======
+// Clinical Formulation checked by default
+$('document').ready(function(){
+	$('#q_1468915').attr('checked', 'checked');
+});
+
+// Check final checkbox by default
+$('document').ready(function(){
+	$('#q_1468931').attr('checked', 'checked');
+});
+>>>>>>> 6dfaecb06750750c12b1ab0b9f29a6a6b647925c
