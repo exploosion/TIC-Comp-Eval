@@ -562,7 +562,9 @@ function calculateACE(){
 	$('.aceQuestions').each(function(){
 		console.log($(this).val());
 		if($(this).val() != '' && $(this).val() != 'Did Not Answer'){
-			scoreTotal = scoreTotal + parseInt($(this).val());
+			if($(this).val() == 'Yes'){
+				scoreTotal++;
+			}
 		}
 	})
 
