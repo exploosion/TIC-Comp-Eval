@@ -637,7 +637,7 @@ function checkCSSRSPerform(){
 		if(!$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').length){
 			$('div[id=cssrsTest]').find('label[class=cssrsLabels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
 		}
-		$('tr').has('div[id=cssrsScore]').find('input').prop('readonly', true);
+		$('tr').has('div[id=cssrsScore]').find('select').attr('disabled', true);
 		hideShow('show', 'cssrsScore', true);
 	}
 	else if($('answer[id=cssrsPreviousScore]').parent().prev().find('input').prop('checked')){
@@ -645,7 +645,7 @@ function checkCSSRSPerform(){
 		$('.cssrsQuestions').attr('required', false);
 		$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').remove();
 		$('.cssrsQuestions').val('');
-		$('tr').has('div[id=cssrsScore]').find('input').prop('readonly', true);
+		$('tr').has('div[id=cssrsScore]').find('select').attr('disabled', true);
 		$('tr').has('div[id=cssrsScore]').find('input').val(cssrsPreviousScore);
 		hideShow('hide', 'cssrsScore', false);
 	}
@@ -654,7 +654,7 @@ function checkCSSRSPerform(){
 		$('.cssrsQuestions').attr('required', false);
 		$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').remove();
 		$('.cssrsQuestions').val('');
-		$('tr').has('div[id=cssrsScore]').find('input').prop('readonly', false);
+		$('tr').has('div[id=cssrsScore]').find('select').attr('disabled', false);
 		if($('tr').has('div[id=cssrsScore]').find('input').val() != ''){
 			$('tr').has('div[id=cssrsScore]').find('input').val('');
 		}
@@ -665,7 +665,7 @@ function checkCSSRSPerform(){
 		$('.cssrsQuestions').attr('required', false);
 		$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').remove();
 		$('.cssrsQuestions').val('');
-		$('tr').has('div[id=cssrsScore]').find('input').prop('readonly', false);
+		$('tr').has('div[id=cssrsScore]').find('select').attr('disabled', false);
 		hideShow('hide', 'cssrsScore', false);
 	}
 }
