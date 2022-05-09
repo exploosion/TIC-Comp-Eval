@@ -1135,7 +1135,17 @@ function toggleConsentNo(){
 
 // Level of Care Description auto width
 $('document').ready(function(){
-   $("#locDesc").parents("table:first").width((window.outerWidth * .8) + "px");
+	$(window).resize(function(){
+		if (window.innerWidth > 810){ 
+		$("#locDesc").parents("table:first").width("40vw");
+		}
+		else if (window.innerWidth > 645){
+		$("#locDesc").parents("table:first").width("65vw");
+		}
+		else{
+		$("#locDesc").parents("table:first").width("80vw");
+		}
+	});
 });
 
 //Allergy
