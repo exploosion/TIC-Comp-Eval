@@ -1160,3 +1160,13 @@ $('document').ready(function()
 		$('#allergyModule').contents().find('#navigationPanel').hide();
 	});
 });
+
+// Clinical Formulation checked by default
+$('document').ready(function(){
+	$('#q_1468915').attr('checked', 'checked');
+});
+
+// Check final checkbox by default
+$('document').ready(function(){
+	$('#q_1468931').attr('checked', 'checked');
+});
