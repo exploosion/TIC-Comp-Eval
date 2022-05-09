@@ -678,6 +678,9 @@ function calculateCSSRS(){
 		else if($('#cssrsQ6A').val() == 'Between 1 week and 1 year ago'){
 			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=\'Urgent (within\']').val());
 		}
+		else{
+			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Routine]').val());
+		}
 	}
 	else{
 		if($('#cssrsQ3').val() == 'Yes' || $('#cssrsQ4').val() == 'Yes' || $('#cssrsQ5').val() == 'Yes'){
