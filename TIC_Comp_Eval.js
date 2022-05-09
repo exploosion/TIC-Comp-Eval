@@ -602,6 +602,90 @@ $('document').ready(function(){
 	$('.aceQuestions').change(calculateACE);
 });
 
+//CSSRSACE
+var cssrsPreviousScore;
+
+function checkCSSRSPreviousScore(){
+	if($('tr').has('div[id=cssrsPrevious]').find('input')?.val() != ''){
+		cssrsPreviousScore = $('tr').has('div[id=cssrsPrevious]').find('b')[0]?.innerHTML;
+		$('tr').has('answer[id=cssrsPerform]').eq(2).hide();
+	}
+	if(!$.isNumeric(cssrsPreviousScore)){
+		$('tr').has('div[id=cssrsPrevious]').find('div').eq(1).text('9001');
+		cssrsPreviousScore = 9001;
+	}
+}
+
+function createCSSRS(){
+	$('tr').has('div[id=cssrs]').eq(0).next().after('<div id=\'cssrsTest\'><div id=\'cssrsContainer\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
+
+	$('div[id=cssrsContainer]').html('<b>CSSRS</b><br><br><i>While the client was growing up, during their first 18 years of life:</i></td></tr>' + '<table border=\'0\' cellspacing=\'10px\' table-layout=\'fixed\' width=\'' + tableWidths + '\'>' +
+		'<tr><td><label for=cssrsQ1 class=\'cssrsLabels\'><b>1. In the past month, have you wished you were dead or wished you could go to sleep and not wake up?</b></label></td><td><select id=\'cssrsQ1\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=cssrsQ2 class=\'cssrsLabels\'><b>2. In the past month, have you actually had any thoughts about killing yourself?</b></label></td><td><select id=\'cssrsQ2\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=cssrsQ3 class=\'cssrsLabels\'><b>3. In the past month, have you thought about how you might do this?</b></label></td><td><select id=\'cssrsQ3\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=cssrsQ4 class=\'cssrsLabels\'><b>4. In the past month, have you had any intention of acting on these thoughts of killing yourself, as opposed to you have the thoughts but you definitely would not act on them?</b></label></td><td><select id=\'cssrsQ4\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=cssrsQ5 class=\'cssrsLabels\'><b>5. In the past month, have you started to work out or worked out the details of how to kill yourself?</b></label></td><td><select id=\'cssrsQ5\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+        '<tr><td><label for=cssrsQ5A class=\'cssrsLabels\'><b>5a. Do you intend to carry out this plan?</b></label></td><td><select id=\'cssrsQ5A\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+		'<tr><td><label for=cssrsQ6 class=\'cssrsLabels\'><b>6. Have you ever done anything, started to do anything, or prepared to do anything to end your life? (Examples: Collected pills, obtained a gun, gave away valuables, wrote a will or suicide note, took out pills but didn\'t swallow any, held a gun but changed your mind or it was grabbed from your hand, went to the roof but didn\'t jump, or actually took pills, tried to shoot yourself, cut yourself, tried to hang yourself, etc.)</b></label></td><td><select id=\'cssrsQ6\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
+        '<tr><td><label for=cssrsQ6A class=\'cssrsLabels\'><b>6a. How long ago did you do any of these?</b></label></td><td><select id=\'cssrsQ6A\' class=\'cssrsQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Within the last week\'>Within the last week</option><option value=\'Between 1 week and 1 year ago\'>Between 1 week and 1 year ago</option><option value=\'Over a year ago\'>Over a year ago</option></select></td></tr>' +		
+		'</table>');
+}
+
+function checkCSSRSPerform(){
+	if($('answer[id=cssrsPerform]').parent().prev().find('input').prop('checked')){
+		$('div[id=cssrsTest]').show();
+		$('.cssrsQuestions').attr('required', true);
+		if(!$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').length){
+			$('div[id=cssrsTest]').find('label[class=cssrsLabels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+		}
+		$('tr').has('div[id=cssrsScore]').find('input').prop('readonly', true);
+		hideShow('show', 'cssrsScore', true);
+	}
+	else if($('answer[id=cssrsPreviousScore]').parent().prev().find('input').prop('checked')){
+		$('div[id=cssrsTest]').hide();
+		$('.cssrsQuestions').attr('required', false);
+		$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').remove();
+		$('.cssrsQuestions').val('');
+		$('tr').has('div[id=cssrsScore]').find('input').prop('readonly', true);
+		$('tr').has('div[id=cssrsScore]').find('input').val(cssrsPreviousScore);
+		hideShow('hide', 'cssrsScore', false);
+	}
+	else if($('answer[id=cssrsManual]').parent().prev().find('input').prop('checked')){
+		$('div[id=cssrsTest]').hide();
+		$('.cssrsQuestions').attr('required', false);
+		$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').remove();
+		$('.cssrsQuestions').val('');
+		$('tr').has('div[id=cssrsScore]').find('input').prop('readonly', false);
+		if($('tr').has('div[id=cssrsScore]').find('input').val() != ''){
+			$('tr').has('div[id=cssrsScore]').find('input').val('');
+		}
+		hideShow('show', 'cssrsScore', true);
+	}
+	else{
+		$('div[id=cssrsTest]').hide();
+		$('.cssrsQuestions').attr('required', false);
+		$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').remove();
+		$('.cssrsQuestions').val('');
+		$('tr').has('div[id=cssrsScore]').find('input').prop('readonly', false);
+		hideShow('hide', 'cssrsScore', false);
+	}
+}
+
+function calculateCSSRS(){
+	var scoreTotal = 0;
+
+}
+
+$('document').ready(function(){
+	$('tr').has('div[id=cssrsScore]').find('option').each(function(){this.setAttribute('text', this.outerText);});
+	checkCSSRSPreviousScore();
+	createCSSRS();
+	checkCSSRSPerform();
+
+	$('tr').has('div[id=cssrs]').find('input').change(checkCSSRSPerform);
+	$('.cssrsQuestions').change(calculateCSSRS);
+});
+
 //DLA-20
 var dla20PreviousScore;
 var dla20QuestionCount = 0;
@@ -1021,11 +1105,8 @@ var initialized = false;
 function signatureDisclaimers(){ 
 	if (initialized == false){ 
 		$('img[id=add_signature_1_img]').click(function(){ 
-			alert('Make sure to enter the client\'s full name in the text box. If capturing verbal consent, also include verbal consent in the text box.'); 
-		});  
-		$('img[id=add_signature_2_img]').click(function(){ 
-			alert('Make sure to enter the legal guardian\'s full name in the text box. If capturing verbal consent, also include verbal consent in the text box.'); 
-		});  
+			alert('Make sure to enter the client/legal guardian\'s full name in the text box. If capturing verbal consent, also include verbal consent in the text box.'); 
+		});    
 		initialized = true;  
 		console.log('Added signature disclaimers.'); 
 	} 
@@ -1060,29 +1141,17 @@ function customCallBack (){
 
 $(document).ready(function(){ 
 	$('input[type=submit]').click(function(e){ 
-		if(( $('#add_signature_1_img').attr('title') == undefined || $('#add_signature_1_img').attr('title') == 'signature placeholder' ) && ( $('#add_signature_2_img').attr('title') == undefined || $('#add_signature_2_img').attr('title') == 'signature placeholder' ) ) {  
-			if($('tr').has('div[id=guardianRequiredDriver]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked') == true){
-
-			}  
-			else {  
-				e.preventDefault();  alert('Please capture client signature.');  
-			}  
-		}    
-		if($('tr').has('div[id=guardianRequiredDriver]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked') == true) {  
-			if($('#add_signature_2_img').attr('title') == undefined || $('#add_signature_2_img').attr('title') == 'signature placeholder') {  
-				e.preventDefault();  
-				alert('Please capture legal guardian signature.');  
-			}  
-		} 
-	});   
+	if($('#add_signature_1_img').attr('title') == undefined || $('#add_signature_1_img').attr('title') == 'signature placeholder') {  
+		e.preventDefault();  alert('Please capture client signature.');  
+	}    
+});   
 	
 	waitForElement('img[id=add_signature_1_img]', customCallBack, 10); 
 });
 
 //Edit embedded signature titles
 $(window).bind('load', function (){ 
-	$('#add_signature_1').find('h3').text('Client Signature'); 
-	$('#add_signature_2').find('h3').text('Legal Guardian Signature'); 
+	$('#add_signature_1').find('h3').text('Client/Legal Guardian Signature'); 
 });
 
 //Set dates
