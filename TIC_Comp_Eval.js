@@ -608,7 +608,6 @@ var cssrsPreviousScore;
 function checkCSSRSPreviousScore(){
 	if($('tr').has('div[id=cssrsPrevious]').find('input')?.val() != ''){
 		cssrsPreviousScore = $('tr').has('div[id=cssrsPrevious]').find('b')[0]?.innerHTML;
-		$('tr').has('answer[id=cssrsPerform]').eq(2).hide();
 	}
 	if(!$.isNumeric(cssrsPreviousScore)){
 		$('tr').has('div[id=cssrsPrevious]').find('div').eq(1).text('9001');
