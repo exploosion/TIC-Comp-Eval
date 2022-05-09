@@ -1138,8 +1138,30 @@ function toggleConsentNo(){
  });
 
 // Level of Care Description auto width
+
+function responsiveTable(selector, parentSelector){
+	if (window.innerWidth > 810){ 
+		$(selector).parents(parentSelector).width("40vw");
+	}
+	else if (window.innerWidth > 645){
+		$(selector).parents(parentSelector).width("65vw");
+	}
+	else{
+		$(selector).parents(parentSelector).width("80vw");
+	}
+}
+
 $('document').ready(function(){
-   $("#locDesc").parents("table:first").width((window.outerWidth * .8) + "px");
+	responsiveTable("#locDesc", "table:first");
+	$(window).resize(responsiveTable("#locDesc", "table:first"));
+});
+
+$('document').ready(function(){
+// Check Clinical Formulation by default
+	$('tr').has('div[id="clinicalFormulation"]').find('input').attr('checked', 'checked');
+
+	// Check Consent Staff by default
+	$('tr').has('div[id="consentStaff"]').find('input').attr('checked', 'checked');
 });
 
 //Allergy
