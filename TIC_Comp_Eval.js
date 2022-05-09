@@ -1187,6 +1187,29 @@ $('document').ready(function()
 	});
 });
 
+//Medication
+const medicationURL = 'https://www.cbh3.crediblebh.com/client/client_meds_new.aspx?client_id=';
+
+function setMedicationFrame(frame)
+{
+	$('#' + frame).attr('src', medicationURL + cid);
+	
+	setTimeout(function()
+	{
+		$('#' + frame).prop('scrolling', 'yes');
+		$('#' + frame).css('overflow', 'scroll');
+	}, 100);
+}
+
+$('document').ready(function()
+{
+	setMedicationFrame('medicationModule');
+	
+	$('#medicationModule').load(function(){
+		$('#medicationModule').contents().find('#navigationPanel').hide();
+	});
+});
+
 //Supported Stuff
 var referralSupported;
 
@@ -1217,3 +1240,5 @@ $('document').ready(function(){
 	$('tr').has('div[id=supportedEducation]').find('select').change(checkReferralAlert);
 	$('tr').has('div[id=supportedEmployment]').find('select').change(checkReferralAlert);
 });
+
+//
