@@ -1271,8 +1271,8 @@ function checkEmptyReferrals(){
 
 	if(!$('tr').has('div[id=referralsExternal]').find('input').is(':checked')){
 		var externalReferralsChecked = false;
-		if($('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
-			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
+		if($('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').prop('checked')){
+			$('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').trigger('click');
 		}
 	}
 	else{
