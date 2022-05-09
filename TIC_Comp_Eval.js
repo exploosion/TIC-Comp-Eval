@@ -671,11 +671,16 @@ function checkCSSRSPerform(){
 }
 
 function calculateCSSRS(){
-	if($('#cssrsQ5A').val() == 'Yes' || $('#cssrsQ6A').val() == 'Within the last week'){
+	if($('#cssrsQ6A').val() == 'Within the last week'){
 		$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Emergency]').val());
 	}
 	else if($('#cssrsQ3').val() == 'Yes' || $('#cssrsQ4').val() == 'Yes' || $('#cssrsQ5').val() == 'Yes'){
-		$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Urgent]').val());
+		if($('#cssrsQ5A').val() == 'Yes'){
+			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Emergency]').val());
+		}
+		else{
+			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Urgent]').val());
+		}
 	}
 	else{
 		$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Routine]').val());
