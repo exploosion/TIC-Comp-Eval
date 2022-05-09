@@ -704,6 +704,7 @@ $('document').ready(function(){
 
 //PHQ9
 var phq9PreviousScore;
+var phq9Score;
 
 function checkPHQ9Age(){
 	if(age > 11){
@@ -799,6 +800,24 @@ function calculatePHQ9(){
 	}
 
 	$('tr').has('div[id=phq9Score]').find('select').val($('tr').has('div[id=phq9Score]').find('option[text=' + scoreTotal + ']').val());
+	$('tr').has('div[id=phq9Score]').find('select').trigger('change');
+}
+
+function checkPositivePHQ9(){
+	hideShow('hide', 'positiveScreening', false);
+	hideShow('hide', 'depressionScreeningAdolescent', false);
+	hideShow('hide', 'depressionScreeningAdult', false);
+	hideShow('show', 'sra', false);
+	if(phq9Score < 9){
+		hideShow('show', 'positiveScreening', true);
+		hideShow('show', 'sra', true);
+		if(age > 10 && age < 18){
+			hideShow('show', 'depressionScreeningAdolescent',true);
+		}
+		else if(age > 17){
+			hideShow('show', 'depressionScreeningAdult',true);
+		}
+	}
 }
 
 $('document').ready(function(){
@@ -807,9 +826,11 @@ $('document').ready(function(){
 	checkPHQ9PreviousScore();
 	createPHQ9();
 	checkPHQ9Perform();
+	checkPositivePHQ9();
 
 	$('tr').has('div[id=phq9]').find('input').change(checkPHQ9Perform);
 	$('.phq9Questions').change(calculatePHQ9);
+	$('tr').has('div[id=phq9Score]').find('select').change(checkPositivePHQ9);
 });
 
 //Living Arrangement
