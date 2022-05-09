@@ -557,7 +557,6 @@ function checkACEPerform(){
 
 function calculateACE(){
 	var scoreTotal = 0;
-	var scoreAverage = 0;
 
 	$('.aceQuestions').each(function(){
 		console.log($(this).val());
@@ -760,7 +759,6 @@ function checkPHQ9Perform(){
 
 function calculatePHQ9(){
 	var scoreTotal = 0;
-	var scoreAverage = 0;
 
 	$('.phq9Questions').each(function(){
 		console.log($(this).val());
@@ -769,7 +767,7 @@ function calculatePHQ9(){
 		}
 	})
 
-	$('tr').has('div[id=phq9Score]').find('input').val(scoreAverage);
+	$('tr').has('div[id=phq9Score]').find('input').val(scoreTotal);
 }
 
 $('document').ready(function(){
