@@ -671,8 +671,62 @@ function checkCSSRSPerform(){
 }
 
 function calculateCSSRS(){
-	var scoreTotal = 0;
+	if($('#cssrsQ5A').val() == 'Yes' || $('#cssrsQ6A').val() == 'Within the last week'){
+		$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Emergency]').val());
+	}
+	else if($('#cssrsQ3').val() == 'Yes' || $('#cssrsQ4').val() == 'Yes' || $('#cssrsQ5').val() == 'Yes'){
+		$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Urgent]').val());
+	}
+	else{
+		$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Routine]').val());
+	}
+}
 
+function cssrsHideShows(){
+	if($('#cssrsQ1').val() == 'No' && $('#cssrsQ2').val() == 'No'){
+		$('tr').has('label[for=cssrsQ3]').hide();
+		$('#cssrsQ3').attr('required', false);
+		$('tr').has('label[for=cssrsQ3]').find('div[class=requiredAsterisk]').remove();
+		$('tr').has('label[for=cssrsQ4]').hide();
+		$('#cssrsQ4').attr('required', false);
+		$('tr').has('label[for=cssrsQ4]').find('div[class=requiredAsterisk]').remove();
+		$('tr').has('label[for=cssrsQ5]').hide();
+		$('#cssrsQ5').attr('required', false);
+		$('tr').has('label[for=cssrsQ5]').find('div[class=requiredAsterisk]').remove();
+	}
+	else{
+		$('tr').has('label[for=cssrsQ3]').show();
+		$('#cssrsQ3').attr('required', true);
+		$('div[id=cssrsTest]').find('label[for=cssrsQ3]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+		$('tr').has('label[for=cssrsQ4]').show();
+		$('#cssrsQ4').attr('required', true);
+		$('div[id=cssrsTest]').find('label[for=cssrsQ4]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+		$('tr').has('label[for=cssrsQ5]').show();
+		$('#cssrsQ5').attr('required', true);
+		$('div[id=cssrsTest]').find('label[for=cssrsQ5]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+	}
+
+	if($('#cssrsQ5').val() == 'Yes'){
+		$('tr').has('label[for=cssrsQ5A]').show();
+		$('#cssrsQ5A').attr('required', true);
+		$('div[id=cssrsTest]').find('label[for=cssrsQ5A]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+	}
+	else{
+		$('tr').has('label[for=cssrsQ5A]').hide();
+		$('#cssrsQ5A').attr('required', false);
+		$('tr').has('label[for=cssrsQ5A]').find('div[class=requiredAsterisk]').remove();
+	}
+	
+	if($('#cssrsQ6').val() == 'Yes'){
+		$('tr').has('label[for=cssrsQ6A]').show();
+		$('#cssrsQ6A').attr('required', true);
+		$('div[id=cssrsTest]').find('label[for=cssrsQ6A]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+	}
+	else{
+		$('tr').has('label[for=cssrsQ6A]').hide();
+		$('#cssrsQ6A').attr('required', false);
+		$('tr').has('label[for=cssrsQ6A]').find('div[class=requiredAsterisk]').remove();
+	}
 }
 
 $('document').ready(function(){
@@ -680,9 +734,11 @@ $('document').ready(function(){
 	checkCSSRSPreviousScore();
 	createCSSRS();
 	checkCSSRSPerform();
+	cssrsHideShows();
 
 	$('tr').has('div[id=cssrs]').find('input').change(checkCSSRSPerform);
 	$('.cssrsQuestions').change(calculateCSSRS);
+	$('.cssrsQuestions').change(cssrsHideShows);
 });
 
 //DLA-20
