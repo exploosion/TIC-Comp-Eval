@@ -1137,44 +1137,54 @@ function toggleConsentNo(){
 	$('input[name=Complete]').click(checkConsent);
  });
 
-// Level of Care Description auto width
-
-function responsiveTable(selector, parentSelector){
-	// Set initial width
-	if ($(window).width() > 810){ 
-		$(selector).parents(parentSelector).width("40vw");
-	}
-	else if ($(window).width() > 645){
-		$(selector).parents(parentSelector).width("65vw");
+// Adds responsivity *helper function to responsiveElement()*
+function responsiveFunctionality(selector, maxWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector=null){
+	if (parentSelector === null){
+		if ($(window).innerWidth() > tabletBreak){ 
+			$(selector).width(maxWidth);
+		}
+		else if ($(window).innerWidth() > mobileBreak){
+			$(selector).width(tabletWidth);
+		}
+		else{
+			$(selector).width(mobileWidth);
+		}
 	}
 	else{
-		$(selector).parents(parentSelector).width("80vw");
+		if ($(window).innerWidth() - 10 > tabletBreak){ 
+			$(selector).width(largeWidth);
+		}
+		else if ($(window).innerWidth() - 10 > mobileBreak){
+			$(selector).parents(parentSelector).width(tabletWidth);
+		}
+		else{
+			$(selector).parents(parentSelector).width(mobileWidth);
+		}
 	}
+}
+
+// Makes a given selector responsive with width and breakpoint options and targetable parent selectors.
+function responsiveElement(selector, maxWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector=null){
+	responsiveFunctionality(selector, maxWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector);
 
 	// Update width according to resized window
 	$(window).resize(function(){
-		if ($(window).width() > 810){ 
-			$(selector).parents(parentSelector).width("40vw");
-		}
-		else if ($(window).width() > 645){
-			$(selector).parents(parentSelector).width("65vw");
-		}
-		else{
-			$(selector).parents(parentSelector).width("80vw");
-		}
+		responsiveFunctionality(selector, maxWidth, tabletWidth, mobileWidth, tabletBreak=810, mobileBreak=645, parentSelector=null);
 	});
 }
 
+// Level of Care Description auto width
+
 $('document').ready(function(){;
-	responsiveTable("#locDesc", "table:first");
+	responsiveElement("#locDesc", parentSelector="table:first");
 });
 
 $('document').ready(function(){
 // Check Clinical Formulation by default
-	$('tr').has('div[id="clinicalFormulation"]').find('input').attr('checked', 'checked');
+	$('tr').has('div[id=clinicalFormulation]').find('input').trigger('click');
 
 	// Check Consent Staff by default
-	$('tr').has('div[id="consentStaff"]').find('input').attr('checked', 'checked');
+	$('tr').has('div[id="consentStaff"]').find('input').prop('checked', true);
 });
 
 //Allergy
