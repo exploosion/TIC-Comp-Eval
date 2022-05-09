@@ -778,7 +778,7 @@ function checkPHQ9Perform(){
 		$('.phq9Questions').val('');
 		$('.phq9BonusQuestions').val('');
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
-		if($('tr').has('div[id=phq9Score]').find('select').val(); != ''){
+		if($('tr').has('div[id=phq9Score]').find('select').val() != ''){
 			$('tr').has('div[id=phq9Score]').find('select').val('');
 		}
 	}
