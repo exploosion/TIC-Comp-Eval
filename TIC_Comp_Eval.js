@@ -768,6 +768,7 @@ $('document').ready(function(){
 
 	$('tr').has('div[id=cssrs]').find('input').change(checkCSSRSPerform);
 	$('.cssrsQuestions').change(calculateCSSRS);
+	$('.cssrsQuestions').click(calculateCSSRS);
 	$('.cssrsQuestions').change(cssrsHideShows);
 });
 
