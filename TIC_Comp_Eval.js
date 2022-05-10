@@ -906,11 +906,11 @@ var phq9PreviousScore;
 var phq9Score;
 
 function depressionScreeningAge(){
-	if(age >= 11 && age < 18){
+	if(age >= 18){
 		hideShow('show', 'depressionScreeningAdult', true);
 		hideShow('hide', 'depressionScreeningAdolescent', false);
 	}
-	else if(age >= 18){
+	else if(age >= 11 && age < 18){
 		hideShow('hide', 'depressionScreeningAdult', false);
 		hideShow('show', 'depressionScreeningAdolescent', true);
 	}
