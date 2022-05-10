@@ -513,7 +513,7 @@ var acePreviousScore;
 function checkACEPreviousScore(){
 	if($('tr').has('div[id=acePrevious]').find('input')?.val() != ''){
 		acePreviousScore = $('tr').has('div[id=acePrevious]').find('b')[0]?.innerHTML;
-		$('tr').has('answer[id=acePerform]').eq(2).hide();
+		//$('tr').has('answer[id=acePerform]').eq(2).hide();
 	}
 	if(!$.isNumeric(acePreviousScore)){
 		$('tr').has('div[id=acePrevious]').find('div').eq(1).text('9001');
