@@ -1352,13 +1352,13 @@ function responsiveElement(selector, maxWidth="40vw", tabletWidth="65vw", mobile
 
 	// Update width according to resized window
 	$(window).resize(function(){
-		responsiveFunctionality(selector, maxWidth, tabletWidth, mobileWidth, tabletBreak=810, mobileBreak=645, parentSelector=null);
+		responsiveFunctionality(selector, maxWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector);
 	});
 }
 
 // Level of Care Description auto width
 
-$('document').ready(function(){;
+$('document').ready(function(){
 	responsiveElement("#locDesc", parentSelector="table:first");
 });
 
