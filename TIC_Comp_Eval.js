@@ -600,9 +600,10 @@ $('document').ready(function(){
 
 	$('tr').has('div[id=ace]').find('input').change(checkACEPerform);
 	$('.aceQuestions').change(calculateACE);
+	$('.aceQuestions').click(calculateACE);
 });
 
-//CSSRSACE
+//CSSRS
 var cssrsPreviousScore;
 
 function checkCSSRSPreviousScore(){
@@ -887,6 +888,7 @@ $('document').ready(function(){
 
 	$('tr').has('div[id=dla20]').find('input').change(checkDLA20Perform);
 	$('.dla20Questions').change(calculateDLA20);
+	$('.dla20Questions').click(calculateDLA20);
 	$('input[name=Complete]').click(function(e){
 		if(dla20QuestionCount < 13 && $('answer[id=dla20Perform]').parent().prev().find('input').prop('checked')){
 			e.preventDefault();
@@ -1044,6 +1046,7 @@ $('document').ready(function(){
 
 	$('tr').has('div[id=phq9]').find('input').change(checkPHQ9Perform);
 	$('.phq9Questions').change(calculatePHQ9);
+	$('.phq9Questions').click(calculatePHQ9);
 	$('tr').has('div[id=phq9Score]').find('select').change(checkManualPHQ9);
 	$('tr').has('div[id=phq9Score]').find('select').change(checkPositivePHQ9);
 	$('tr').has('div[id=phq9]').find('input').change(checkPositivePHQ9);
