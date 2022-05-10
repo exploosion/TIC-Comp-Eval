@@ -1327,8 +1327,8 @@ function toggleConsentNo(){
  });
 
 // Adds responsivity *helper function to responsiveElement()*
-function responsiveFunctionality(selector, largeWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector=null){
-	if (parentSelector === null){
+function responsiveFunctionality(selector, largeWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector){
+	if (parentSelector === ""){
 		if ($(window).innerWidth() > tabletBreak){ 
 			$(selector).width(largeWidth);
 		}
@@ -1338,6 +1338,7 @@ function responsiveFunctionality(selector, largeWidth="40vw", tabletWidth="65vw"
 		else{
 			$(selector).width(mobileWidth);
 		}
+		console.log("element")
 	}
 	else{
 		if ($(window).innerWidth() > tabletBreak){ 
@@ -1349,16 +1350,17 @@ function responsiveFunctionality(selector, largeWidth="40vw", tabletWidth="65vw"
 		else{
 			$(selector).parents(parentSelector).width(mobileWidth);
 		}
+		console.log("parent")
 	}
 }
 
 // Makes a given selector responsive with width and breakpoint options and targetable parent selectors.
-function responsiveElement(selector, maxWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector=null){
-	responsiveFunctionality(selector, maxWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector);
+function responsiveElement(selector, largeWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector=""){
+	responsiveFunctionality(selector, largeWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector);
 
 	// Update width according to resized window
 	$(window).resize(function(){
-		responsiveFunctionality(selector, maxWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector);
+		responsiveFunctionality(selector, largeWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector);
 	});
 }
 
