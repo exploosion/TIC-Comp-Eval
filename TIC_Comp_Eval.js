@@ -547,6 +547,7 @@ function checkACEPerform(){
 		}
 		$('tr').has('div[id=aceScore]').find('input').prop('readonly', true);
 		hideShow('show', 'aceScore', true);
+		hideShow('hide', 'acePrevious', false);
 	}
 	else if($('answer[id=acePreviousScore]').parent().prev().find('input').prop('checked')){
 		$('div[id=aceTest]').hide();
@@ -556,6 +557,7 @@ function checkACEPerform(){
 		$('tr').has('div[id=aceScore]').find('input').prop('readonly', true);
 		$('tr').has('div[id=aceScore]').find('input').val(acePreviousScore);
 		hideShow('hide', 'aceScore', false);
+		hideShow('show', 'acePrevious', false);
 	}
 	else if($('answer[id=aceManual]').parent().prev().find('input').prop('checked')){
 		$('div[id=aceTest]').hide();
@@ -567,6 +569,7 @@ function checkACEPerform(){
 			$('tr').has('div[id=aceScore]').find('input').val('');
 		}
 		hideShow('show', 'aceScore', true);
+		hideShow('show', 'acePrevious', false);
 	}
 	else{
 		$('div[id=aceTest]').hide();
@@ -575,6 +578,7 @@ function checkACEPerform(){
 		$('.aceQuestions').val('');
 		$('tr').has('div[id=aceScore]').find('input').prop('readonly', false);
 		hideShow('hide', 'aceScore', false);
+		hideShow('show', 'acePrevious', false);
 	}
 }
 
