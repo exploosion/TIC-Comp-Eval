@@ -916,6 +916,18 @@ function checkPHQ9Age(){
 		hideShow('hide', 'phq9', false);
 		hideShow('shhideow', 'phq9Score', false);
 	}
+	if(age >= 11 && age < 18){
+		hideShow('show', 'depressionScreeningAdult', true);
+		hideShow('hide', 'depressionScreeningAdolescent', false);
+	}
+	else if(age >= 18){
+		hideShow('hide', 'depressionScreeningAdult', false);
+		hideShow('show', 'depressionScreeningAdolescent', true);
+	}
+	else{
+		hideShow('hide', 'depressionScreeningAdult', false);
+		hideShow('hide', 'depressionScreeningAdolescent', false);
+	}
 }
 
 function checkPHQ9PreviousScore(){
@@ -1030,18 +1042,8 @@ function checkManualPHQ9(){
 
 function checkPositivePHQ9(){
 	hideShow('hide', 'positiveScreening', false);
-	hideShow('hide', 'depressionScreeningAdolescent', false);
-	hideShow('hide', 'depressionScreeningAdult', false);
-	hideShow('hide', 'sra', true);
 	if(parseInt(phq9Score) > 9 && phq9Score != undefined){
 		hideShow('show', 'positiveScreening', true);
-		hideShow('show', 'sra', true);
-		if(age > 10 && age < 18){
-			hideShow('show', 'depressionScreeningAdolescent',true);
-		}
-		else if(age > 17){
-			hideShow('show', 'depressionScreeningAdult',true);
-		}
 	}
 }
 
