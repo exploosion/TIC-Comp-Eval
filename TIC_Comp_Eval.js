@@ -1484,3 +1484,28 @@ function checkEmptyReferrals(){
 $('document').ready(function(){
 	$('input[name=Complete]').click(checkEmptyReferrals);
 });
+
+//MDD
+function checkMDD(){
+	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+		$('tr').has('answer[id=phq9NA]').eq(2).hide();
+		$('tr').has('answer[id=cssrsNA]').eq(2).hide();
+		if($('tr').has('answer[id=phq9NA]').eq(2).find('input').prop('checked')){
+			$('tr').has('answer[id=phq9NA]').eq(2).find('input').prop('checked', false);
+		}
+		if($('tr').has('answer[id=cssrsNA]').eq(2).find('input').prop('checked')){
+			$('tr').has('answer[id=cssrsNA]').eq(2).find('input').prop('checked', false);
+		}
+	}
+	else{
+		$('tr').has('answer[id=phq9NA]').eq(2).show();
+		$('tr').has('answer[id=cssrsNA]').eq(2).show();
+	}
+}
+
+$('document').ready(function(){
+	checkMDD();
+
+	$('tr').has('div[id=mddDx]').find('input').change(checkMDD);
+	$('tr').has('div[id=mddDx]').find('input').click(checkMDD);
+});
