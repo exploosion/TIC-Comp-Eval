@@ -981,9 +981,9 @@ function checkPHQ9Perform(){
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
 		if($('tr').has('div[id=phq9Score]').find('select').val() != ''){
 			$('tr').has('div[id=phq9Score]').find('select').val('');
+			phq9Score = '';
 		}
 		hideShow('show', 'phq9Score', true);
-		phq9Score = '';
 		checkPositivePHQ9();
 	}
 	else{
