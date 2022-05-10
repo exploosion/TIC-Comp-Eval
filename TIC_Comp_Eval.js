@@ -1327,10 +1327,10 @@ function toggleConsentNo(){
  });
 
 // Adds responsivity *helper function to responsiveElement()*
-function responsiveFunctionality(selector, maxWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector=null){
+function responsiveFunctionality(selector, largeWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector=null){
 	if (parentSelector === null){
 		if ($(window).innerWidth() > tabletBreak){ 
-			$(selector).width(maxWidth);
+			$(selector).width(largeWidth);
 		}
 		else if ($(window).innerWidth() > mobileBreak){
 			$(selector).width(tabletWidth);
@@ -1340,10 +1340,10 @@ function responsiveFunctionality(selector, maxWidth="40vw", tabletWidth="65vw", 
 		}
 	}
 	else{
-		if ($(window).innerWidth() - 10 > tabletBreak){ 
-			$(selector).width(largeWidth);
+		if ($(window).innerWidth() > tabletBreak){ 
+			$(selector).parents(parentSelector).width(largeWidth);
 		}
-		else if ($(window).innerWidth() - 10 > mobileBreak){
+		else if ($(window).innerWidth() > mobileBreak){
 			$(selector).parents(parentSelector).width(tabletWidth);
 		}
 		else{
