@@ -958,7 +958,6 @@ function checkPHQ9Perform(){
 		$('tr').has('div[id=phq9Score]').find('select').val('');
 		hideShow('show', 'phq9Score', true);
 		checkPositivePHQ9();
-		
 	}
 	else if($('answer[id=phq9PreviousScore]').parent().prev().find('input').prop('checked')){
 		$('div[id=phq9Test]').hide();
@@ -982,10 +981,10 @@ function checkPHQ9Perform(){
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
 		if($('tr').has('div[id=phq9Score]').find('select').val() != ''){
 			$('tr').has('div[id=phq9Score]').find('select').val('');
-			hideShow('show', 'phq9Score', true);
-			phq9Score = '';
-			checkPositivePHQ9();
 		}
+		hideShow('show', 'phq9Score', true);
+		phq9Score = '';
+		checkPositivePHQ9();
 	}
 	else{
 		$('div[id=phq9Test]').hide();
