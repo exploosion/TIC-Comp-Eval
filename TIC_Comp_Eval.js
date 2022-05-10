@@ -1256,12 +1256,14 @@ function customCallBack (){
 	signatureDisclaimers(); 
 }  
 
-$(document).ready(function(){ 
-	$('input[type=submit]').click(function(e){ 
+function requireSignature(e){
 	if($('#add_signature_1_img').attr('title') == undefined || $('#add_signature_1_img').attr('title') == 'signature placeholder') {  
 		e.preventDefault();  alert('Please capture client signature.');  
-	}    
-});   
+	}
+}
+
+$(document).ready(function(){ 
+	$('input[name=Complete]').click(requireSignature);   
 	
 	waitForElement('img[id=add_signature_1_img]', customCallBack, 10); 
 });
