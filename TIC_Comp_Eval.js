@@ -1326,46 +1326,36 @@ function toggleConsentNo(){
 	$('input[name=Complete]').click(checkConsent);
  });
 
-// Adds responsivity *helper function to responsiveElement()*
-function responsiveFunctionality(selector, maxWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector=null){
-	if (parentSelector === null){
-		if ($(window).innerWidth() > tabletBreak){ 
-			$(selector).width(maxWidth);
-		}
-		else if ($(window).innerWidth() > mobileBreak){
-			$(selector).width(tabletWidth);
-		}
-		else{
-			$(selector).width(mobileWidth);
-		}
+// Level of Care Description auto width
+
+function responsiveTable(selector, parentSelector){
+	// Set initial width
+	if ($(window).width() > 810){ 
+		$(selector).parents(parentSelector).width("40vw");
+	}
+	else if ($(window).width() > 645){
+		$(selector).parents(parentSelector).width("65vw");
 	}
 	else{
-		if ($(window).innerWidth() - 10 > tabletBreak){ 
-			$(selector).width(largeWidth);
-		}
-		else if ($(window).innerWidth() - 10 > mobileBreak){
-			$(selector).parents(parentSelector).width(tabletWidth);
-		}
-		else{
-			$(selector).parents(parentSelector).width(mobileWidth);
-		}
+		$(selector).parents(parentSelector).width("80vw");
 	}
-}
-
-// Makes a given selector responsive with width and breakpoint options and targetable parent selectors.
-function responsiveElement(selector, maxWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector=null){
-	responsiveFunctionality(selector, maxWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector);
 
 	// Update width according to resized window
 	$(window).resize(function(){
-		responsiveFunctionality(selector, maxWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector);
+		if ($(window).width() > 810){ 
+			$(selector).parents(parentSelector).width("40vw");
+		}
+		else if ($(window).width() > 645){
+			$(selector).parents(parentSelector).width("65vw");
+		}
+		else{
+			$(selector).parents(parentSelector).width("80vw");
+		}
 	});
 }
 
-// Level of Care Description auto width
-
-$('document').ready(function(){
-	responsiveElement("#locDesc", parentSelector="table:first");
+$('document').ready(function(){;
+	responsiveTable("#locDesc", "table:first");
 });
 
 $('document').ready(function(){
