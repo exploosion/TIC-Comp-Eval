@@ -905,17 +905,7 @@ $('document').ready(function(){
 var phq9PreviousScore;
 var phq9Score;
 
-function checkPHQ9Age(){
-	if(age > 11){
-		hideShow('show', 'phq9PreviousScore', false);
-		hideShow('show', 'phq9', true);
-		hideShow('show', 'phq9Score', true);
-	}
-	else{
-		hideShow('hide', 'phq9PreviousScore', false);
-		hideShow('hide', 'phq9', false);
-		hideShow('shhideow', 'phq9Score', false);
-	}
+function depressionScreeningAge(){
 	if(age >= 11 && age < 18){
 		hideShow('show', 'depressionScreeningAdult', true);
 		hideShow('hide', 'depressionScreeningAdolescent', false);
@@ -927,6 +917,19 @@ function checkPHQ9Age(){
 	else{
 		hideShow('hide', 'depressionScreeningAdult', false);
 		hideShow('hide', 'depressionScreeningAdolescent', false);
+	}
+}
+
+function checkPHQ9Age(){
+	if(age > 11){
+		hideShow('show', 'phq9PreviousScore', false);
+		hideShow('show', 'phq9', true);
+		hideShow('show', 'phq9Score', true);
+	}
+	else{
+		hideShow('hide', 'phq9PreviousScore', false);
+		hideShow('hide', 'phq9', false);
+		hideShow('shhideow', 'phq9Score', false);
 	}
 }
 
@@ -1049,6 +1052,7 @@ function checkPositivePHQ9(){
 
 $('document').ready(function(){
 	$('tr').has('div[id=phq9Score]').find('option').each(function(){this.setAttribute('text', this.outerText);});
+	depressionScreeningAge();
 	checkPHQ9Age();
 	checkPHQ9PreviousScore();
 	createPHQ9();
