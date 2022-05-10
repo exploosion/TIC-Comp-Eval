@@ -1328,7 +1328,7 @@ function toggleConsentNo(){
 
 // Adds responsivity *helper function to responsiveElement()*
 function responsiveFunctionality(selector, largeWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector){
-	if (parentSelector === ""){
+	if (parentSelector === undefined){
 		if ($(window).innerWidth() > tabletBreak){ 
 			$(selector).width(largeWidth);
 		}
@@ -1355,7 +1355,7 @@ function responsiveFunctionality(selector, largeWidth, tabletWidth, mobileWidth,
 }
 
 // Makes a given selector responsive with width and breakpoint options and targetable parent selectors.
-function responsiveElement(selector, largeWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector=""){
+function responsiveElement(selector, largeWidth="40vw", tabletWidth="65vw", mobileWidth="80vw", tabletBreak=810, mobileBreak=645, parentSelector){
 	responsiveFunctionality(selector, largeWidth, tabletWidth, mobileWidth, tabletBreak, mobileBreak, parentSelector);
 
 	// Update width according to resized window
