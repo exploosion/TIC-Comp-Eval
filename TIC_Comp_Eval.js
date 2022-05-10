@@ -673,7 +673,7 @@ function checkCSSRSPerform(){
 
 function calculateCSSRS(){
 	if($('#cssrsQ6').val() == 'Yes'){
-		if($('#cssrsQ6A').val() == 'Within the last week'){
+		if($('#cssrsQ6A').val() == 'Within the last week' || $('#cssrsQ5A').val() == 'Yes'){
 			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Emergency]').val());
 		}
 		else if($('#cssrsQ6A').val() == 'Between 1 week and 1 year ago'){
