@@ -1371,8 +1371,17 @@ $('document').ready(function(){;
 });
 
 $('document').ready(function(){
-// Check Clinical Formulation by default
-	$('tr').has('div[id=clinicalFormulation]').find('input').trigger('click');
+	// Check Reasons for Seeking Care by default
+	if(!$('tr').has('div[id=reasonsSeekingCare]').find('input').prop('checked')){
+		$('tr').has('div[id=reasonsSeekingCare]').find('input').trigger('click');
+		requireHiddenNotes('reasonsSeekingCare', true);
+	}
+
+	// Check Clinical Formulation by default
+	if(!$('tr').has('div[id=clinicalFormulation]').find('input').prop('checked')){
+		$('tr').has('div[id=clinicalFormulation]').find('input').trigger('click');
+		requireHiddenNotes('clinicalFormulation', true);
+	}
 
 	// Check Consent Staff by default
 	$('tr').has('div[id="consentStaff"]').find('input').prop('checked', true);
