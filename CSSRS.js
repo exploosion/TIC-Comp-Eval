@@ -65,74 +65,94 @@ function calculateCSSRS(){
 }
 
 function cssrsHideShows(){
-	if($('#cssrsQ1').val() == 'No' && $('#cssrsQ2').val() == 'No'){
-		$('tr').has('label[for=cssrsQ3]').hide();
+	if($('answer[id=cssrsPerform]').parent().prev().find('input').prop('checked')){
+		if($('#cssrsQ1').val() == 'No' && $('#cssrsQ2').val() == 'No'){
+			$('tr').has('label[for=cssrsQ3]').hide();
+			$('#cssrsQ3').attr('required', false);
+			$('tr').has('label[for=cssrsQ3]').find('div[class=requiredAsterisk]').remove();
+			$('tr').has('label[for=cssrsQ4]').hide();
+			$('#cssrsQ4').attr('required', false);
+			$('tr').has('label[for=cssrsQ4]').find('div[class=requiredAsterisk]').remove();
+			$('tr').has('label[for=cssrsQ5]').hide();
+			$('#cssrsQ5').attr('required', false);
+			$('tr').has('label[for=cssrsQ5]').find('div[class=requiredAsterisk]').remove();
+			if($('#cssrsQ3').val() != ''){
+				$('#cssrsQ3').val('');
+			}
+			if($('#cssrsQ4').val() != ''){
+				$('#cssrsQ4').val('');
+			}
+			if($('#cssrsQ5').val() != ''){
+				$('#cssrsQ5').val('');
+			}
+		}
+		else{
+			$('tr').has('label[for=cssrsQ3]').show();
+			$('#cssrsQ3').attr('required', true);
+			if($('div[id=cssrsTest]').find('label[for=cssrsQ3]').find('.requiredAsterisk').length == 0){
+				$('div[id=cssrsTest]').find('label[for=cssrsQ3]').find('b').after('<div class=\'requiredAsterisk\' 	style=\'color:red;display:inline\'>*</div>');
+			}
+			$('tr').has('label[for=cssrsQ4]').show();
+			$('#cssrsQ4').attr('required', true);
+			if($('div[id=cssrsTest]').find('label[for=cssrsQ4]').find('.requiredAsterisk').length == 0){
+				$('div[id=cssrsTest]').find('label[for=cssrsQ4]').find('b').after('<div class=\'requiredAsterisk\' 		style=\'color:red;display:inline\'>*</div>');
+			}
+			$('tr').has('label[for=cssrsQ5]').show();
+			$('#cssrsQ5').attr('required', true);
+				if($('div[id=cssrsTest]').find('label[for=cssrsQ5]').find('.requiredAsterisk').length == 0){
+					$('div[id=cssrsTest]').find('label[for=cssrsQ5]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+			}
+		}
+
+		if($('#cssrsQ5').val() == 'Yes'){
+			$('tr').has('label[for=cssrsQ5A]').show();
+			$('#cssrsQ5A').attr('required', true);
+			if($('div[id=cssrsTest]').find('label[for=cssrsQ5A]').find('.requiredAsterisk').length == 0){
+				$('div[id=cssrsTest]').find('label[for=cssrsQ5A]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+			}
+		}
+		else{
+			$('tr').has('label[for=cssrsQ5A]').hide();
+			$('#cssrsQ5A').attr('required', false);
+			$('tr').has('label[for=cssrsQ5A]').find('div[class=requiredAsterisk]').remove();
+			if($('#cssrsQ5A').val() != ''){
+				$('#cssrsQ5A').val('');
+			}
+		}
+		
+		if($('#cssrsQ6').val() == 'Yes'){
+			$('tr').has('label[for=cssrsQ6A]').show();
+			$('#cssrsQ6A').attr('required', true);
+			if($('div[id=cssrsTest]').find('label[for=cssrsQ6A]').find('.requiredAsterisk').length == 0){
+				$('div[id=cssrsTest]').find('label[for=cssrsQ6A]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
+			}
+		}
+		else{
+			$('tr').has('label[for=cssrsQ6A]').hide();
+			$('#cssrsQ6A').attr('required', false);
+			$('tr').has('label[for=cssrsQ6A]').find('div[class=requiredAsterisk]').remove();
+			if($('#cssrsQ6A').val() != ''){
+				$('#cssrsQ6A').val('');
+			}
+		}
+	}
+	else{
+		$('#cssrsQ1').attr('required', false);
+		$('tr').has('label[for=cssrsQ1]').find('div[class=requiredAsterisk]').remove();
+		$('#cssrsQ2').attr('required', false);
+		$('tr').has('label[for=cssrsQ2]').find('div[class=requiredAsterisk]').remove();
 		$('#cssrsQ3').attr('required', false);
 		$('tr').has('label[for=cssrsQ3]').find('div[class=requiredAsterisk]').remove();
-		$('tr').has('label[for=cssrsQ4]').hide();
 		$('#cssrsQ4').attr('required', false);
 		$('tr').has('label[for=cssrsQ4]').find('div[class=requiredAsterisk]').remove();
-		$('tr').has('label[for=cssrsQ5]').hide();
 		$('#cssrsQ5').attr('required', false);
 		$('tr').has('label[for=cssrsQ5]').find('div[class=requiredAsterisk]').remove();
-		if($('#cssrsQ3').val() != ''){
-			$('#cssrsQ3').val('');
-		}
-		if($('#cssrsQ4').val() != ''){
-			$('#cssrsQ4').val('');
-		}
-		if($('#cssrsQ5').val() != ''){
-			$('#cssrsQ5').val('');
-		}
-	}
-	else{
-		$('tr').has('label[for=cssrsQ3]').show();
-		$('#cssrsQ3').attr('required', true);
-		if($('div[id=cssrsTest]').find('label[for=cssrsQ3]').find('.requiredAsterisk').length == 0){
-			$('div[id=cssrsTest]').find('label[for=cssrsQ3]').find('b').after('<div class=\'requiredAsterisk\' 	style=\'color:red;display:inline\'>*</div>');
-		}
-		$('tr').has('label[for=cssrsQ4]').show();
-		$('#cssrsQ4').attr('required', true);
-		if($('div[id=cssrsTest]').find('label[for=cssrsQ4]').find('.requiredAsterisk').length == 0){
-			$('div[id=cssrsTest]').find('label[for=cssrsQ4]').find('b').after('<div class=\'requiredAsterisk\' 		style=\'color:red;display:inline\'>*</div>');
-		}
-		$('tr').has('label[for=cssrsQ5]').show();
-		$('#cssrsQ5').attr('required', true);
-			if($('div[id=cssrsTest]').find('label[for=cssrsQ5]').find('.requiredAsterisk').length == 0){
-				$('div[id=cssrsTest]').find('label[for=cssrsQ5]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
-		}
-	}
-
-	if($('#cssrsQ5').val() == 'Yes'){
-		$('tr').has('label[for=cssrsQ5A]').show();
-		$('#cssrsQ5A').attr('required', true);
-		if($('div[id=cssrsTest]').find('label[for=cssrsQ5A]').find('.requiredAsterisk').length == 0){
-			$('div[id=cssrsTest]').find('label[for=cssrsQ5A]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
-		}
-	}
-	else{
-		$('tr').has('label[for=cssrsQ5A]').hide();
 		$('#cssrsQ5A').attr('required', false);
 		$('tr').has('label[for=cssrsQ5A]').find('div[class=requiredAsterisk]').remove();
-		if($('#cssrsQ5A').val() != ''){
-			$('#cssrsQ5A').val('');
-		}
-	}
-	
-	if($('#cssrsQ6').val() == 'Yes'){
-		$('tr').has('label[for=cssrsQ6A]').show();
-		$('#cssrsQ6A').attr('required', true);
-		if($('div[id=cssrsTest]').find('label[for=cssrsQ6A]').find('.requiredAsterisk').length == 0){
-			$('div[id=cssrsTest]').find('label[for=cssrsQ6A]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
-		}
-	}
-	else{
-		$('tr').has('label[for=cssrsQ6A]').hide();
+		$('#cssrsQ6').attr('required', false);
+		$('tr').has('label[for=cssrsQ6]').find('div[class=requiredAsterisk]').remove();
 		$('#cssrsQ6A').attr('required', false);
 		$('tr').has('label[for=cssrsQ6A]').find('div[class=requiredAsterisk]').remove();
-		if($('#cssrsQ6A').val() != ''){
-			$('#cssrsQ6A').val('');
-		}
 	}
 }
 
