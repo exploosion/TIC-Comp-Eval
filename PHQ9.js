@@ -1,11 +1,11 @@
 //PHQ9
-const tableWidths = '60%';
+const phq9TableWidths = '60%';
 var phq9Score;
 
 function createPHQ9(){
 	$('tr').has('div[id=phq9]').eq(0).next().after('<div id=\'phq9Test\'><div id=\'phq9Container\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
 
-	$('div[id=phq9Container]').html('<b>PHQ9</b><br><br><i>Instructions: How often has client been bothered by each of the following symptoms during the past two weeks? For each symptom click the numeric push button the best describes how the client has been feeling.</i><br><br><i>0: Not At All</i><br><i>1: Several Days</i><br><i>2: More Than Half the Days</i><br><i>3: Nearly Every Day</i><br><br></td></tr>' + '<table border=\'0\' cellspacing=\'10px\' table-layout=\'fixed\' width=\'' + tableWidths + '\'>' +
+	$('div[id=phq9Container]').html('<b>PHQ9</b><br><br><i>Instructions: How often has client been bothered by each of the following symptoms during the past two weeks? For each symptom click the numeric push button the best describes how the client has been feeling.</i><br><br><i>0: Not At All</i><br><i>1: Several Days</i><br><i>2: More Than Half the Days</i><br><i>3: Nearly Every Day</i><br><br></td></tr>' + '<table border=\'0\' cellspacing=\'10px\' table-layout=\'fixed\' width=\'' + phq9TableWidths + '\'>' +
 		'<tr><td><label for=phq9Q1 class=\'phq9Labels\'><b>Feeling down, depressed, irritable, or hopeless?</b></label></td><td><select id=\'phq9Q1\' class=\'phq9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
 		'<tr><td><label for=phq9Q2 class=\'phq9Labels\'><b>Little interest or pleasure in doing things?</b></label></td><td><select id=\'phq9Q2\' class=\'phq9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +
 		'<tr><td><label for=phq9Q3 class=\'phq9Labels\'><b>Trouble falling asleep, staying asleep, or sleeping too much?</b></label></td><td><select id=\'phq9Q3\' class=\'phq9Questions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'0\'>0</option><option value=\'1\'>1</option><option value=\'2\'>2</option><option value=\'3\'>3</option></select></td></tr>' +

@@ -1,11 +1,11 @@
 //ACE
 var acePreviousScore;
-const tableWidths = '60%';
+const aceTableWidths = '60%';
 
 function createACE(){
 	$('tr').has('div[id=ace]').eq(0).next().after('<div id=\'aceTest\'><div id=\'aceContainer\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
 
-	$('div[id=aceContainer]').html('<b>ACE</b><br><br><i>While the client was growing up, during their first 18 years of life:</i></td></tr>' + '<table border=\'0\' cellspacing=\'10px\' table-layout=\'fixed\' width=\'' + tableWidths + '\'>' +
+	$('div[id=aceContainer]').html('<b>ACE</b><br><br><i>While the client was growing up, during their first 18 years of life:</i></td></tr>' + '<table border=\'0\' cellspacing=\'10px\' table-layout=\'fixed\' width=\'' + aceTableWidths + '\'>' +
 		'<tr><td><label for=aceQ1 class=\'aceLabels\'><b>Did a parent or other adult in the household often: swear at, insult, put down, or humiliate them; or act in a way that made them afraid that they might be physically hurt?</b></label></td><td><select id=\'aceQ1\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
 		'<tr><td><label for=aceQ2 class=\'aceLabels\'><b>Did a parent or other adult in the household often: push, grab, slap, throw something at them; or ever hit them so hard that they had marks or were injured?</b></label></td><td><select id=\'aceQ2\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
 		'<tr><td><label for=aceQ3 class=\'aceLabels\'><b>Did an adult or person at least 5 years older than them ever: touch or fondle them or had them touch their body in a sexual way; or try to or actually had oral, anal, or vaginal sex with them?</b></label></td><td><select id=\'aceQ3\' class=\'aceQuestions\'><option value=\'\' selected disabled hidden>Select an Option</option><option value=\'Yes\'>Yes</option><option value=\'No\'>No</option></select></td></tr>' +
