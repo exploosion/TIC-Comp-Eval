@@ -118,7 +118,7 @@ $('document').ready(function(){
 	createPHQ9();
 	setTimeout(checkPHQ9Perform, 500);
 	setTimeout(checkPositivePHQ9, 500);
-	calculatePHQ9();
+	setTimeout(calculatePHQ9, 500);
 
 	$('tr').has('div[id=phq9]').find('input').change(checkPHQ9Perform);
 	$('.phq9Questions').change(calculatePHQ9);
