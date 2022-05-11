@@ -956,7 +956,6 @@ $('document').ready(function(){
 	$('tr').has('div[id=phq9Score]').find('option').each(function(){this.setAttribute('text', this.outerText);});
 	depressionScreeningAge();
 	checkPHQ9Age();
-	checkPHQ9PreviousScore();
 	createPHQ9();
 	checkPHQ9Perform();
 	checkPositivePHQ9();
