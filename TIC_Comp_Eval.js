@@ -515,7 +515,8 @@ var acePreviousScore;
 
 function checkACEPreviousScore(){
 	if($('tr').has('div[id=acePrevious]').find('input')?.val() != ''){
-		acePreviousScore = $('tr').has('div[id=acePrevious]').find('b')[0]?.innerHTML;
+		//acePreviousScore = $('tr').has('div[id=acePrevious]').find('b')[0]?.innerHTML;
+		acePreviousScore = $($.parseHTML($('tr').has('div[id=acePrevious]').find('input').val())).text();
 		//$('tr').has('answer[id=acePerform]').eq(2).hide();
 	}
 	if(!$.isNumeric(acePreviousScore)){
@@ -991,7 +992,6 @@ function checkPHQ9Perform(){
 		$('tr').has('div[id=phq9Score]').find('select').val($('tr').has('div[id=phq9Score]').find('option[text=' + phq9PreviousScore + ']').val());
 		phq9Score = phq9PreviousScore; 
 		hideShow('hide', 'phq9Score', false);
-		phq9Score = phq9PreviousScore;
 		checkPositivePHQ9();
 	}
 	else if($('answer[id=phq9Manual]').parent().prev().find('input').prop('checked')){
@@ -1001,6 +1001,9 @@ function checkPHQ9Perform(){
 		$('.phq9Questions').val('');
 		$('.phq9BonusQuestions').val('');
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
+		$('tr').has('div[id=phq9Score]').find('div[class=requiredAsterisk]').remove();
+		$('tr').has('div[id=phq9Score]').find('div[class=redAsterisk]').remove();
+		$('tr').has('div[id=phq9Score]').find('select').prop('required', false);
 		if($('tr').has('div[id=phq9Score]').find('select').val() != ''){
 			$('tr').has('div[id=phq9Score]').find('select').val('');
 			phq9Score = '';
@@ -1015,10 +1018,11 @@ function checkPHQ9Perform(){
 		$('.phq9Questions').val('');
 		$('.phq9BonusQuestions').val('');
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
-		$('tr').has('div[id=phq9Test]').find('div[class=requiredAsterisk]').remove();
+		$('tr').has('div[id=phq9Score]').find('div[class=requiredAsterisk]').remove();
+		$('tr').has('div[id=phq9Score]').find('div[class=redAsterisk]').remove();
+		$('tr').has('div[id=phq9Score]').find('select').prop('required', false);
 		hideShow('hide', 'phq9Score', false);
 		checkPositivePHQ9();
-		$('tr').has('div[id=phq9Score]').find('select').prop('required', false);
 		console.log('PHQ-9 N/A');
 	}
 }
