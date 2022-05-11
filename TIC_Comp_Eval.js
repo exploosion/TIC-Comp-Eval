@@ -883,10 +883,8 @@ $('document').ready(function()
 var referralSupportedEducation;
 var referralSupportedEmployment;
 
-function checkSupported(){
+function checkSupportedEducation(){
 	referralSupportedEducation = false;
-	referralSupportedEmployment = false;
-	var alreadyAlerted = false;
 
 	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).css('background-color', 'white');
 
@@ -901,6 +899,14 @@ function checkSupported(){
 		}
 	}
 
+	
+}
+
+function checkSupportedEmployment(){
+	referralSupportedEmployment = false;
+
+	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).css('background-color', 'white');
+	
 	if($('tr').has('div[id=supportedEmployment]').find('select').val() == $('tr').has('div[id=supportedEmployment]').find('option[text*=YES]').val()){
 		alert('Please consider a supported employment referral');
 		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
@@ -918,8 +924,8 @@ $('document').ready(function(){
 	$('tr').has('div[id=supportedEmployment]').find('option').each(function(){this.setAttribute('text', this.outerText);});
 	checkSupported();
 
-	$('tr').has('div[id=supportedEducation]').find('select').change(checkSupported);
-	$('tr').has('div[id=supportedEmployment]').find('select').change(checkSupported);
+	$('tr').has('div[id=supportedEducation]').find('select').change(checkSupportedEducation);
+	$('tr').has('div[id=supportedEmployment]').find('select').change(checkSupportedEmployment);
 	$('tr').has('div[id=supportedEducation]').find('select').change(checkReferralAlert);
 	$('tr').has('div[id=supportedEmployment]').find('select').change(checkReferralAlert);
 });
