@@ -922,7 +922,8 @@ function checkSupportedEmployment(){
 $('document').ready(function(){
 	$('tr').has('div[id=supportedEducation]').find('option').each(function(){this.setAttribute('text', this.outerText);});
 	$('tr').has('div[id=supportedEmployment]').find('option').each(function(){this.setAttribute('text', this.outerText);});
-	checkSupported();
+	checkSupportedEducation();
+	checkSupportedEmployment();
 
 	$('tr').has('div[id=supportedEducation]').find('select').change(checkSupportedEducation);
 	$('tr').has('div[id=supportedEmployment]').find('select').change(checkSupportedEmployment);
