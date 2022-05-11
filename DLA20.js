@@ -69,6 +69,8 @@ function calculateDLA20(){
 $('document').ready(function(){
 	createDLA20();
 	checkDLA20Perform();
+	setTimeout(checkDLA20Perform, 500);
+	setTimeout(calculateDLA20, 500);
 
 	$('tr').has('div[id=dla20]').find('input').change(checkDLA20Perform);
 	$('.dla20Questions').change(calculateDLA20);

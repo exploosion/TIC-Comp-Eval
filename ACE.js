@@ -94,6 +94,9 @@ $('document').ready(function(){
 	checkACEPreviousScore();
 	createACE();
 	checkACEPerform();
+	setTimeout(checkACEPreviousScore, 500);
+	setTimeout(checkACEPerform, 500);
+	setTimeout(calculateACE, 500);
 
 	$('tr').has('div[id=ace]').find('input').change(checkACEPerform);
 	$('.aceQuestions').change(calculateACE);

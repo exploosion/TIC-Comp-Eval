@@ -161,6 +161,9 @@ $('document').ready(function(){
 	createCSSRS();
 	checkCSSRSPerform();
 	cssrsHideShows();
+	setTimeout(checkCSSRSPerform, 500);
+	setTimeout(cssrsHideShows, 500);
+	setTimeout(calculateCSSRS, 500);
 
 	$('tr').has('div[id=cssrs]').find('input').change(checkCSSRSPerform);
 	$('.cssrsQuestions').change(calculateCSSRS);
