@@ -1,4 +1,5 @@
 //PHQ9
+const tableWidths = '60%';
 var phq9Score;
 
 function createPHQ9(){

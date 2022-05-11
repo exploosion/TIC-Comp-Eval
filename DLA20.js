@@ -1,4 +1,5 @@
 //DLA-20
+const tableWidths = '60%';
 var dla20QuestionCount = 0;
 
 function createDLA20(){

@@ -1,5 +1,8 @@
 //CSSRS
+const tableWidths = '60%';
+
 function createCSSRS(){
+	
 	$('tr').has('div[id=cssrs]').eq(0).next().after('<div id=\'cssrsTest\'><div id=\'cssrsContainer\'></div><br><img src=\'/images/spacer.gif\' height=\'15\' width=\'1\'></div>');
 
 	$('div[id=cssrsContainer]').html('<b>CSSRS</b></td></tr>' + '<table border=\'0\' cellspacing=\'10px\' table-layout=\'fixed\' width=\'' + tableWidths + '\'>' +
