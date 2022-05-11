@@ -22,7 +22,8 @@ function createACE(){
 function checkACEPreviousScore(){
 	if($('tr').has('div[id=acePrevious]').find('input')?.val() != ''){
 		//acePreviousScore = $('tr').has('div[id=acePrevious]').find('b')[0]?.innerHTML;
-		acePreviousScore = $($.parseHTML($('tr').has('div[id=acePrevious]').find('input').val())).text();
+		//acePreviousScore = $($.parseHTML($('tr').has('div[id=acePrevious]').find('input').val())).text();
+		acePreviousScore = $('tr').has('div[id=acePrevious]').find('font').text();
 		//$('tr').has('answer[id=acePerform]').eq(2).hide();
 	}
 	if(!$.isNumeric(acePreviousScore)){
