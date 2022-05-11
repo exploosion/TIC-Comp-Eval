@@ -880,7 +880,8 @@ $('document').ready(function()
 });
 
 //Supported Stuff
-var referralSupported;
+var referralSupportedEducation;
+var referralSupportedEmployment;
 
 function checkSupported(){
 	referralSupportedEducation = false;
