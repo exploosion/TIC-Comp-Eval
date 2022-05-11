@@ -113,11 +113,11 @@ function checkPositivePHQ9(){
 
 $('document').ready(function(){
 	$('tr').has('div[id=phq9Score]').find('option').each(function(){this.setAttribute('text', this.outerText);});
-	depressionScreeningAge();
-	checkPHQ9Age();
-	createPHQ9();
-	checkPHQ9Perform();
-	checkPositivePHQ9();
+	setTimeout(depressionScreeningAge, 500);
+	setTimeout(checkPHQ9Age, 500);
+	setTimeout(createPHQ9, 500);
+	setTimeout(checkPHQ9Perform, 500);
+	setTimeout(checkPositivePHQ9, 500);
 
 	$('tr').has('div[id=phq9]').find('input').change(checkPHQ9Perform);
 	$('.phq9Questions').change(calculatePHQ9);
