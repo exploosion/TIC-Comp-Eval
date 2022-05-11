@@ -47,13 +47,16 @@ function requireHidden (condition, target) {
 	if(condition) { 
 		$('tr').has('div[class*=' + target + ']').find('input').prop('required', true); 
 		$('tr').has('div[class*=' + target + ']').find('select').prop('required', true); 
-		$('tr').find('div[class*=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');$('tr').has('div[id=' + target + ']').find('input').prop('required', true); $('tr').has('div[id=' + target + ']').find('select').prop('required', true); 
+		$('tr').find('div[class*=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
+		$('tr').has('div[id=' + target + ']').find('input').prop('required', true); 
+		$('tr').has('div[id=' + target + ']').find('select').prop('required', true); 
 		$('tr').find('div[id=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');  
 	} 
 	else { 
 		$('tr').has('div[class*=' + target + ']').find('input').prop('required', false); 
 		$('tr').has('div[class*=' + target + ']').find('select').prop('required', false); 
-		$('tr').has('div[id=' + target + ']').find('input').prop('required', false); $('tr').has('div[id=' + target + ']').find('select').prop('required', false);
+		$('tr').has('div[id=' + target + ']').find('input').prop('required', false); 
+		$('tr').has('div[id=' + target + ']').find('select').prop('required', false);
 	} 
 }  
 
@@ -1012,8 +1015,11 @@ function checkPHQ9Perform(){
 		$('.phq9Questions').val('');
 		$('.phq9BonusQuestions').val('');
 		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
+		$('tr').has('div[id=phq9Test]').find('div[class=requiredAsterisk]').remove();
 		hideShow('hide', 'phq9Score', false);
 		checkPositivePHQ9();
+		$('tr').has('div[id=phq9Score]').find('select').prop('required', false);
+		console.log('PHQ-9 N/A');
 	}
 }
 
