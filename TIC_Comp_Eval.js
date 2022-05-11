@@ -966,3 +966,17 @@ $('document').ready(function(){
 	$('tr').has('div[id=mddDx]').find('input').change(checkMDD);
 	$('tr').has('div[id=mddDx]').find('input').click(checkMDD);
 });
+
+//Tooltips
+$('document').ready(function(){ 
+	$('tr').find('div[id=presentForAppointment]').attr('title', 'Client must be present for evaluation to be valid'); 
+	$('tr').find('div[id=presentForAppointment]').tooltip(); 
+	$('tr').find('div[id=reasonsSeekingCare]').attr('title', 'Presenting problem(s), onset, frequency, intensity, and duration of symptoms'); 
+	$('tr').find('div[id=reasonsSeekingCare]').tooltip(); 
+	$('tr').find('div[id=currentMedications]').attr('title', 'Including prescriptions, over the counter, herbal/home remedies, vitamins/supplements, and/or other substances affecting psychopharmacology'); 
+	$('tr').find('div[id=currentMedications]').tooltip(); 
+	$('tr').find('div[id=situationalDangers]').attr('title', 'e.g., assault/threat, homelessness, emotional/physical trauma, domestic abuse, child abuse'); 
+	$('tr').find('div[id=situationalDangers]').tooltip(); 
+	$('tr').find('div[id=medicalNeeds]').attr('title', 'Unmet needs for Primary Care Provider, appointments, or referral(s)'); 
+	$('tr').find('div[id=medicalNeeds]').tooltip();  
+}); 
