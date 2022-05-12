@@ -81,6 +81,19 @@ function saveAce(){
 	$('tr').has('div[id=aceAnswers]').find('input').val(aceAnswers);
 }
 
+function loadACE(){
+	var aceAnswersArray [];
+	var count = 0;
+	if(!$('tr').has('div[id=aceAnswers]').find('input').val().includes('null')){
+		aceAnswersArray = aceAnswers.split(',');
+		
+		$('.aceQuestions').each(function(){
+			$(this).val(aceAnswersArray [count]);
+			count++;
+		});
+	}
+}
+
 $('document').ready(function(){
 	checkACEPreviousScore();
 	createACE();
