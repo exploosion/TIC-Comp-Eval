@@ -702,7 +702,7 @@ function customCallBack (){
 
 function requireSignature(e){
 	if($('#add_signature_1_img').attr('title') == undefined || $('#add_signature_1_img').attr('title') == 'signature placeholder') {  
-		e.preventDefault();  alert('Please capture client signature.');  
+		e.preventDefault();  alert('Please capture client/legal guardian signature.');  
 	}
 }
 
