@@ -166,6 +166,8 @@ $('document').ready(function(){
 	$('tr').has('div[id=phq9]').find('input').change(checkPHQ9Perform);
 	$('.phq9Questions').change(calculatePHQ9);
 	$('.phq9Questions').click(calculatePHQ9);
+	$('.phq9BonusQuestions').change(calculatePHQ9);
+	$('.phq9BonusQuestions').click(calculatePHQ9);
 	$('tr').has('div[id=phq9Score]').find('select').change(checkManualPHQ9);
 	$('tr').has('div[id=phq9Score]').find('select').click(checkManualPHQ9);
 	$('tr').has('div[id=phq9Score]').find('select').change(checkPositivePHQ9);
