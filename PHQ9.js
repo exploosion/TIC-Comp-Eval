@@ -92,6 +92,16 @@ function calculatePHQ9(){
 			phq9Answers = phq9Answers + 'N/A' + ',';
 		}
 	});
+
+	$('.phq9BonusQuestions').each(function(){
+		console.log($(this).val());
+		if($(this).val() != '' && $(this).val() != 'Did Not Answer'){
+			phq9Answers = phq9Answers + $(this).val() + ',';
+		}
+		else{
+			phq9Answers = phq9Answers + 'N/A' + ',';
+		}
+	});
 	
 	phq9Score = scoreTotal;
 
