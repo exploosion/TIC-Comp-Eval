@@ -136,6 +136,10 @@ function loadPHQ9(){
 				$(this).val(phq9AnswersArray [count]);
 				count++;
 			});
+			$('.phq9BonusQuestions').each(function(){
+				$(this).val(phq9AnswersArray [count]);
+				count++;
+			});
 		}	
 	}
 }
