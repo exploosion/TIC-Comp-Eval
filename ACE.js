@@ -33,6 +33,8 @@ function checkACEPreviousScore(){
 	}
 }
 
+var filler;
+
 function checkACEPerform(){
 	if($('answer[id=acePerform]').parent().prev().find('input').prop('checked')){
 		$('div[id=aceTest]').show();
