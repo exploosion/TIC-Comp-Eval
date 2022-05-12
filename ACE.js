@@ -80,7 +80,7 @@ function calculateACE(){
 }
 
 function saveAce(){
-	$('tr').has('div[has[id=aceQuestions]]').find('input').val(aceQuestions);
+	$('tr').has('div[id=aceQuestions]').find('input').val(aceQuestions);
 }
 
 $('document').ready(function(){
