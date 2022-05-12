@@ -1,4 +1,5 @@
 //ACE
+var aceQuestions;
 var acePreviousScore;
 const aceTableWidths = '60%';
 
@@ -41,43 +42,21 @@ function checkACEPerform(){
 		}
 		$('tr').has('div[id=aceScore]').find('input').prop('readonly', true);
 		hideShow('show', 'aceScore', true);
-		hideShow('hide', 'acePrevious', false);
-	}
-	else if($('answer[id=acePreviousScore]').parent().prev().find('input').prop('checked')){
-		$('div[id=aceTest]').hide();
-		$('.aceQuestions').attr('required', false);
-		$('div[id=aceTest]').find('div[class=requiredAsterisk]').remove();
-		$('.aceQuestions').val('');
-		$('tr').has('div[id=aceScore]').find('input').prop('readonly', true);
-		$('tr').has('div[id=aceScore]').find('input').val(acePreviousScore);
-		hideShow('hide', 'aceScore', false);
-		hideShow('show', 'acePrevious', false);
-	}
-	else if($('answer[id=aceManual]').parent().prev().find('input').prop('checked')){
-		$('div[id=aceTest]').hide();
-		$('.aceQuestions').attr('required', false);
-		$('div[id=aceTest]').find('div[class=requiredAsterisk]').remove();
-		$('.aceQuestions').val('');
-		$('tr').has('div[id=aceScore]').find('input').prop('readonly', false);
-		if($('tr').has('div[id=aceScore]').find('input').val() != ''){
-			$('tr').has('div[id=aceScore]').find('input').val('');
-		}
-		hideShow('show', 'aceScore', true);
-		hideShow('show', 'acePrevious', false);
+		hideShow('hide', 'acePrevious', true);
 	}
 	else{
 		$('div[id=aceTest]').hide();
 		$('.aceQuestions').attr('required', false);
 		$('div[id=aceTest]').find('div[class=requiredAsterisk]').remove();
-		$('.aceQuestions').val('');
 		$('tr').has('div[id=aceScore]').find('input').prop('readonly', false);
-		hideShow('hide', 'aceScore', false);
+		hideShow('hide', 'aceScore', true);
 		hideShow('show', 'acePrevious', false);
 	}
 }
 
 function calculateACE(){
 	var scoreTotal = 0;
+	aceQuestions = '';
 
 	$('.aceQuestions').each(function(){
 		console.log($(this).val());
@@ -85,10 +64,19 @@ function calculateACE(){
 			if($(this).val() == 'Yes'){
 				scoreTotal++;
 			}
+
+			aceQuestions = aceQuestions + $(this).val() + ',';
+		}
+		else{
+			aceQuestions = aceQuestions + 'N/A' + ',';
 		}
 	})
 
 	$('tr').has('div[id=aceScore]').find('input').val(scoreTotal);
+}
+
+function saveAce(){
+	$('tr').has('div[has[id=aceQuestions]]').find('input').val(aceQuestions);
 }
 
 $('document').ready(function(){
