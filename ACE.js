@@ -84,13 +84,16 @@ function saveAce(){
 function loadACE(){
 	var aceAnswersArray;
 	var count = 0;
-	if(!$('tr').has('div[id=aceAnswers]').find('input').val().includes('null')){
-		aceAnswersArray = aceAnswers.split(',');
-		
-		$('.aceQuestions').each(function(){
-			$(this).val(aceAnswersArray [count]);
-			count++;
-		});
+
+	if($('tr').has('div[id=aceAnswers]').find('input').val() != '')
+		if(!$('tr').has('div[id=aceAnswers]').find('input').val().includes('null')){
+			aceAnswersArray = aceAnswers.split(',');
+			
+			$('.aceQuestions').each(function(){
+				$(this).val(aceAnswersArray [count]);
+				count++;
+			});
+		}	
 	}
 }
 
