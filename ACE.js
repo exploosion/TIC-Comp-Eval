@@ -82,7 +82,7 @@ function saveAce(){
 }
 
 function loadACE(){
-	var aceAnswersArray [];
+	var aceAnswersArray;
 	var count = 0;
 	if(!$('tr').has('div[id=aceAnswers]').find('input').val().includes('null')){
 		aceAnswersArray = aceAnswers.split(',');
@@ -95,6 +95,7 @@ function loadACE(){
 }
 
 $('document').ready(function(){
+	loadACE();
 	checkACEPreviousScore();
 	createACE();
 	checkACEPerform();
