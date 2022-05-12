@@ -150,11 +150,16 @@ function requireHiddenNotes (condition, target) {
 function hideShow(hideShow, target, setRequired = true){ 
 	if(hideShow == 'show'){ 
 		$('td').has('div[class=' + target + ']').show(); 
+		$('td').has('div[class=' + target + ']').next().show(); 
+		$('tr').has('div[class=' + target + ']').next().show(); 
 		$('tr').has('div[class=' + target + ']').next().find('div').show(); 
 		$('td').has('div[id=' + target + ']').show(); 
+		$('td').has('div[id=' + target + ']').next().show(); 
+		$('tr').has('div[id=' + target + ']').next().show();
 		$('tr').has('div[id=' + target + ']').next().find('div').show();
 		$('td').has('div[hide=' + target + ']').show(); 
 		$('td').has('div[hide=' + target + ']').next().show(); 
+		$('tr').has('div[hide=' + target + ']').next().show();
 		$('tr').has('div[hide=' + target + ']').next().find('div').show(); 		
 		if(setRequired == true){
 			requireHidden(true, target); 
@@ -162,11 +167,16 @@ function hideShow(hideShow, target, setRequired = true){
 	} 
 	else if(hideShow == 'hide'){ 
 		$('td').has('div[class=' + target + ']').hide(); 
+		$('td').has('div[class=' + target + ']').next().hide();
+		$('tr').has('div[class=' + target + ']').next().hide();
 		$('tr').has('div[class=' + target + ']').next().find('div').hide();  
 		$('td').has('div[id=' + target + ']').hide(); 
+		$('td').has('div[id=' + target + ']').next().hide();
+		$('tr').has('div[id=' + target + ']').next().hide();
 		$('tr').has('div[id=' + target + ']').next().find('div').hide(); 
 		$('td').has('div[hide=' + target + ']').hide();
-		$('td').has('div[hide=' + target + ']').next().hide();		
+		$('td').has('div[hide=' + target + ']').next().hide();	
+		$('tr').has('div[hide=' + target + ']').next().hide();		
 		$('tr').has('div[hide=' + target + ']').next().find('div').hide();
 		if(setRequired == true){
 			requireHidden(false, target); 
