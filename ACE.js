@@ -78,7 +78,7 @@ function calculateACE(){
 }
 
 function saveAce(){
-	if(!$('tr').has('div[id=aceAnswers]').find('input').val().includes('null')){
+	if(!aceAnswers.includes('null')){
 		$('tr').has('div[id=aceAnswers]').find('input').val(aceAnswers);
 	}
 }
