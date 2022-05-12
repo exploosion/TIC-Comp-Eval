@@ -70,7 +70,7 @@ function calculateACE(){
 		else{
 			aceAnswers = aceAnswers + 'N/A' + ',';
 		}
-		aceAnswers.substring(0, aceAnswers.length - 1);
+		aceAnswers = aceAnswers.substring(0, aceAnswers.length - 1);
 	})
 
 	$('tr').has('div[id=aceScore]').find('input').val(scoreTotal);
