@@ -28,8 +28,8 @@ function checkACEPreviousScore(){
 		//$('tr').has('answer[id=acePerform]').eq(2).hide();
 	}
 	if(!$.isNumeric(acePreviousScore)){
-		$('tr').has('div[id=acePrevious]').find('div').eq(1).text('9001');
-		acePreviousScore = 9001;
+		//$('tr').has('div[id=acePrevious]').find('div').eq(1).text('9001');
+		//acePreviousScore = 9001;
 	}
 }
 
