@@ -62,6 +62,46 @@ function calculateCSSRS(){
 			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Routine]').val());
 		}
 	}
+
+	cssrsAnswers = '';
+
+	$('.cssrsQuestions').each(function(){
+		console.log($(this).val());
+		if($(this).val() != '' && $(this).val() != 'Did Not Answer'){
+			cssrsAnswers = cssrsAnswers + $(this).val() + ',';
+		}
+		else{
+			cssrsAnswers = cssrsAnswers + 'N/A' + ',';
+		}
+	})
+
+	cssrsAnswers = cssrsAnswers.substring(0, cssrsAnswers.length - 1);
+	saveCSSRS();
+}
+
+function saveCSSRS(){
+	if(!cssrsAnswers.includes('null')){
+		$('tr').has('div[id=cssrsAnswers]').find('input').val(cssrsAnswers);
+	}
+}
+
+var cssrsAnswers;
+
+function loadCSSRS(){
+	var cssrsAnswersArray;
+	var count = 0;
+
+	if($('tr').has('div[id=cssrsAnswers]').find('input').val() != ''){
+		cssrsAnswers = $('tr').has('div[id=cssrsAnswers]').find('input').val();
+		if(!$('tr').has('div[id=cssrsAnswers]').find('input').val().includes('null')){
+			cssrsAnswersArray = cssrsAnswers.split(',');
+			
+			$('.cssrsQuestions').each(function(){
+				$(this).val(cssrsAnswersArray [count]);
+				count++;
+			});
+		}	
+	}
 }
 
 function cssrsHideShows(){
@@ -158,9 +198,11 @@ function cssrsHideShows(){
 
 $('document').ready(function(){
 	$('tr').has('div[id=cssrsScore]').find('option').each(function(){this.setAttribute('text', this.outerText);});
+	loadCSSRS();
 	createCSSRS();
 	checkCSSRSPerform();
 	cssrsHideShows();
+	setTimeout(loadCSSRS, 500);
 	setTimeout(checkCSSRSPerform, 500);
 	setTimeout(cssrsHideShows, 500);
 	setTimeout(calculateCSSRS, 500);

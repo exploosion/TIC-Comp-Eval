@@ -52,23 +52,57 @@ function calculateDLA20(){
 	var scoreTotal = 0;
 	var scoreAverage = 0;
 	dla20QuestionCount = 0;
+	dla20Answers = '';
 
 	$('.dla20Questions').each(function(){
 		console.log($(this).val());
 		if($(this).val() != '' && $(this).val() != 'Did Not Answer'){
 			scoreTotal = scoreTotal + parseInt($(this).val());
 			dla20QuestionCount++;
+			dla20Answers = dla20Answers + $(this).val() + ',';
+		}
+		else{
+			dla20Answers = dla20Answers + 'N/A' + ',';
 		}
 	})
 
 	scoreAverage = scoreTotal / dla20QuestionCount;
 
 	$('tr').has('div[id=dla20Score]').find('input').val(scoreAverage);
+	dla20Answers = dla20Answers.substring(0, dla20Answers.length - 1);
+	saveDLA20();
+}
+
+function saveDLA20(){
+	if(!dla20Answers.includes('null')){
+		$('tr').has('div[id=dla20Answers]').find('input').val(dla20Answers);
+	}
+}
+
+var dla20Answers;
+
+function loadDLA20(){
+	var dla20AnswersArray;
+	var count = 0;
+
+	if($('tr').has('div[id=dla20Answers]').find('input').val() != ''){
+		dla20Answers = $('tr').has('div[id=dla20Answers]').find('input').val();
+		if(!$('tr').has('div[id=dla20Answers]').find('input').val().includes('null')){
+			dla20AnswersArray = dla20Answers.split(',');
+			
+			$('.dla20Questions').each(function(){
+				$(this).val(dla20AnswersArray [count]);
+				count++;
+			});
+		}	
+	}
 }
 
 $('document').ready(function(){
+	loadDLA20();
 	createDLA20();
 	checkDLA20Perform();
+	setTimeout(loadDLA20, 500);
 	setTimeout(checkDLA20Perform, 500);
 	setTimeout(calculateDLA20, 500);
 

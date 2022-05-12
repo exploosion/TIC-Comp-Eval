@@ -33,8 +33,6 @@ function checkACEPreviousScore(){
 	}
 }
 
-var filler;
-
 function checkACEPerform(){
 	if($('answer[id=acePerform]').parent().prev().find('input').prop('checked')){
 		$('div[id=aceTest]').show();
@@ -76,10 +74,10 @@ function calculateACE(){
 
 	aceAnswers = aceAnswers.substring(0, aceAnswers.length - 1);
 	$('tr').has('div[id=aceScore]').find('input').val(scoreTotal);
-	saveAce();
+	saveACE();
 }
 
-function saveAce(){
+function saveACE(){
 	if(!aceAnswers.includes('null')){
 		$('tr').has('div[id=aceAnswers]').find('input').val(aceAnswers);
 	}
