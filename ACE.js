@@ -67,6 +67,10 @@ function calculateACE(){
 
 			aceQuestions = aceQuestions + $(this).val() + ',';
 		}
+		else if(){
+			aceQuestions = aceQuestions + 'N/A' + ',';
+			console.log('Null else if.');
+		}
 		else{
 			aceQuestions = aceQuestions + 'N/A' + ',';
 		}
