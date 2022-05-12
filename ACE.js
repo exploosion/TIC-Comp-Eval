@@ -1,5 +1,5 @@
 //ACE
-var aceQuestions;
+var aceAnswers;
 var acePreviousScore;
 const aceTableWidths = '60%';
 
@@ -56,7 +56,7 @@ function checkACEPerform(){
 
 function calculateACE(){
 	var scoreTotal = 0;
-	aceQuestions = '';
+	aceAnswers = '';
 
 	$('.aceQuestions').each(function(){
 		console.log($(this).val());
@@ -65,22 +65,19 @@ function calculateACE(){
 				scoreTotal++;
 			}
 
-			aceQuestions = aceQuestions + $(this).val() + ',';
-		}
-		else if($(this).val() == ''){
-			aceQuestions = aceQuestions + 'N/A' + ',';
-			console.log('Null else if.');
+			aceAnswers = aceAnswers + $(this).val() + ',';
 		}
 		else{
-			aceQuestions = aceQuestions + 'N/A' + ',';
+			aceAnswers = aceAnswers + 'N/A' + ',';
 		}
+		aceAnswers.substring(0, aceAnswers.length - 1);
 	})
 
 	$('tr').has('div[id=aceScore]').find('input').val(scoreTotal);
 }
 
 function saveAce(){
-	$('tr').has('div[id=aceQuestions]').find('input').val(aceQuestions);
+	$('tr').has('div[id=aceAnswers]').find('input').val(aceAnswers);
 }
 
 $('document').ready(function(){
