@@ -1,4 +1,4 @@
-var test;
+var test1;
 var age;
 var cid;
 var programID;
@@ -99,7 +99,7 @@ function hideShow(hideShow, target, setRequired = true){
 }  
 
 $('document').ready(function(){
-	hideShow('hide', 'hideOnLoad');
+	hideShow('hide', 'hideOnLoad', false);
 });
 
 //Set Dx frame
@@ -161,19 +161,19 @@ $('document').ready(function()
 
 function checkDxUpdate(){
 	if($('tr').has('div[id=dxUpdate]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
-		hideShow('show', 'dxModule');
+		hideShow('show', 'dxModule', false);
 	}
 	else{
-		hideShow('hide', 'dxModule');
+		hideShow('hide', 'dxModule', false);
 	}
 }
 
 function checkTxUpdate(){
 	if($('tr').has('div[id=txPlanUpdate]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
-		hideShow('show', 'txPlanModule');
+		hideShow('show', 'txPlanModule', false);
 	}
 	else{
-		hideShow('hide', 'txPlanModule');
+		hideShow('hide', 'txPlanModule', false);
 	}
 }
 
@@ -188,9 +188,9 @@ $('document').ready(function()
 
 //Tobacco questions
 function checkTobacco(){
-	hideShow('hide', 'tobaccoCessation');
+	hideShow('hide', 'tobaccoCessation', false);
 	if($('tr').has('div[id=tobaccoUse]').find('select').val() == $('tr').has('div[id=tobaccoUse]').find('option[text=\'1-YES\']').val()){
-		hideShow('show', 'tobaccoCessation');
+		hideShow('show', 'tobaccoCessation', true);
 	}
 	else if($('tr').has('div[id=tobaccoUse]').find('select').val() == $('tr').has('div[id=tobaccoUse]').find('option[text=\'2-NO\']').val()){
 		if($('tr').has('div[id=tobaccoCessation]').find('select').val() == ''){
@@ -226,17 +226,17 @@ function checkDrinks(){
 }
 
 function checkReferralAlert(){
-	hideShow('hide', 'referralsAlert');
+	hideShow('hide', 'referralsAlert', false);
 	if(referralSUD){
-		hideShow('show', 'referralsAlert');
+		hideShow('show', 'referralsAlert', false);
 	}
 
 	if(referralSupportedEducation){
-		hideShow('show', 'referralsAlert');
+		hideShow('show', 'referralsAlert', false);
 	}
 
 	if(referralSupportedEmployment){
-		hideShow('show', 'referralsAlert');
+		hideShow('show', 'referralsAlert', false);
 	}
 }
 
@@ -250,9 +250,9 @@ $('document').ready(function(){
 
 //SUD questions
 function checkSUD(){
-	hideShow('hide', 'substanceResourcesOffered');
+	hideShow('hide', 'substanceResourcesOffered', false);
 	if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'1-YES\']').val()){
-		hideShow('show', 'substanceResourcesOffered');
+		hideShow('show', 'substanceResourcesOffered', true);
 	}
 	else if($('tr').has('div[id=substanceUse]').find('select').val() == $('tr').has('div[id=substanceUse]').find('option[text=\'2-NO\']').val()){
 		if($('tr').has('div[id=substanceResourcesOffered]').find('select').val() == ''){
@@ -272,14 +272,14 @@ $('document').ready(function(){
 
 //Referrals
 function checkReferrals(){
-	hideShow('hide', 'referralsInternal');
-	hideShow('hide', 'referralsExternal');
+	hideShow('hide', 'referralsInternal', false);
+	hideShow('hide', 'referralsExternal', false);
 	if($('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
-		hideShow('show', 'referralsInternal');
+		hideShow('show', 'referralsInternal', false);
 	}
 
 	if($('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').prop('checked')){
-		hideShow('show', 'referralsExternal');
+		hideShow('show', 'referralsExternal', false);
 	}
 }
 
@@ -319,7 +319,7 @@ $('document').ready(function(){
 //School Questions
 function checkSchoolAge(){
 	if(age >= 25 || $('tr').has('div[id=evalType]').find('tr:contains(\'Initial\')').eq(1).find('input').prop('checked')){
-		hideShow('hide', 'schoolQuestions');
+		hideShow('hide', 'schoolQuestions', false);
 		if($('tr').has('div[id=schoolAttendanceImprovement]').find('select').val() == ''){
 			$('tr').has('div[id=schoolAttendanceImprovement]').find('select').val($('tr').has('div[id=schoolAttendanceImprovement]').find('option[text=\'Not Applicable\']').val());
 		}
@@ -331,7 +331,7 @@ function checkSchoolAge(){
 		}
 	}
 	else{
-		hideShow('show', 'schoolQuestions');
+		hideShow('show', 'schoolQuestions', true);
 		if($('tr').has('div[id=schoolAttendanceImprovement]').find('select').val() == $('tr').has('div[id=schoolAttendanceImprovement]').find('option[text=\'Not Applicable\']').val()){
 			$('tr').has('div[id=schoolAttendanceImprovement]').find('select').val('');
 		}
@@ -356,34 +356,34 @@ $('document').ready(function(){
 
 //Supported Interests
 function checkSupportedEducation(){
-	hideShow('hide', 'supportedEducation');
+	hideShow('hide', 'supportedEducation', false);
 	if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'Education\')').eq(1).find('input').prop('checked')){
 		if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=supportedInterests]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked', false);
 		}
 
 		if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'Education\')').eq(1).find('input').prop('checked')){
-			hideShow('show', 'supportedEducation');
+			hideShow('show', 'supportedEducation', true);
 		}
 	}
 }
 
 function checkSupportedEmployment(){
-	hideShow('hide', 'supportedEmployment');
+	hideShow('hide', 'supportedEmployment', false);
 	if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'Employment\')').eq(1).find('input').prop('checked')){
 		if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=supportedInterests]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked', false);
 		}
 
 		if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'Employment\')').eq(1).find('input').prop('checked')){
-			hideShow('show', 'supportedEmployment');
+			hideShow('show', 'supportedEmployment', true);
 		}
 	}
 }
 
 function checkSupportedInterestsNone(){
-	hideShow('hide', 'supportedEducation');
-	hideShow('hide', 'supportedEmployment');
+	hideShow('hide', 'supportedEducation', false);
+	hideShow('hide', 'supportedEmployment', false);
 	if($('tr').has('div[id=supportedInterests]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked')){
 		$('tr').has('div[id=supportedInterests]').find('tr:contains(\'Education\')').eq(1).find('input').prop('checked', false);
 		$('tr').has('div[id=supportedInterests]').find('tr:contains(\'Employment\')').eq(1).find('input').prop('checked', false);
@@ -412,14 +412,14 @@ $('document').ready(function(){
 
 //Arrests
 function checkArrests(){
-	hideShow('hide', 'arrests');
+	hideShow('hide', 'arrests', false);
 
 	if(parseInt($('tr').has('div[id=arrestsTotal]').find('input').val()) > 0){
-		hideShow('show', 'arrestsLast30');
-		hideShow('show', 'arrestsDUITotal');
+		hideShow('show', 'arrestsLast30', true);
+		hideShow('show', 'arrestsDUITotal', true);
 
 		if(parseInt($('tr').has('div[id=arrestsDUITotal]').find('input').val()) > 0){
-			hideShow('show', 'arrestsDUILast30');
+			hideShow('show', 'arrestsDUILast30', true);
 		}
 	}
 }
