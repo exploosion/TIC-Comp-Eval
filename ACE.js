@@ -107,6 +107,7 @@ $('document').ready(function(){
 	checkACEPreviousScore();
 	createACE();
 	checkACEPerform();
+	setTimeout(loadACE, 500);
 	setTimeout(checkACEPreviousScore, 500);
 	setTimeout(checkACEPerform, 500);
 	setTimeout(calculateACE, 500);
