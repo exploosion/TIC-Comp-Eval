@@ -145,6 +145,7 @@ function checkPositivePHQ9(){
 
 $('document').ready(function(){
 	$('tr').has('div[id=phq9Score]').find('option').each(function(){this.setAttribute('text', this.outerText);});
+	setTimeout(loadPHQ9, 500);
 	setTimeout(depressionScreeningAge, 500);
 	setTimeout(checkPHQ9Age, 500);
 	createPHQ9();
