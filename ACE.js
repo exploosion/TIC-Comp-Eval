@@ -74,6 +74,7 @@ function calculateACE(){
 	})
 
 	$('tr').has('div[id=aceScore]').find('input').val(scoreTotal);
+	saveAce();
 }
 
 function saveAce(){
