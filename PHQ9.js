@@ -57,7 +57,7 @@ function checkPHQ9Perform(){
 		if(!$('div[id=phq9Test]').find('div[class=requiredAsterisk]').length){
 			$('div[id=phq9Test]').find('label[class=phq9Labels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
 		}
-		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
+		$('tr').has('div[id=phq9Score]').find('select').attr('style', 'pointer-events:none');
 		$('tr').has('div[id=phq9Score]').find('select').val('');
 		hideShow('show', 'phq9Score', true);
 		checkPositivePHQ9();
@@ -68,7 +68,7 @@ function checkPHQ9Perform(){
 		$('div[id=phq9Test]').find('div[class=requiredAsterisk]').remove();
 		$('.phq9Questions').val('');
 		$('.phq9BonusQuestions').val('');
-		$('tr').has('div[id=phq9Score]').find('select').attr('disabled', false);
+		$('tr').has('div[id=phq9Score]').find('select').attr('style', 'pointer-events:auto');
 		$('tr').has('div[id=phq9Score]').find('div[class=requiredAsterisk]').remove();
 		$('tr').has('div[id=phq9Score]').find('div[class=redAsterisk]').remove();
 		$('tr').has('div[id=phq9Score]').find('select').prop('required', false);

@@ -24,7 +24,7 @@ function checkCSSRSPerform(){
 		if(!$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').length){
 			$('div[id=cssrsTest]').find('label[class=cssrsLabels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
 		}
-		$('tr').has('div[id=cssrsScore]').find('select').attr('disabled', false);
+		$('tr').has('div[id=cssrsScore]').find('select').attr('style', 'pointer-events:none');
 		hideShow('show', 'cssrsScore', true);
 	}
 	else{
@@ -32,7 +32,7 @@ function checkCSSRSPerform(){
 		$('.cssrsQuestions').attr('required', false);
 		$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').remove();
 		$('.cssrsQuestions').val('');
-		$('tr').has('div[id=cssrsScore]').find('select').attr('disabled', false);
+		$('tr').has('div[id=cssrsScore]').find('select').attr('style', 'pointer-events:auto');
 		hideShow('hide', 'cssrsScore', false);
 	}
 }
