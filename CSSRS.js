@@ -93,7 +93,7 @@ function loadCSSRS(){
 
 	if($('tr').has('div[id=cssrsAnswers]').find('input').val() != ''){
 		cssrsAnswers = $('tr').has('div[id=cssrsAnswers]').find('input').val();
-		if(!$('tr').has('div[id=cssrsAnswers]').find('input').val().includes('null')){
+		if(cssrsAnswers != 'null,null,null,null,null,null,null,null'){
 			cssrsAnswersArray = cssrsAnswers.split(',');
 			
 			$('.cssrsQuestions').each(function(){
