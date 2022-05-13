@@ -24,7 +24,7 @@ function checkCSSRSPerform(){
 		if(!$('div[id=cssrsTest]').find('div[class=requiredAsterisk]').length){
 			$('div[id=cssrsTest]').find('label[class=cssrsLabels]').find('b').after('<div class=\'requiredAsterisk\' style=\'color:red;display:inline\'>*</div>');
 		}
-		$('tr').has('div[id=cssrsScore]').find('select').attr('disabled', true);
+		$('tr').has('div[id=cssrsScore]').find('select').attr('disabled', false);
 		hideShow('show', 'cssrsScore', true);
 	}
 	else{
