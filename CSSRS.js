@@ -80,7 +80,7 @@ function calculateCSSRS(){
 }
 
 function saveCSSRS(){
-	if(!cssrsAnswers.includes('null')){
+	if(cssrsAnswers != 'null,null,null,null,null,null,null,null'){
 		$('tr').has('div[id=cssrsAnswers]').find('input').val(cssrsAnswers);
 	}
 }
