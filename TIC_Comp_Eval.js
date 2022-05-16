@@ -756,7 +756,7 @@ function responsiveTable(selector, parentSelector){
 }
 
 $('document').ready(function(){;
-	responsiveTable("#locDesc", "table:first");
+	responsiveTable("#locDesc", "table:first"); 
 });
 
 $('document').ready(function(){
