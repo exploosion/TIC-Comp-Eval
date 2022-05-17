@@ -270,7 +270,6 @@ const pathwayThreeAdult = 30 * 3;
 const pathwayFourChild = 30 * 9;
 const pathwayFourAdult = 30 * 6;
 
-
 function checkPathwaySelected(){
 	currentDate = new Date();
 	switch($('tr').has('div[id=pathwaySelected]').find('select').val()){
@@ -319,11 +318,23 @@ function checkPathwaySelected(){
 	}
 }
 
+function checkPathwayUpdate(){
+	if($('tr').has('div[id=pathwayUpdate]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+		hideShow('show', 'pathwayUpdates', true);
+	}
+	else{
+		hideShow('hide', 'pathwayUpdates', true);
+	}
+}
+
 $('document').ready(function(){
 	populateOptionText('pathwaySelected');
+	checkPathwayUpdate();
 	checkPathwaySelected();
 
+	$('tr').has('div[id=pathwayUpdate]').find('input').change(checkPathwayUpdate);
 	$('tr').has('div[id=pathwaySelected]').find('select').change(checkPathwaySelected);
+
 });
 
 //Signatures
