@@ -151,43 +151,15 @@ $('document').ready(function(){
 });
 
 //SUD referral based on drinks
-var referralSUD;
 function checkDrinks(){
-	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'white');
-	referralSUD = false;
 	if(parseInt($('tr').has('div[id=drinksPastYear]').find('input').val()) > 2){
 		alert('Consider a SUD Referral.');
-		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
-			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
-		}
-		if(!$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).find('input').prop('checked')){
-			$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'yellow');
-			referralSUD = true;
-		}
-	}
-}
-
-function checkReferralAlert(){
-	hideShow('hide', 'referralsAlert', false);
-	if(referralSUD){
-		hideShow('show', 'referralsAlert', false);
-	}
-
-	if(referralSupportedEducation){
-		hideShow('show', 'referralsAlert', false);
-	}
-
-	if(referralSupportedEmployment){
-		hideShow('show', 'referralsAlert', false);
 	}
 }
 
 $('document').ready(function(){
 	checkDrinks();
-	checkReferralAlert();
 	$('tr').has('div[id=drinksPastYear]').find('input').change(checkDrinks);
-	$('input').change(checkReferralAlert);
-	$('select').change(checkReferralAlert);
 });
 
 //SUD questions
@@ -210,52 +182,6 @@ $('document').ready(function(){
 	checkSUD();
 
 	$('tr').has('div[id=substanceUse]').find('select').change(checkSUD);
-});
-
-//Referrals
-function checkReferrals(){
-	hideShow('hide', 'referralsInternal', false);
-	hideShow('hide', 'referralsExternal', false);
-	if($('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
-		hideShow('show', 'referralsInternal', false);
-	}
-
-	if($('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').prop('checked')){
-		hideShow('show', 'referralsExternal', false);
-	}
-}
-
-function referralsInternal(){
-	if($('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
-		$('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked', true);
-		$('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').trigger('click');
-	}
-}
-
-function referralsExternal(){
-	if($('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').prop('checked')){
-		$('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked', true);
-		$('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').trigger('click');
-	}
-}
-
-function referralsNone(){
-	if($('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').prop('checked')){
-		$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked', true);
-		$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
-		$('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').prop('checked', true);
-		$('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').trigger('click');
-	}
-}
-
-$('document').ready(function(){
-	checkReferrals();
-
-	$('tr').has('div[id=referrals]').find('input').change(checkReferrals);
-
-	$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').change(referralsInternal);
-	$('tr').has('div[id=referrals]').find('tr:contains(\'External\')').eq(1).find('input').change(referralsExternal);
-	$('tr').has('div[id=referrals]').find('tr:contains(\'None\')').eq(1).find('input').change(referralsNone);
 });
 
 //School Questions
