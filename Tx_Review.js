@@ -324,6 +324,8 @@ function checkPathwayUpdate(){
 	}
 	else{
 		hideShow('hide', 'pathwayUpdates', true);
+		$('tr').has('div[id=pathwaySelected]').find('select').val('');
+		$('tr').has('div[id=pathwayEnds]').find('input').val('');
 	}
 }
 
