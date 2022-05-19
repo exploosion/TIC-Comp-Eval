@@ -61,6 +61,9 @@ function calculateDLA20(){
 			dla20QuestionCount++;
 			dla20Answers = dla20Answers + $(this).val() + ',';
 		}
+		else if($(this).val() == 'Did Not Answer'){
+			dla20Answers = dla20Answers + $(this).val() + ',';
+		}
 		else{
 			dla20Answers = dla20Answers + 'N/A' + ',';
 		}
