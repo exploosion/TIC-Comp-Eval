@@ -729,7 +729,33 @@ function toggleConsentNo(){
 
 // Level of Care Description auto width
 
-function responsiveTable(selector, parentSelector){
+function responsiveElement(selector, tabletBreak=810, mobileBreak=645, largeWidth="40vw", tabletWidth="65vw", mobileWidth="80vw"){
+	// Set initial width
+	if ($(window).width() > tabletBreak){ 
+		$(selector).width(largeWidth);
+	}
+	else if ($(window).width() > mobileBreak){
+		$(selector).width(tabletWidth);
+	}
+	else{
+		$(selector).width(mobileWidth);
+	}
+
+	// Update width according to resized window
+	$(window).resize(function(){
+		if ($(window).width() > tabletBreak){ 
+			$(selector).width(largeWidth);
+		}
+		else if ($(window).width() > mobileBreak){
+			$(selector).width(tabletWidth);
+		}
+		else{
+			$(selector).width(mobileWidth);
+		}
+	});
+}
+
+function responsiveParent(selector, parentSelector){
 	// Set initial width
 	if ($(window).width() > 810){ 
 		$(selector).parents(parentSelector).width("40vw");
@@ -756,7 +782,7 @@ function responsiveTable(selector, parentSelector){
 }
 
 $('document').ready(function(){;
-	responsiveTable("#locDesc", "table:first"); 
+	responsiveParent("#locDesc", "table:first");
 });
 
 $('document').ready(function(){
