@@ -59,7 +59,7 @@ function calculateCSSRS(){
 			}
 		}
 		else{
-			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Routine]').val());
+			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=\'Urgent (within\']').val());
 		}
 	}
 
