@@ -46,7 +46,17 @@ function calculateCSSRS(){
 			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=\'Urgent (within\']').val());
 		}
 		else{
-			$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Routine]').val());
+			if($('#cssrsQ3').val() == 'Yes' || $('#cssrsQ4').val() == 'Yes' || $('#cssrsQ5').val() == 'Yes'){
+				if($('#cssrsQ5A').val() == 'Yes'){
+					$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Emergency]').val());
+				}
+				else{
+					$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=\'Urgent (within\']').val());
+				}
+			}
+			else{
+				$('tr').has('div[id=cssrsScore]').find('select').val($('tr').has('div[id=cssrsScore]').find('option[text*=Routine]').val());
+			}
 		}
 	}
 	else{
