@@ -24,11 +24,11 @@ function requireHiddenNotes (condition, target) {
 		$('tr').has('div[class*=' + target + ']').next().find('textarea').prop('required', true); 
 		$('tr').find('div[class*=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
 		$('tr').has('div[id=' + target + ']').next().find('textarea').prop('required', true); 
+		$('tr').find('div[id=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
 	} 
 	else { 
 		$('tr').has('div[class*=' + target + ']').next().find('textarea').prop('required', false); 
-		$('tr').has('div[id=' + target + ']').next().find('textarea').prop('required', false); 
-		$('tr').find('div[id=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');  
+		$('tr').has('div[id=' + target + ']').next().find('textarea').prop('required', false);   
 	} 
 }  
 
