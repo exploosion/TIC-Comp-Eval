@@ -156,7 +156,7 @@ function checkDrinks(){
 	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'SUDS\')').eq(1).css('background-color', 'white');
 	referralSUD = false;
 	if(parseInt($('tr').has('div[id=drinksPastYear]').find('input').val()) > 2){
-		//alert('Consider a SUD Referral.');
+		console.log('Consider a SUD Referral.');
 		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
 		}
@@ -379,12 +379,12 @@ $('document').ready(function(){
 	$('input[name=Complete]').click(function(e){
 		if($('tr').has('div[id=duiiArrests]').find('input').val() < $('tr').has('div[id=duiiArrestsPastMonth]').find('input').val()){
 			e.preventDefault();
-			//alert('Total DUII Arrests have to be greater than or equal to Number of DUII Arrests in Past Month');
+			console.log('Total DUII Arrests have to be greater than or equal to Number of DUII Arrests in Past Month');
 		}
 		
 		if($('tr').has('div[id=arrests]').find('input').val() < (parseInt($('tr').has('div[id=duiiArrests]').find('input').val()) + parseInt($('tr').has('div[id=arrestsPastMonth]').find('input').val()))){
 			e.preventDefault();
-			//alert('Total Arrests have to be greater than or equal to Total DUII Arrests and Number of Arrests in Past Month');
+			console.log('Total Arrests have to be greater than or equal to Total DUII Arrests and Number of Arrests in Past Month');
 		}
 	});
 });
@@ -608,7 +608,7 @@ var initialized = false;
 function signatureDisclaimers(){ 
 	if (initialized == false){ 
 		$('img[id=add_signature_1_img]').click(function(){ 
-			//alert('Make sure to enter the client/legal guardian\'s full name in the text box. If capturing verbal consent, also include verbal consent in the text box.'); 
+			console.log('Make sure to enter the client/legal guardian\'s full name in the text box. If capturing verbal consent, also include verbal consent in the text box.'); 
 		});    
 		initialized = true;  
 		console.log('Added signature disclaimers.'); 
@@ -645,7 +645,7 @@ function customCallBack (){
 function requireSignature(e){
 	if($('#add_signature_1_img').attr('title') == undefined || $('#add_signature_1_img').attr('title') == 'signature placeholder') {  
 		e.preventDefault();  
-		//alert('Please capture client/legal guardian signature.');  
+		console.log('Please capture client/legal guardian signature.');  
 	}
 }
 
@@ -713,7 +713,7 @@ function toggleConsentNo(){
 	if(!$('tr').has('div[id=consentClientYes]').find('input').prop('checked') && !$('tr').has('div[id=consentClientNo]').find('input').prop('checked')){
 		e.preventDefault();
 		$([document.documentElement, document.body]).animate({scrollTop: $('#informedConsentLabel').offset().top},);
-		//alert('Please complete Informed Consent section.');
+		console.log('Please complete Informed Consent section.');
 	}
  }
 
@@ -858,7 +858,7 @@ function checkSupportedEducation(){
 	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).css('background-color', 'white');
 
 	if($('tr').has('div[id=supportedEducation]').find('select').val() == $('tr').has('div[id=supportedEducation]').find('option[text*=YES]').val()){
-		//alert('Please consider a supported education referral');
+		console.log('Please consider a supported education referral');
 		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
 		}
@@ -877,7 +877,7 @@ function checkSupportedEmployment(){
 	$('tr').has('div[id=referralsInternal]').find('tr:contains(\'Supported\')').eq(1).css('background-color', 'white');
 	
 	if($('tr').has('div[id=supportedEmployment]').find('select').val() == $('tr').has('div[id=supportedEmployment]').find('option[text*=YES]').val()){
-		//alert('Please consider a supported employment referral');
+		console.log('Please consider a supported employment referral');
 		if(!$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').prop('checked')){
 			$('tr').has('div[id=referrals]').find('tr:contains(\'Internal\')').eq(1).find('input').trigger('click');
 		}
