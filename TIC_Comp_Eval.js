@@ -644,7 +644,7 @@ function customCallBack (){
 
 function requireSignature(e){
 	if($('#add_signature_1_img').attr('title') == undefined || $('#add_signature_1_img').attr('title') == 'signature placeholder') {  
-		e.preventDefault();  
+		//e.preventDefault();  
 		console.log('Please capture client/legal guardian signature.');  
 	}
 }
@@ -711,7 +711,7 @@ function toggleConsentNo(){
 
  function checkConsent(e){
 	if(!$('tr').has('div[id=consentClientYes]').find('input').prop('checked') && !$('tr').has('div[id=consentClientNo]').find('input').prop('checked')){
-		e.preventDefault();
+		//e.preventDefault();
 		$([document.documentElement, document.body]).animate({scrollTop: $('#informedConsentLabel').offset().top},);
 		console.log('Please complete Informed Consent section.');
 	}
