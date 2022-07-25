@@ -1024,7 +1024,7 @@ function checkPathway(){
 			//No pathway?
 		}
 	}
-	if($('tr').has('div[id=levelOfTrauma]').find('tr:contains(\'Repeeated trauma\')').eq(1).find('input').prop('checked')){
+	if($('tr').has('div[id=levelOfTrauma]').find('tr:contains(\'Repeated trauma\')').eq(1).find('input').prop('checked')){
 		if(acePathwayScore <= 3){
 			if(dla20PathwayScore > 4 && dla20PathwayScore <= 7 && dla20PathwayScore != ''){
 				if($('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Precontemplation';}).val() || $('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Contemplation';}).val()){
