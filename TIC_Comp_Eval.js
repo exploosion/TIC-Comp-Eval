@@ -989,7 +989,7 @@ function syncDLA20(){
 $('document').ready(function(){
 	syncDLA20();
 
-	$('#dlaInline').contents().find('tr').has('div[class=dla20Q]').find('select').change(syncDLA20);
+	$('#dlaInline').contents().on('click', function(){syncDLA20();})
 });
 
 //Pathway
