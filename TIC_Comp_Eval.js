@@ -1000,9 +1000,12 @@ $('document').ready(function(){
 });
 
 //Pathway
+var acePathwayScore;
+var dla20PathwayScore;
+
 function checkPathway(){
-	let acePathwayScore  = $('tr').has('div[id=aceScore]').find('input').val() == '' ? ($('tr').has('div[id=acePrevious]').find('font').text() == '' ? 99 : $('tr').has('div[id=acePrevious]').find('font').text()) : $('tr').has('div[id=aceScore]').find('input').val();
-	let dla20PathwayScore = $('tr').has('div[id=dla20Score]').find('input').val();
+	acePathwayScore  = $('tr').has('div[id=aceScore]').find('input').val() == '' ? ($('tr').has('div[id=acePrevious]').find('font').text() == '' ? 99 : $('tr').has('div[id=acePrevious]').find('font').text()) : $('tr').has('div[id=aceScore]').find('input').val();
+	dla20PathwayScore = $('tr').has('div[id=dla20Score]').find('input').val();
 	if($('tr').has('div[id=levelOfTrauma]').find('tr:contains(\'Single trauma\')').eq(1).find('input').prop('checked')){
 		if(dla20PathwayScore > 4 && dla20PathwayScore <= 7 && dla20PathwayScore != ''){
 			if(acePathwayScore <= 3){
