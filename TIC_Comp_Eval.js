@@ -947,6 +947,7 @@ function checkMDD(){
 	hideShow('hide', 'mddDx');
 	if($('tr').has('div[id=evalType]').find('tr:contains(\'Annual Evaluation\')').eq(1).find('input').prop('checked')){
 		hideShow('show', 'mddDx');
+		frameElement.style.height = idealFrameHeight(frameElement);
 		if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
 			requirePHQ9 = true;
 		}
