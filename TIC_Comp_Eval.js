@@ -989,7 +989,8 @@ function syncDLA20(){
 
 $('document').ready(function(){
 	syncDLA20();
-	 $("dlaInline").on("load", function(){
+	
+	$("#dlaInline").on("load", function(){
 		$(this).contents().on('click', function(){
 			syncDLA20();
 		});
