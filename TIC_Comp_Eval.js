@@ -937,25 +937,30 @@ $('document').ready(function(){
 });
 
 //MDD
+var requireCSSRS;
+var requirePHQ9;
+
 function checkMDD(){
-	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
-		$('tr').has('answer[id=phq9NA]').eq(2).hide();
-		$('tr').has('answer[id=cssrsNA]').eq(2).hide();
-		if($('tr').has('answer[id=phq9NA]').eq(2).find('input').prop('checked')){
-			$('tr').has('answer[id=phq9NA]').eq(2).find('input').prop('checked', false);
-		}
-		if($('tr').has('answer[id=cssrsNA]').eq(2).find('input').prop('checked')){
-			$('tr').has('answer[id=cssrsNA]').eq(2).find('input').prop('checked', false);
+	requireCSSRS = false;
+	requirePHQ9 = false;
+
+	hideShow('hide', 'mddDx');
+	if($('tr').has('div[id=evalType]').find('tr:contains(\'Annual Evaluation\')').eq(1).find('input').prop('checked')){
+		hideShow('show', 'mddDx');
+		if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+			requirePHQ9 = true;
 		}
 	}
-	else{
-		$('tr').has('answer[id=phq9NA]').eq(2).show();
-		$('tr').has('answer[id=cssrsNA]').eq(2).show();
+	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+		requireCSSRS = true;
 	}
 }
 
 $('document').ready(function(){
 	checkMDD();
+
+	$('tr').has('div[id=evalType]').find('input').change(checkMDD);
+	$('tr').has('div[id=evalType]').find('input').click(checkMDD);
 
 	$('tr').has('div[id=mddDx]').find('input').change(checkMDD);
 	$('tr').has('div[id=mddDx]').find('input').click(checkMDD);
