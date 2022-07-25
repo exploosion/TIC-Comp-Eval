@@ -615,7 +615,7 @@ function signatureDisclaimers(){
 	} 
 }  
 
-function waitForElement (selector, callback, maxTimes = false){ 
+function waitForElementOld (selector, callback, maxTimes = false){ 
 	if (maxTimes != false){ 
 		maxTimes--; 
 	} 
@@ -628,7 +628,7 @@ function waitForElement (selector, callback, maxTimes = false){
 		if (maxTimes === false || maxTimes > 0){ 
 			setTimeout(function(){ 
 				console.log('Waiting'); 
-				waitForElement(selector, callback, maxTimes); 
+				waitForElementOld(selector, callback, maxTimes); 
 			}, 100); 
 		} 
 		else{ 
@@ -652,7 +652,7 @@ function requireSignature(e){
 $(document).ready(function(){ 
 	$('input[name=Complete]').click(requireSignature);   
 	
-	waitForElement('img[id=add_signature_1_img]', customCallBack, 10); 
+	waitForElementOld('img[id=add_signature_1_img]', customCallBack, 10); 
 });
 
 //Edit embedded signature titles
