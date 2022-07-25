@@ -980,6 +980,18 @@ $('document').ready(function(){
 	$('tr').find('div[id=medicalNeeds]').tooltip();  
 });
 
+//Sync DLA20 Score
+function syncDLA20(){
+	$('tr').has('div[id=dla20Score]').find('input').val($('#dlaInline').contents().find('tr').has('div[id=dla20A]').find('input').val());
+	$('tr').has('div[id=dla20Score]').find('input').trigger('change');
+}
+
+$('document').ready(function(){
+	syncDLA20();
+
+	$('#dlaInline').contents().find('tr').has('div[id=dla20A]').find('input').change(syncDLA20);
+});
+
 //Pathway
 function checkPathway(){
 	if($('tr').has('div[id=levelOfTrauma]').find('tr:contains(\'Single trauma\')').eq(1).find('input').prop('checked')){
