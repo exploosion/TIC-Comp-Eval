@@ -989,12 +989,15 @@ function syncDLA20(){
 
 $('document').ready(function(){
 	syncDLA20();
-	
-	$("#dlaInline").on("load", function(){
-		$(this).contents().on('click', function(){
-			syncDLA20();
-		});
-	});
+	var checkDLA20Exist = setInterval(function(){
+		if($("#dlaInline").contents().find('tr').has('div[class=dla20Q]').find('select').length){
+			clearInterval(checkDLA20Exist);
+
+			$("#dlaInline").contents().on('click', function(){
+				syncDLA20();
+			});
+		}
+	}, 100);
 });
 
 //Pathway
