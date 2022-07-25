@@ -615,7 +615,7 @@ function signatureDisclaimers(){
 	} 
 }  
 
-function waitForElementOld (selector, callback, maxTimes = false){ 
+/*function waitForElementOld (selector, callback, maxTimes = false){ 
 	if (maxTimes != false){ 
 		maxTimes--; 
 	} 
@@ -653,7 +653,7 @@ $(document).ready(function(){
 	$('input[name=Complete]').click(requireSignature);   
 	
 	waitForElementOld('img[id=add_signature_1_img]', customCallBack, 10); 
-});
+});*/
 
 //Edit embedded signature titles
 $(window).bind('load', function (){ 
