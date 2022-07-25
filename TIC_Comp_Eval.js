@@ -984,6 +984,7 @@ $('document').ready(function(){
 function syncDLA20(){
 	$('tr').has('div[id=dla20Score]').find('input').val($('#dlaInline').contents().find('tr').has('div[id=dla20A]').find('input').val());
 	$('tr').has('div[id=dla20Score]').find('input').trigger('change');
+	console.log('Boop');
 }
 
 $('document').ready(function(){
