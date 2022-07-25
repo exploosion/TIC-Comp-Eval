@@ -979,3 +979,71 @@ $('document').ready(function(){
 	$('tr').find('div[id=medicalNeeds]').attr('title', 'Unmet needs for Primary Care Provider, appointments, or referral(s)'); 
 	$('tr').find('div[id=medicalNeeds]').tooltip();  
 });
+
+//Pathway
+function checkPathway(){
+	if($('tr').has('div[id=levelOfTrauma]').find('tr:contains(\'Single trauma\')').eq(1).find('input').prop('checked')){
+		if($('tr').has('div[id=dla20Score]').find('input').val() > 4 && $('tr').has('div[id=dla20Score]').find('input').val() <= 7 && $('tr').has('div[id=dla20Score]').find('input').val() != ''){
+			if($('tr').has('div[id=aceScore]').find('input').val() <= 3 && $('tr').has('div[id=aceScore]').find('input').val() != ''){
+				if($('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Precontemplation';}).val() || $('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Contemplation';}).val()){
+					$('tr').has('div[id=pathwayIndicated]').find('select').val($('tr').has('div[id=pathwayIndicated]').find('option').filter(function (){return $(this).html().includes('Pathway 3');}).val());
+				}
+				else if($('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Determination';}).val() || $('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Action';}).val()){
+					$('tr').has('div[id=pathwayIndicated]').find('select').val($('tr').has('div[id=pathwayIndicated]').find('option').filter(function (){return $(this).html().includes('Pathway 4');}).val());
+				}
+			}
+			else if($('tr').has('div[id=aceScore]').find('input').val() > 3 && $('tr').has('div[id=aceScore]').find('input').val() != ''){
+				//No pathway?
+			}
+		}
+		else{
+			//No pathway?
+		}
+	}
+	if($('tr').has('div[id=levelOfTrauma]').find('tr:contains(\'Repeeated trauma\')').eq(1).find('input').prop('checked')){
+		if($('tr').has('div[id=aceScore]').find('input').val() <= 3 && $('tr').has('div[id=aceScore]').find('input').val() != ''){
+			if($('tr').has('div[id=dla20Score]').find('input').val() > 4 && $('tr').has('div[id=dla20Score]').find('input').val() <= 7 && $('tr').has('div[id=dla20Score]').find('input').val() != ''){
+				if($('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Precontemplation';}).val() || $('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Contemplation';}).val()){
+					$('tr').has('div[id=pathwayIndicated]').find('select').val($('tr').has('div[id=pathwayIndicated]').find('option').filter(function (){return $(this).html().includes('Pathway 3');}).val());
+				}
+				else if($('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Determination';}).val() || $('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Action';}).val()){
+					$('tr').has('div[id=pathwayIndicated]').find('select').val($('tr').has('div[id=pathwayIndicated]').find('option').filter(function (){return $(this).html().includes('Pathway 4');}).val());
+				}
+			}
+			else{
+				//No pathway?
+			}
+		}
+		else if($('tr').has('div[id=aceScore]').find('input').val() > 3 && $('tr').has('div[id=aceScore]').find('input').val() != ''){
+			if($('tr').has('div[id=dla20Score]').find('input').val() > 2 && $('tr').has('div[id=dla20Score]').find('input').val() <= 5 && $('tr').has('div[id=dla20Score]').find('input').val() != ''){
+				if($('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Precontemplation';}).val() || $('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Contemplation';}).val()){
+					$('tr').has('div[id=pathwayIndicated]').find('select').val($('tr').has('div[id=pathwayIndicated]').find('option').filter(function (){return $(this).html().includes('Pathway 1');}).val());
+				}
+				else if($('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Determination';}).val() || $('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Action';}).val()){
+					$('tr').has('div[id=pathwayIndicated]').find('select').val($('tr').has('div[id=pathwayIndicated]').find('option').filter(function (){return $(this).html().includes('Pathway 2');}).val());
+				}
+			}
+			else{
+				//No pathway?
+			}
+		}
+	}
+	if($('tr').has('div[id=levelOfTrauma]').find('tr:contains(\'Extended trauma\')').eq(1).find('input').prop('checked')){
+		if($('tr').has('div[id=dla20Score]').find('input').val() > 2 && $('tr').has('div[id=dla20Score]').find('input').val() <= 5 && $('tr').has('div[id=dla20Score]').find('input').val() != ''){
+			if($('tr').has('div[id=aceScore]').find('input').val() <= 3 && $('tr').has('div[id=aceScore]').find('input').val() != ''){
+				//No pathway?
+			}
+			else if($('tr').has('div[id=aceScore]').find('input').val() > 3 && $('tr').has('div[id=aceScore]').find('input').val() != ''){
+				if($('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Precontemplation';}).val() || $('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Contemplation';}).val()){
+					$('tr').has('div[id=pathwayIndicated]').find('select').val($('tr').has('div[id=pathwayIndicated]').find('option').filter(function (){return $(this).html().includes('Pathway 1');}).val());
+				}
+				else if($('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Determination';}).val() || $('tr').has('div[id=motivationForChange]').find('select').val() == $('tr').has('div[id=motivationForChange]').find('option').filter(function (){return $(this).html() == 'Action';}).val()){
+					$('tr').has('div[id=pathwayIndicated]').find('select').val($('tr').has('div[id=pathwayIndicated]').find('option').filter(function (){return $(this).html().includes('Pathway 2');}).val());
+				}
+			}
+		}
+		else{
+			//No pathway?
+		}
+	}
+}
