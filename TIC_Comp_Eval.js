@@ -953,14 +953,14 @@ function checkMDD(){
 		frameElement.style.height = parent.idealFrameHeight(frameElement);
 		if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
 			setGlobalFrameValue(parent.document, true, '#phq-9', 'userChange');
-			if (parent.document.querySelector('#phq-9').contentWindow.expandBool == false){
+			if (parent.document.querySelector('#phq-9').contentDocument.querySelector('#questions_container').hidden){
 				parent.document.querySelector('#phq-9').contentDocument.querySelector('.toolHead').click();
 			}
 		}
 	}
 	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
 		setGlobalFrameValue(parent.document, true, '#c-Ssrs', 'userChange');
-		if (parent.document.querySelector('#phq-9').contentWindow.expandBool == false){
+		if (parent.document.querySelector('#c-Ssrs').contentDocument.querySelector('#questions_container').hidden){
 			parent.document.querySelector('#c-Ssrs').contentDocument.querySelector('.toolHead').click();
 		}
 	}
