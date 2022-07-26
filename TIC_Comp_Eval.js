@@ -940,20 +940,23 @@ $('document').ready(function(){
 var requireCSSRS;
 var requirePHQ9;
 
+function setGlobalFrameValue(context, value, frameSelector, valueVariable){
+    const frame = context.querySelector(frameSelector);
+    frame.contentWindow[valueVariable] = value;
+}
+
 function checkMDD(){
-	requireCSSRS = false;
-	requirePHQ9 = false;
 
 	hideShow('hide', 'mddDx');
 	if($('tr').has('div[id=evalType]').find('tr:contains(\'Annual Evaluation\')').eq(1).find('input').prop('checked')){
 		hideShow('show', 'mddDx');
 		frameElement.style.height = parent.idealFrameHeight(frameElement);
 		if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
-			requirePHQ9 = true;
+			setGlobalFrameValue(parent.document, true, '#phq-9', 'userChange');
 		}
 	}
 	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
-		requireCSSRS = true;
+		setGlobalFrameValue(parent.document, true, '#c-Ssrs', 'userChange');
 	}
 }
 
