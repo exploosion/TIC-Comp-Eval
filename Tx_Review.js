@@ -352,7 +352,7 @@ function signatureDisclaimers(){
 	} 
 }  
 
-function waitForElement (selector, callback, maxTimes = false){ 
+/*function waitForElement (selector, callback, maxTimes = false){ 
 	if (maxTimes != false){ 
 		maxTimes--; 
 	} 
@@ -389,7 +389,7 @@ $(document).ready(function(){
 	$('input[name=Complete]').click(requireSignature);   
 	
 	waitForElement('img[id=add_signature_1_img]', customCallBack, 10); 
-});
+});*/
 
 //Edit embedded signature titles
 $(window).bind('load', function (){ 
@@ -492,25 +492,40 @@ $('document').ready(function(){
 });
 
 //MDD
+var requireCSSRS;
+var requirePHQ9;
+
+function setGlobalFrameValue(context, value, frameSelector, valueVariable){
+    const frame = context.querySelector(frameSelector);
+    frame.contentWindow[valueVariable] = value;
+}
+
 function checkMDD(){
-	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
-		$('tr').has('answer[id=phq9NA]').eq(2).hide();
-		$('tr').has('answer[id=cssrsNA]').eq(2).hide();
-		if($('tr').has('answer[id=phq9NA]').eq(2).find('input').prop('checked')){
-			$('tr').has('answer[id=phq9NA]').eq(2).find('input').prop('checked', false);
-		}
-		if($('tr').has('answer[id=cssrsNA]').eq(2).find('input').prop('checked')){
-			$('tr').has('answer[id=cssrsNA]').eq(2).find('input').prop('checked', false);
+
+	hideShow('hide', 'mddDx');
+	if($('tr').has('div[id=evalType]').find('tr:contains(\'Annual Evaluation\')').eq(1).find('input').prop('checked')){
+		hideShow('show', 'mddDx');
+		frameElement.style.height = parent.idealFrameHeight(frameElement);
+		if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+			setGlobalFrameValue(parent.document, true, '#phq-9', 'userChange');
+			if (parent.document.querySelector('#phq-9').contentDocument.querySelector('#questions_container').hidden){
+				parent.document.querySelector('#phq-9').contentDocument.querySelector('.toolHead').click();
+			}
 		}
 	}
-	else{
-		$('tr').has('answer[id=phq9NA]').eq(2).show();
-		$('tr').has('answer[id=cssrsNA]').eq(2).show();
+	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+		setGlobalFrameValue(parent.document, true, '#c-Ssrs', 'userChange');
+		if (parent.document.querySelector('#c-Ssrs').contentDocument.querySelector('#questions_container').hidden){
+			parent.document.querySelector('#c-Ssrs').contentDocument.querySelector('.toolHead').click();
+		}
 	}
 }
 
 $('document').ready(function(){
 	checkMDD();
+
+	$('tr').has('div[id=evalType]').find('input').change(checkMDD);
+	$('tr').has('div[id=evalType]').find('input').click(checkMDD);
 
 	$('tr').has('div[id=mddDx]').find('input').change(checkMDD);
 	$('tr').has('div[id=mddDx]').find('input').click(checkMDD);
