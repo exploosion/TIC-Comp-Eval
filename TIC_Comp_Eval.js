@@ -378,12 +378,12 @@ $('document').ready(function(){
 	$('input[name=Complete]').prop('disabled', false);
 	$('input[name=Complete]').click(function(e){
 		if($('tr').has('div[id=duiiArrests]').find('input').val() < $('tr').has('div[id=duiiArrestsPastMonth]').find('input').val()){
-			e.preventDefault();
+			//e.preventDefault();
 			console.log('Total DUII Arrests have to be greater than or equal to Number of DUII Arrests in Past Month');
 		}
 		
 		if($('tr').has('div[id=arrests]').find('input').val() < (parseInt($('tr').has('div[id=duiiArrests]').find('input').val()) + parseInt($('tr').has('div[id=arrestsPastMonth]').find('input').val()))){
-			e.preventDefault();
+			//e.preventDefault();
 			console.log('Total Arrests have to be greater than or equal to Total DUII Arrests and Number of Arrests in Past Month');
 		}
 	});
