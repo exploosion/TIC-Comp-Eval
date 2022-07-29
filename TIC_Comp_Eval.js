@@ -1125,5 +1125,9 @@ window.addEventListener("DOMContentLoaded", () => {
 	if (!clientPresent.checked){
 		clientPresent.click();
 	}
+	document.querySelectorAll('.screeningScore').forEach(score => {
+		score.closest('tr').querySelector('input').readOnly = 'readOnly';
+		score.closest('tr').querySelector('input').tabIndex = -1;
+	});
 });
 clientPresent.onchange = clientPresentCheck;
