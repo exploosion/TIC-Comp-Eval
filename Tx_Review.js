@@ -542,3 +542,45 @@ $('document').ready(function(){
 	$('tr').find('div[id=medicalNeeds]').attr('title', 'Unmet needs for Primary Care Provider, appointments, or referral(s)'); 
 	$('tr').find('div[id=medicalNeeds]').tooltip();  
 });
+
+//Check client
+const toggleExtraSpace = (selector, hiddenBool) => {
+  document.querySelectorAll(selector).forEach((item) => {
+    const element = item.closest("table").parentElement.parentElement
+      .nextSibling.nextElementSibling;
+    element.hidden = hiddenBool;
+  });
+};
+const clientPresent = document
+  .querySelector("#presentClient")
+  .parentElement.parentElement.querySelector("input");
+const clientPresentCheck = () => {
+  if (clientPresent.checked) {
+    hideShow("show", "clientQuestion", true);
+    toggleExtraSpace(".clientQuestion", false);
+    if (document.querySelector("#skillsTraining") != null) {
+      document.querySelector("#skillsTraining").closest("tr").hidden = false;
+    }
+    if (document.querySelector("#subAddNotes") != null) {
+      const subAddNotes = document.querySelector("#subAddNotes");
+      subAddNotes.closest("tr").querySelector("input").required = false;
+      subAddNotes.closest("tr").querySelector(".redAsterisk").remove();
+    }
+  } else {
+    hideShow("hide", "clientQuestion", true);
+    toggleExtraSpace(".clientQuestion", true);
+    hideShow("show", "objectivesAddressed", true);
+    if (document.querySelector("#objectivesAddressed") != null) {
+      document
+        .querySelector("#objectivesAddressed")
+        .closest("table")
+        .closest("tr").hidden = false;
+    }
+    hideShow("show", "dxInjection", true);
+    if (document.querySelector("#skillsTraining") != null) {
+      document.querySelector("#skillsTraining").closest("tr").hidden = true;
+    }
+  }
+};
+window.addEventListener("DOMContentLoaded", clientPresentCheck);
+clientPresent.onchange = clientPresentCheck;
