@@ -589,8 +589,8 @@ window.addEventListener("DOMContentLoaded", () => {
 		clientPresent.click();
 	}
 	document.querySelectorAll('.screeningScore').forEach(score => {
-		score.closest('tr').querySelector('input').readOnly = 'readOnly';
-		score.closest('tr').querySelector('input').tabIndex = -1;
+		score.closest('table').querySelector('input').readOnly = 'readOnly';
+		score.closest('table').querySelector('input').tabIndex = -1;
 	});
 });
 clientPresent.onchange = clientPresentCheck;
