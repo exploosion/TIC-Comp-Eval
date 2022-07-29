@@ -1120,5 +1120,10 @@ const clientPresentCheck = () => {
     }
   }
 };
-window.addEventListener("DOMContentLoaded", clientPresentCheck);
+window.addEventListener("DOMContentLoaded", () => { 
+	clientPresentCheck(); 
+	if (!clientPresent.checked){
+		clientPresent.click();
+	}
+});
 clientPresent.onchange = clientPresentCheck;
