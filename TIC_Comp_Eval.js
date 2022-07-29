@@ -137,7 +137,6 @@ function checkTobacco(){
 	}
 	else if($('tr').has('div[id=tobaccoUse]').find('select').val() == $('tr').has('div[id=tobaccoUse]').find('option[text=\'2-NO\']').val()){
 		$('tr').has('div[id=tobaccoCessation]').find('select').val('');
-
 	}
 }
 
