@@ -499,18 +499,14 @@ function setGlobalFrameValue(context, value, frameSelector, valueVariable){
 }
 
 function checkMDD(){
-
-	hideShow('hide', 'mddDx');
-	if($('tr').has('div[id=evalType]').find('tr:contains(\'Annual Evaluation\')').eq(1).find('input').prop('checked')){
-		hideShow('show', 'mddDx');
-		frameElement.style.height = parent.idealFrameHeight(frameElement);
-		if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
-			setGlobalFrameValue(parent.document, true, '#phq-9', 'userChange');
-			if (parent.document.querySelector('#phq-9').contentDocument.querySelector('#questions_container').hidden){
-				parent.document.querySelector('#phq-9').contentDocument.querySelector('.toolHead').click();
-			}
+	frameElement.style.height = parent.idealFrameHeight(frameElement);
+	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+		setGlobalFrameValue(parent.document, true, '#phq-9', 'userChange');
+		if (parent.document.querySelector('#phq-9').contentDocument.querySelector('#questions_container').hidden){
+			parent.document.querySelector('#phq-9').contentDocument.querySelector('.toolHead').click();
 		}
 	}
+
 	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
 		setGlobalFrameValue(parent.document, true, '#c-Ssrs', 'userChange');
 		if (parent.document.querySelector('#c-Ssrs').contentDocument.querySelector('#questions_container').hidden){
