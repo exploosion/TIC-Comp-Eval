@@ -493,11 +493,6 @@ $('document').ready(function(){
 var requireCSSRS;
 var requirePHQ9;
 
-function setGlobalFrameValue(context, value, frameSelector, valueVariable){
-    const frame = context.querySelector(frameSelector);
-    frame.contentWindow[valueVariable] = value;
-}
-
 function checkMDD(){
 	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
 		setGlobalFrameValue(parent.document, true, '#phq-9', 'userChange');
