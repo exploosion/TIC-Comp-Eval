@@ -493,6 +493,11 @@ $('document').ready(function(){
 var requireCSSRS;
 var requirePHQ9;
 
+function setGlobalFrameValue(context, value, frameSelector, valueVariable){
+    const frame = context.querySelector(frameSelector);
+    frame.contentWindow[valueVariable] = value;
+}
+
 function checkMDD(){
 	frameElement.style.height = parent.idealFrameHeight(frameElement);
 	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
