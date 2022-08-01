@@ -10,10 +10,7 @@ function populateOptionText (target){
 
 //Get client ID>
 $('document').ready(function(){
-	if(window.parent[0].$){
-		cid = window.parent.parent[0].$('input[id=client_id]')?.val();
-		console.log('Client ID found.');
-	}
+	cid = (new URL(frameElement.src)).searchParams.get('client_id')
 	
 	if(cid == undefined)
 	{
