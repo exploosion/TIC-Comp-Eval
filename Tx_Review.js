@@ -11,7 +11,7 @@ function populateOptionText (target){
 //Get client ID>
 $('document').ready(function(){
 	if(window.parent[0].$){
-		cid = window.parent[0].$('input[id=client_id]')?.val();
+		cid = window.parent.parent[0].$('input[id=client_id]')?.val();
 		console.log('Client ID found.');
 	}
 	
