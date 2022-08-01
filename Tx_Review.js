@@ -590,3 +590,19 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 });
 clientPresent.onchange = clientPresentCheck;
+
+//Update substances
+function checkSubstances(){
+	hideShow('hide', 'substance', true);
+	hideShow('hide', 'frequency', true);
+	if($('tr').has('div[id=updateSubstance]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+		hideShow('show', 'substance', true);
+		hideShow('show', 'frequency', true);
+	}
+}
+
+$('document').ready(function(){
+	checkSubstances();
+
+	$('tr').has('div[id=updateSubstance]').find('input').change(checkSubstances);
+});
