@@ -246,13 +246,13 @@ $('document').ready(function(){
 	$('input[name=Complete]').prop('disabled', false);
 	$('input[name=Complete]').click(function(e){
 		if($('tr').has('div[id=duiiArrests]').find('input').val() < $('tr').has('div[id=duiiArrestsPastMonth]').find('input').val()){
-			e.preventDefault();
-			alert('Total DUII Arrests have to be greater than or equal to Number of DUII Arrests in Past Month');
+			//e.preventDefault();
+			//alert('Total DUII Arrests have to be greater than or equal to Number of DUII Arrests in Past Month');
 		}
 		
 		if($('tr').has('div[id=arrests]').find('input').val() < (parseInt($('tr').has('div[id=duiiArrests]').find('input').val()) + parseInt($('tr').has('div[id=arrestsPastMonth]').find('input').val()))){
-			e.preventDefault();
-			alert('Total Arrests have to be greater than or equal to Total DUII Arrests and Number of Arrests in Past Month');
+			//e.preventDefault();
+			//alert('Total Arrests have to be greater than or equal to Total DUII Arrests and Number of Arrests in Past Month');
 		}
 	});
 });
@@ -424,9 +424,9 @@ function toggleConsentNo(){
 
  function checkConsent(e){
 	if(!$('tr').has('div[id=consentClientYes]').find('input').prop('checked') && !$('tr').has('div[id=consentClientNo]').find('input').prop('checked')){
-		e.preventDefault();
-		$([document.documentElement, document.body]).animate({scrollTop: $('#informedConsentLabel').offset().top},);
-		alert('Please complete Informed Consent section.');
+		//e.preventDefault();
+		//$([document.documentElement, document.body]).animate({scrollTop: $('#informedConsentLabel').offset().top},);
+		//alert('Please complete Informed Consent section.');
 	}
  }
 
