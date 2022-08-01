@@ -493,26 +493,17 @@ $('document').ready(function(){
 var requireCSSRS;
 var requirePHQ9;
 
-function setGlobalFrameValue(context, value, frameSelector, valueVariable){
-    const frame = context.querySelector(frameSelector);
-    frame.contentWindow[valueVariable] = value;
-}
-
-function checkMDD(){
-	frameElement.style.height = parent.idealFrameHeight(frameElement);
-	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
-		setGlobalFrameValue(parent.document, true, '#phq-9', 'userChange');
-		if (parent.document.querySelector('#phq-9').contentDocument.querySelector('#questions_container').hidden){
-			parent.document.querySelector('#phq-9').contentDocument.querySelector('.toolHead').click();
-		}
-	}
-
-	if($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
-		setGlobalFrameValue(parent.document, true, '#c-Ssrs', 'userChange');
-		if (parent.document.querySelector('#c-Ssrs').contentDocument.querySelector('#questions_container').hidden){
-			parent.document.querySelector('#c-Ssrs').contentDocument.querySelector('.toolHead').click();
-		}
-	}
+function checkMDD() {   
+  if ($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){     
+    $(parent.document).find('#c-Ssrs')[0].contentWindow.userChange = true;     
+    if($($(parent.document).find('#c-Ssrs')[0].contentDocument).find('div[id=questions_container]').prop('hidden')){       
+      $($(parent.document).find('#c-Ssrs')[0].contentDocument).find('.toolHead').click();     
+    }   
+    $(parent.document).find('#phq-9')[0].contentWindow.userChange = true;     
+    if($($(parent.document).find('#phq-9')[0].contentDocument).find('div[id=questions_container]').prop('hidden')){       
+      $($(parent.document).find('#phq-9')[0].contentDocument).find('.toolHead').click();     
+    } 
+  } 
 }
 
 $('document').ready(function(){
