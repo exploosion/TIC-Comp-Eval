@@ -22,7 +22,7 @@ $('document').ready(function(){
 	}
 
 	try{ 
-		programID = window.parent[0].$('input[id=programId]').val(); 
+		programID = window.parent.parent[0].$('input[id=programId]').val(); 
 	}
 	catch{ 
 		if(programID == undefined){ 
