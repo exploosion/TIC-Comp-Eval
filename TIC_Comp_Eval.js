@@ -11,7 +11,9 @@ function populateOptionText (target){
 
 //Get client ID>
 $('document').ready(function(){
-	cid = (new URL(frameElement.src)).searchParams.get('client_id')
+	if(frameElement?.src){
+		cid = (new URL(frameElement.src)).searchParams.get('client_id');
+	}
 	
 	if(cid == undefined)
 	{
