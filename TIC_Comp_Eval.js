@@ -1126,7 +1126,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 	document.querySelectorAll('.screeningScore').forEach(score => {
 		score.closest('table').querySelector('input').setAttribute('readonly', true);
-		score.closest('tr').querySelector('input').tabIndex = -1;
+		score.closest('table').querySelector('input').setAttribute('tabIndex', -1);
 	});
 });
 clientPresent.onchange = clientPresentCheck;
