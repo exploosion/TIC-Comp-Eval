@@ -492,17 +492,23 @@ $('document').ready(function(){
 var requireCSSRS;
 var requirePHQ9;
 
-function checkMDD() {   
-  if ($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){     
-    $(parent.document).find('#c-Ssrs')[0].contentWindow.userChange = true;     
-    if($($(parent.document).find('#c-Ssrs')[0].contentDocument).find('div[id=questions_container]').prop('hidden')){       
-      $($(parent.document).find('#c-Ssrs')[0].contentDocument).find('.toolHead').click();     
-    }   
-    $(parent.document).find('#phq-9')[0].contentWindow.userChange = true;     
-    if($($(parent.document).find('#phq-9')[0].contentDocument).find('div[id=questions_container]').prop('hidden')){       
-      $($(parent.document).find('#phq-9')[0].contentDocument).find('.toolHead').click();     
-    } 
-  } 
+function checkMDD() {
+	if (frameElement != null && frameElement.className == 'frame'){
+		if ($('tr').has('div[id=mddDx]').find('tr:contains(\'Yes\')').eq(1).find('input').prop('checked')){
+			waitForElement(parent.document, '#c-Ssrs').then(() => {
+				$(parent.document).find('#c-Ssrs')[0].contentWindow.userChange = true;     
+				if($($(parent.document).find('#c-Ssrs')[0].contentDocument).find('div[id=questions_container]').prop('hidden')){       
+					$($(parent.document).find('#c-Ssrs')[0].contentDocument).find('.toolHead').click();     
+				}
+			});
+			waitForElement(parent.document, '#phq-9').then(() => {
+				$(parent.document).find('#phq-9')[0].contentWindow.userChange = true;     
+				if($($(parent.document).find('#phq-9')[0].contentDocument).find('div[id=questions_container]').prop('hidden')){       
+					$($(parent.document).find('#phq-9')[0].contentDocument).find('.toolHead').click();     
+				}
+			});
+		}
+	}
 }
 
 $('document').ready(function(){
